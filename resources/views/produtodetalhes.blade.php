@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+@extends('layouts.app')
+
+@section('content')
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apego</title>
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
+                        <a href="{{url('/shopping')}}">Shopping </a>
+                        <span>Produto</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Product Details Section Begin -->
+    <section class="product-details spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="product__details__pic">
+                        <div class="product__details__pic__left product__thumb nice-scroll">
+                            @foreach($fotos as $foto)
+                                @if($loop->first)
+                                    <a class="pt active">
+                                        <img src="{{$foto->fotos}}" alt="">
+                                    </a>
+                                @else
+                                    <a class="pt">
+                                        <img src="{{$foto->fotos}}" alt="">
+                                    </a>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="product__details__slider__content">
+                            <div class="product__details__pic__slider owl-carousel">
+                                @foreach($fotos as $foto)
+                                    <img class="product__big__img" src="{{$foto->fotos}}" alt="">
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="product__details__text">
+                        <h3>{{$produto->nome}} 
+                            <span>
+                            @if($produto->quantidade != 0)
+                                Produto em Estoque
+                            @else
+                                Produto Vendido
+                            @endif
+                            </span></h3>
+                        
+                        <div class="rating">
+                            <span>Avaliação: </span>
+                            @if($produto->avaliacao != null)
+                                @for ($i = 0; $i <$produto->avaliacao ; $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+                            @else
+                                <span>Produto ainda não avaliado</span>
+                            @endif
+                        </div>
+                        <div class="product__details__price">R$ {{$produto->preco}} <span></span></div>
+                        <p>{{$produto->descricao}}</p>
+                        <div class="product__details__button">
+                            <div class="quantity">
+                                <span>Quantidade:</span>
+                                <div class="pro-qty">
+                                    <input type="text" value="{{$produto->quantidade}}" disabled>
+                                </div>
+                            </div>
+                            @if($produto->quantidade > 0)
+                                <a href="{{url('adicionaraocarrinho/'.$produto->idprodutos)}}" class="cart-btn"><span class="icon_heart_alt"></span> Adicionar ao Carrinho</a>
+                            @endif
+                            
+                        </div>
+                        <div class="product__details__widget">
+                            <ul>
+                                <li>
+                                    <span>Tamanho:</span>
+                                    <div class="size__btn">
+                                        <label for="xs-btn" class="active">
+                                            <input type="radio" id="xs-btn">
+                                            {{$tamanho->nome}}
+                                        </label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>Genero:</span>
+                                    <p>{{$genero->genero}}</p>
+                                </li>
+                                <li>
+                                    <span>Promoção:</span>
+                                    <p>Frete Gratuito</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" role="tab">Descrição</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <p>{{$produto->descricao}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Details Section End -->
+
+
+</body>
+
+@endsection
+
+
+</html>
