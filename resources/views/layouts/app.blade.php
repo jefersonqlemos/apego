@@ -218,7 +218,7 @@
                     <div class="footer__widget">
                         <h6>Outros links</h6>
                         <ul>
-                            <li><a href="{{ url('/sobre') }}">Sobre</a></li>
+                            <li><a href="{{ url('/sobre') }}">Sobre/Suporte</a></li>
                             <li><a href="{{ url('/sobre')}}">Contato</a></li>
                         </ul>
                     </div>
@@ -235,9 +235,10 @@
                 </div>
                 <div class="col-lg-4 col-md-8 col-sm-8">
                     <div class="footer__newslatter">
-                        <h6>Receber Informações Sobre Ofertas</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Email">
+                        <h6>Notificar Produtos mais Recentes</h6>
+                        <form action="/emailnotificacao" method="post">
+                            @csrf
+                            <input type="text" name="email" placeholder="Email" required>
                             <button type="submit" class="site-btn">Enviar</button>
                         </form>
                         <div class="footer__social">

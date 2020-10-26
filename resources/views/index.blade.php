@@ -27,6 +27,12 @@
         <div class="loader"></div>
     </div>
 
+    @if(session()->has('message'))
+        <script>
+            alert("{{ session()->get('message') }}");
+        </script>
+    @endif
+
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container-fluid">

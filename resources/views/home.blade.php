@@ -362,6 +362,10 @@
                                     <input id="emailatual" name="emailatual" type="email" value="{{$email}}" disabled>
                                 </div>
                             </div>
+                        </div>
+                        <br><br>
+                        <h5>Editar Login</h5>
+                        <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
                                     <p>Novo E-Mail</p>
@@ -370,7 +374,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="checkout__form__input">
-                                    <button type="submit" class="site-btn">Trocar E-Mail</button>
+                                    <button style="margin-top:35px" type="submit" class="site-btn">Trocar E-Mail</button>
                                 </div>
                             </div>
                         </div>
@@ -391,9 +395,9 @@
                                     <input id="senhanova" name="senhanova" type="password" required>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-12">
                                 <div class="checkout__form__input">
-                                    <button type="submit" class="site-btn">Trocar Senha</button>
+                                    <button style="float:right" type="submit" class="site-btn">Trocar Senha</button>
                                 </div>
                             </div>
                         </div>

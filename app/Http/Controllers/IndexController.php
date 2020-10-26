@@ -12,6 +12,10 @@ use App\Genero;
 
 use App\Tamanho;
 
+use App\Email;
+
+use App\Suporte;
+
 class IndexController extends Controller
 {
     
@@ -44,4 +48,26 @@ class IndexController extends Controller
         $fotos = Foto::where('produtos_idprodutos', $id)->get();
         return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho'));
     }
+
+    public function emailNotificacao(Request $request){
+
+        $email = new Email;
+        $email->email = $request->email;
+        $email->save();
+
+        return redirect()->back()->with('message', 'Agora Você Será Notificado Semanalmente dos Produtos mais Recentes');
+    }
+
+    public function mensagemSuporte(Request $request){
+
+        $suporte = new Suporte;
+        $suporte->nome = $request->nome;
+        $suporte->email = $request->email;
+        $suporte->mensagem = $request->mensagem;
+        $suporte->status = 0;
+        $suporte->save();
+
+        return redirect()->back()->with('message', 'Sua Mensagem foi Enviada ao Suporte, Responderemos em Seu E-mail');
+    }
+
 }

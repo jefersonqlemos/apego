@@ -61,23 +61,19 @@ Route::get('search', 'AppController@search');
 
 Auth::routes();
 
-Route::get('meuspedidos', 'HomeController@meusPedidos');
-Route::get('comprados/{id}', 'HomeController@comprados');
-Route::get('editarconta', 'HomeController@editarConta');
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('meuspedidos', 'HomeController@meusPedidos')->middleware('verified');
+Route::get('comprados/{id}', 'HomeController@comprados')->middleware('verified');
+Route::get('editarconta', 'HomeController@editarConta')->middleware('verified');
+Route::get('home', 'HomeController@index')->name('home')->middleware('verified');
+Route::post('atualizardadosusuario', 'HomeController@updateUsuario')->middleware('verified');
+
+Auth::routes(['verify' => true]);
 
 Route::get('conferirdados', 'RealizarPedidoController@conferirdados');
 Route::post('pagamento', 'RealizarPedidoController@pagamento');
 
-Route::post('atualizardadosusuario', 'HomeController@updateUsuario');
-
-
-
-
-
-
-
-
+Route::post('emailnotificacao', 'IndexController@emailNotificacao');
+Route::post('mensagemsuporte', 'IndexController@mensagemSuporte');
 
 Route::get('/pagamento/requisicao/{assinatura_id}'
 ,'PagseguroController@criaRequisicao')->middleware('auth')->name('requisicao');

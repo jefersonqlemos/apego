@@ -26,7 +26,11 @@
         <div class="loader"></div>
     </div>
 
-    
+    @if(session()->has('message'))
+        <script>
+            alert("{{ session()->get('message') }}");
+        </script>
+    @endif
 
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
@@ -72,10 +76,11 @@
                         </div>
                         <div class="contact__form">
                             <h5>ENVIAR UMA MENSAGEM AO SUPORTE</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Nome">
-                                <input type="text" placeholder="Email">
-                                <textarea placeholder="Mensagem"></textarea>
+                            <form action="mensagemsuporte" method="post">
+                                @csrf
+                                <input type="text" name="nome" placeholder="Nome" required>
+                                <input type="text" name="email" placeholder="Email" required>
+                                <textarea name="mensagem" placeholder="Mensagem" required></textarea>
                                 <button type="submit" class="site-btn">Enviar Mensagem</button>
                             </form>
                         </div>

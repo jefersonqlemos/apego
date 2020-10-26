@@ -20,9 +20,14 @@ class RealizarPedidoController extends Controller
     //
     public function conferirdados()
     {
-        $id = Auth::id();
-        $dadosusuario = Dadosusuario::find($id);
-        return view('realizarpedido/conferirdados')->with('dadosusuario', $dadosusuario);
+        $count = Cart::content()->count();
+        if($count == 0){
+            return redirect()->back();
+        }else{
+            $id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
+            return view('realizarpedido/conferirdados')->with('dadosusuario', $dadosusuario);
+        }
     }
 
     public function pagamento(Request $request){
