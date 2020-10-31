@@ -28,19 +28,35 @@
         
         .w3-allerta {
             font-family: "Allerta Stencil", Sans-serif;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
+        }
+
+        #lblCartCount {
+            padding-left: 9px;
+            padding-right: 9px;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+            font-size: 12px;
+            background: #ff0000;
+            color: #fff;
+            padding: 0 5px;
+            vertical-align: top;
+            margin-left: -5px; 
         }
     </style>
     </head>
 <body>
     <div class="w3-container w3-black w3-center w3-allerta">
-    <p class="w3-xxxlarge">Apego</p>
+    <p class="w3-xxlarge">Apego</p>
     </div>
     <button class="btn" onclick="window.location.href='/produtos'"><i class="fa fa-box"></i> Produtos</button>
     <hr>
     <button class="btn" onclick="window.location.href='/pedidos'"><i class="fa fa-clipboard-list"></i> Pedidos</button>
     <hr>
-    <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar "sobre o site"</button>
+    <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar Sobre/Links</button>
+    <hr>
+    <button class="btn" onclick="window.location.href='/listasuporte'"><i style="font-size:24px" class="fa fa-headset"></i><span id='lblCartCount'>{{$count}}</span> Atender Suporte</button>
     <hr>
     <button class="btn" onclick="window.location.href='/'"><i class="fa fa-home"></i> Ir ao Site</button>
         

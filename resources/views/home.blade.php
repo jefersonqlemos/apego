@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 
     <style>
+
         .btn {
             background-color: #ca1515;
             border: none;
@@ -92,6 +93,81 @@
                 display: block; 
             }    
         }
+
+
+
+
+
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+        }
+
+        /* The Close Button */
+        .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        }
+
+        .modal-header {
+        padding: 2px 16px;
+        background-color: #ca1515;
+        color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+
+
+
+
+
+
+
     </style>
 
     <script>
@@ -215,7 +291,35 @@
                     
                 });
 
+
+                var modal = document.getElementById("myModal");
+
+                // Get the button that opens the modal
+                var btn = document.getElementById("myBtn");
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks the button, open the modal 
+                btn.onclick = function() {
+                modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                }
+
             }); 
+            
+            
 
     </script>
 
@@ -263,6 +367,10 @@
                     <button id="buscapedidosmobile" class="btn">
                         <i class="fas fa-clipboard-check"></i> <span></span>
                     </button>
+                    <br>
+                    <button onclick="window.location.href='/sobre'" class="btn">
+                        <i class="fas fa-headset"></i> <span></span>
+                    </button>
                 </div>
                 <div class="desktop-container">
                     <button id="iniciodesktop" class="btn">
@@ -276,6 +384,10 @@
                     <button id="buscapedidosdesktop" class="btn">
                         <i class="fas fa-clipboard-check"></i> <span> Meus Pedidos</span>
                     </button>
+                    <br>
+                    <button onclick="window.location.href='/sobre'" class="btn">
+                        <i class="fas fa-headset"></i> <span> Suporte</span>
+                    </button>
                 </div>  
             </div>
             <div class="col-12 col-md-8">
@@ -284,7 +396,7 @@
                 </div>
                 <div id="dadosconta">
                     <br>
-                    <form action="/atualizardadosusuario" class="checkout__form" method="post">
+                    <form action="{{url('/atualizardadosusuario')}}" class="checkout__form" method="post">
                         @csrf
                         <h5>Dados da Conta</h5>
                             <div class="row">
@@ -353,7 +465,7 @@
                 </div>
                 <div id="inicio">
                 <br>
-                     <form action="/trocaremail" class="checkout__form">
+                     <form class="checkout__form">   
                         <h5>Dados de Login</h5>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -364,53 +476,66 @@
                             </div>
                         </div>
                         <br><br>
-                        <h5>Editar Login</h5>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Novo E-Mail</p>
-                                    <input id="novoemail" name="novoemail" type="email" required >
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <button style="margin-top:35px" type="submit" class="site-btn">Trocar E-Mail</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <br>
-                    <hr>
-                    <form action="/trocarsenha" class="checkout__form">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Senha Atual</p>
-                                    <input id="senhaatual" name="senhaatual" type="password" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <div class="checkout__form__input">
-                                    <p>Nova Senha</p>
-                                    <input id="senhanova" name="senhanova" type="password" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="checkout__form__input">
-                                    <button style="float:right" type="submit" class="site-btn">Trocar Senha</button>
-                                </div>
-                            </div>
-                        </div>
+                        
+
                     </form>
                     
+                    
+                    <form action="/password/reset" class="checkout__form">
+                        <h5>Editar Login</h5>
+                        
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="checkout__form__input">
+                                    <button type="submit" class="site-btn">Redefinir Minha Senha</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button id="myBtn" style="margin-top:25px;" type="submit" class="site-btn">Trocar E-Mail</button>             
+
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <span class="close">&times;</span>
+                                </div>
+                                <div class="modal-body">
+                                    <br><br>
+                                            <form method="post" action="{{url('trocaremail')}}" class="checkout__form">
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="checkout__form__input">
+                                                            <p>Senha Atual</p>
+                                                            <input id="senha" name="senha" type="password" required >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                                        <div class="checkout__form__input">
+                                                            <p>Novo E-Mail</p>
+                                                            <input id="novoemail" name="email" type="email" required >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="checkout__form__input">
+                                                            <button style="margin-top:20px;margin-bottom:50px;float:right" type="submit" class="site-btn">Atualizar Email</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-    <br>
-    <br>
-    <br>
+    
 </body>
 
 </html>

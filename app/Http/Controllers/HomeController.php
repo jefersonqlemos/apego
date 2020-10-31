@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Hash;
+
 use App\Dadosusuario;
 
 use App\Pedido;
@@ -33,6 +35,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $email = Auth::user()->email;
         return view('home')->with('email', $email);
     }
@@ -77,4 +80,24 @@ class HomeController extends Controller
 
         return redirect()->back()->with('message', 'Os Dados foram Atualizados');
     }
+
+    public function trocarEmail(Request $request){
+        //validation rules
+
+        $request->validate([
+            'email'=>'required|email|string|max:255'
+        ]);
+
+        if (Hash::check($request->senha, Auth::user()->password)) {
+            $user = Auth::user();
+            $user->email = $request['email'];
+            $user->save();
+
+            return back()->with('message','Email Atualizado com Sucesso');
+        }else{
+
+            return back()->with('message','Senha incorreta, tente novamente');
+        }
+    }
+
 }

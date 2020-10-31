@@ -54,7 +54,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__content">
                         <div class="contact__address">
-                            <h5>INFORMAÇÕES</h5>
+                            <h5>INFORMAÇÕES/SUPORTE</h5>
                             <ul>
                                 <li>
                                     <h6> Sobre a Empresa</h6>
@@ -98,6 +98,8 @@
     </div>
 </section>
 <!-- Contact Section End -->
+
+<br><br><br><br><br><br>
 
 </body>
 

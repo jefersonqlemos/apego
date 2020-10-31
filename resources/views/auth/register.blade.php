@@ -84,7 +84,7 @@
 
                             <div class="col-md-6">
 
-                            <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="Videira-SC" autocomplete="cidade" autofocus readonly>
+                            <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="Videira" autocomplete="cidade" autofocus readonly>
 
                                 @error('cidade')
                                     <span class="invalid-feedback" role="alert">

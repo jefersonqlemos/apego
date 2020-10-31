@@ -4,92 +4,352 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use PagSeguro\Configuration\Configure;
-use PagSeguro\Services\Session as PagseguroSession;
-use PagSeguro\Domains\Requests\Payment as PagseguroPayment;
+use Illuminate\Support\Facades\Auth;
 
-use PagSeguro\Services\Transactions\Search\Code as PagseguroSearchCode;
-use PagSeguro\Services\Transactions\Notification as PagseguroNotification;
-use PagSeguro\Helpers\Xhr;
-use PagSeguro\Parsers\Transaction\Response as PagseguroResponse;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
+use App\Dadosusuario;
+
+use App\Produto;
+
+use App\Pedido;
+
+use App\Comprado;
 
 class PagseguroController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //
-    public function __construct()
-    {
-        $this->_configs = new Configure();
-        $this->_configs->setCharset('UTF-8');
-        $this->_configs->setAccountCredentials(env('PAGSEGURO_EMAIL'), env('PAGSEGURO_TOKEN'));
-        $this->_configs->setEnvironment(env('PAGSEGURO_AMBIENTE'));
-        //pode ser false
-        $this->_configs->setLog(true, storage_path('logs/pagseguro_'. date('Ymd') .'.txt'));
+    public function iniciaPagamentoAction() { //gera o código de sessão obrigatório para gerar identificador (hash)
+
+		//$id = (string) $this->params ()->fromRoute( 'confirma', null );
+
+		$data['token'] = 'FDC638D2BFBE4279936F982471A50C9E'; //token teste SANDBOX
+
+				//$_SERVER['REMOTE_ADDR']
+		$emailPagseguro = 'jefersonquagliottolemos2@yahoo.com';
+
+		$data = http_build_query($data);
+		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions';
+
+		$curl = curl_init();
+
+		$headers = array('Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1');
+
+		curl_setopt($curl, CURLOPT_URL, $url . "?email=" . $emailPagseguro);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		//curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		$xml = curl_exec($curl);
+
+		curl_close($curl);
+
+		$xml= simplexml_load_string($xml);
+
+        //dd($idSessao);
+        return response()->json($xml);
+		//echo $idSessao;
+		exit;
+		//return $codigoRedirecionamento;
+
     }
+    
+    public function efetuaPagamentoCartao(Request $request) {
+
+        //$_SERVER['REMOTE_ADDR']
+        $emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
+        $tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
+
+        $dadosusuario = Dadosusuario::find(Auth::id());
+
+        //tratamento para retirada de parenteses e traço dos telefones, e extração do codearea
+        $telefone = $dadosusuario->telefone;
+        $telefone = str_replace('(', '', $telefone);
+        $telefone = str_replace(')', '', $telefone);
+        $telefone = str_replace('-', '', $telefone); 
+        $codeArea = substr($telefone, 0, 2);
+        $telefone = substr($telefone, 2);
+
+        $telefonetitular = $request->telefone;
+        $telefonetitular = str_replace('(', '', $telefonetitular);
+        $telefonetitular = str_replace(')', '', $telefonetitular);
+        $telefonetitular = str_replace('-', '', $telefonetitular); 
+        $telefonetitular = str_replace(' ', '', $telefonetitular); 
+        $codeAreaTitular = substr($telefonetitular, 0, 2);
+        $telefonetitular = substr($telefonetitular, 2);
+
+        //busca email do usuario
+        $email = Auth::user()->email;
+
+        //tratamento retirada de pontos e traço cpf
+        $cpf = $dadosusuario->cpf;
+        $cpf = str_replace('.', '', $cpf);
+        $cpf = str_replace('-', '', $cpf);
+
+        $cpftitular = $request->cadCPF;
+        $cpftitular = str_replace('.', '', $cpftitular);
+        $cpftitular = str_replace('-', '', $cpftitular);
 
 
-    public function getCredenciais()
-    {
-        return $this->_configs->getAccountCredentials();
-    }
+        $data['email'] = $emailPagseguro;
+		$data['token'] = $tokenPagseguro; //token sandbox
+		$data['paymentMode'] = 'default';
+		$data['senderHash'] = $request->hashPagSeguro; //gerado via javascript
+		$data['creditCardToken'] = $request->tokenPagamentoCartao; //gerado via javascript
+		$data['paymentMethod'] = 'creditCard';
+		$data['receiverEmail'] = $emailPagseguro;
+		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome; //nome do usuário deve conter nome e sobrenome
+		$data['senderAreaCode'] = $codeArea;
+		$data['senderPhone'] = $telefone;
+		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderCPF'] = $cpf;
+        
 
+        $produtos = Cart::content();//busca produtos do carrinho
 
-    public function criaRequisicao($assinatura_id)
-    {
-        try {
-            $assinatura = Assinatura::findOrFail($assinatura_id);
-            $pagamento = new PagseguroPayment();
-            $pagamento->setCurrency('BRL');
-            //referência interna do pagamento ao sistema
-            $pagamento->setReference($assinatura_id); 
-            //pegar valores do plano selecionado na tela
-            $pagamento->addItems()->withParameters(
-                $assinatura->id,
-                $assinatura->plano->nome,
-                1,
-                $assinatura->plano->valor
-            );
-            //pegar do usuario logado
-            $pagamento->setSender()->setName(Auth::user()->name);
-            $pagamento->setSender()->setEmail(Auth::user()->email);
-            //pegar cpf ou cnpj do usuario logado
-            if(Auth::user()->cliente->cpf_cnpj){
-                $pagamento->setSender()->setPhone()->withParameters(
-                    Auth::user()->cliente->tipo_cpf_cnpj,
-                    Auth::user()->cliente->cpf_cnpj
-                );
-            }
-            //pegar telefone do usuario logado
-            if(Auth::user()->cliente->telefone){
-                $pagamento->setSender()->setPhone()->withParameters(
-                    Auth::user()->cliente->telefone_ddd,
-                    Auth::user()->cliente->telefone
-                );
-            }
-            $onlyCheckoutCode = true;
-            $result = $pagamento->register($this->getCredenciais(),$onlyCheckoutCode);
-            return $result->getCode();
-        } catch (Exception $e) {
-            die($e->getMessage());
+        $i = 0;
+
+        //busca informações dos produtos na base de dados, contidos no carrinho
+        foreach($produtos as $produto){
+
+            $i++;
+            
+            $item = Produto::find($produto->id);
+            //troca virgula por ponto
+            $preco = str_replace(',', '.', $item->preco);
+
+            $data['itemId'.$i] = "".$item->idprodutos;
+            $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
+            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemAmount'.$i] = $preco;
+
         }
-    }
 
-    public function criaPagamento(Request $request)
-    {
-        try{
-            $pagamento = new Pagamento();
-            $pagamento->assinatura_id = $request->assinatura_id;
-            $pagamento->transacao = $request->code;
-            $pagamento->status_codigo = 1;
-            $pagamento->status = 'Aguardando Pagamento';
-            if($pagamento->save()){
-                return true;
-            } else {
-                throw new Exception("Error ao salvar");
-            }
-        } catch (Exception $e) {
-            logger($e->getMessage());    
+        //limitado até 3x, parcelamento é o numero de parcelas
+		 
+		$parcelamento = explode('|', $request->parcelamento);
+		$qtyparcela = $parcelamento[0];
+		$precoparcela	= $parcelamento[1];
+
+		$data['installmentQuantity'] = $qtyparcela;
+        $data['noInterestInstallmentQuantity'] = '3';
+        $data['installmentValue'] = $precoparcela; //valor da parcela, duas aspas para tornar string
+        $data['maxInstallmentNoInterest'] = '3';
+		$data['creditCardHolderName'] = $request->nome." ".$request->sobrenome; //nome do titular
+		$data['creditCardHolderCPF'] = $cpftitular;
+		$data['creditCardHolderBirthDate'] = date("d/m/Y", strtotime($request->datadenascimento));
+		$data['creditCardHolderAreaCode'] = $codeAreaTitular;
+        $data['creditCardHolderPhone'] = $telefonetitular;
+        $data['billingAddressComplement'] = $dadosusuario->complemento;
+        $data['billingAddressStreet'] = $dadosusuario->rua;
+		$data['billingAddressNumber'] = $dadosusuario->numero;
+		$data['billingAddressDistrict'] = $dadosusuario->bairro;
+		$data['billingAddressPostalCode'] = '89560170'; //cep com usuarios só de Videira
+		$data['billingAddressCity'] = 'Videira';
+		$data['billingAddressState'] = 'SC';
+		$data['billingAddressCountry'] = 'BRA';
+        $data['currency'] = 'BRL';
+        
+        
+
+        $data['reference'] = "".Auth::id(); //referencia qualquer do produto
+		$data['shippingAddressRequired'] = 'false';
+
+        //dd($data); //para visualização xml
+
+		$data = http_build_query($data);
+		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+
+
+		$curl = curl_init();
+
+		$headers = array('Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1');
+
+		curl_setopt($curl, CURLOPT_URL, $url . "?email=" . $emailPagseguro);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		//curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		$xml = curl_exec($curl);
+
+		curl_close($curl);
+
+		$xml= simplexml_load_string($xml);
+
+		$code = $xml->code;
+		
+		if($code!=null){
+			
+			$pedido = new Pedido;
+			$pedido->numeroitens = $xml->itemCount;
+			$pedido->tipotransacao = '1';
+			$pedido->valortotal = $xml->grossAmount;
+			$pedido->valorrecebido = $xml->netAmount;
+			$pedido->taxapagseguro = $xml->feeAmount;
+			$pedido->date = $xml->date;
+			$pedido->status = $xml->status;
+			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->code = $code;
+			$pedido->users_id = Auth::id();
+			$pedido->save();
+
+			foreach($produtos as $produto){
+
+				$comprados = new Comprado;
+				
+				$comprados->produtos_idprodutos = $produto->id;
+				$comprados->quantidade = $produto->qty;
+				$comprados->pedidos_idpedidos = $pedido->idpedidos;
+
+				$comprados->save();
+
+			}
+
+			Cart::destroy();
+
+			return view('conclusaopedido')->with('pedido', $pedido);
+
+		}else{
+			return redirect('pagamento')->with('message', 
+			'Ouve um erro na transação tente novamente, no caso de insucesso contate o suporte');
+		}
+
+    }
+    
+    public function efetuaPagamentoBoleto(Request $request) {
+
+		$emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
+		$tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
+		
+		$dadosusuario = Dadosusuario::find(Auth::id());
+
+		$telefone = $dadosusuario->telefone;
+        $telefone = str_replace('(', '', $telefone);
+        $telefone = str_replace(')', '', $telefone);
+        $telefone = str_replace('-', '', $telefone); 
+        $codeArea = substr($telefone, 0, 2);
+		$telefone = substr($telefone, 2);
+		
+		$email = Auth::user()->email;
+
+		$cpf = $dadosusuario->cpf;
+        $cpf = str_replace('.', '', $cpf);
+		$cpf = str_replace('-', '', $cpf);
+		
+		$produtos = Cart::content();//busca produtos do carrinho
+
+        $i = 0;
+
+        //busca informações dos produtos na base de dados, contidos no carrinho
+        foreach($produtos as $produto){
+
+            $i++;
+            
+            $item = Produto::find($produto->id);
+            //troca virgula por ponto
+            $preco = str_replace(',', '.', $item->preco);
+
+            $data['itemId'.$i] = "".$item->idprodutos;
+            $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
+            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemAmount'.$i] = $preco;
+
         }
-  }
+
+		$data['email'] = $emailPagseguro;
+		$data['token'] = $tokenPagseguro; //token sandbox test
+		$data['paymentMode'] = 'default';
+		$data['senderhash'] = $request->hashPagSeguro;;
+		$data['paymentMethod'] = 'boleto';
+		$data['receiverEmail'] = $emailPagseguro;
+		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome;
+		$data['senderAreaCode'] = $codeArea;
+		$data['senderPhone'] = $telefone;
+		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderCPF'] = $cpf;
+		$data['currency'] = 'BRL';
+		//dd($cpf);
+		
+		$data['reference'] = "".Auth::id();
+		$data['shippingAddressRequired'] = 'false';
+
+		$data = http_build_query($data);
+		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+
+		$curl = curl_init();
+
+		$headers = array('Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1');
+
+		curl_setopt($curl, CURLOPT_URL, $url . "?email=" . $emailPagseguro);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		//curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		$xml = curl_exec($curl);
+
+		curl_close($curl);
+
+		$xml= simplexml_load_string($xml);
+
+		//dd($xml);
+
+		$code = $xml->code;
+
+		if($code!=null){
+			
+			$pedido = new Pedido;
+			$pedido->numeroitens = $xml->itemCount;
+			$pedido->tipotransacao = '1';
+			$pedido->valortotal = $xml->grossAmount;
+			$pedido->valorrecebido = $xml->netAmount;
+			$pedido->taxapagseguro = $xml->feeAmount;
+			$pedido->date = $xml->date;
+			$pedido->status = $xml->status;
+			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->code = $code;
+			$pedido->linkboleto = $xml->paymentLink;
+			$pedido->users_id = Auth::id();
+			$pedido->save();
+
+			foreach($produtos as $produto){
+
+				$comprados = new Comprado;
+				
+				$comprados->produtos_idprodutos = $produto->id;
+				$comprados->quantidade = $produto->qty;
+				$comprados->pedidos_idpedidos = $pedido->idpedidos;
+
+				$comprados->save();
+
+			}
+
+			Cart::destroy();
+
+			return view('conclusaopedido')->with('pedido', $pedido);
+
+		}else{
+			return redirect('pagamento')->with('message', 
+			'Ouve um erro na transação tente novamente, no caso de insucesso contate o suporte');
+		}
+
+	}
+
+	public function efetuaPagamentoDebito(Request $request) {
+
+	}
 
 }

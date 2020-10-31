@@ -146,7 +146,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-1.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-2.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-3.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-4.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-5.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-6.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="https://www.instagram.com/_seuapego_/">@ seuapego</a>
+                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -242,10 +242,10 @@
                             <button type="submit" class="site-btn">Enviar</button>
                         </form>
                         <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="https://www.instagram.com/_seuapego_/"><i class="fa fa-instagram"></i></a>
+                            <a href="{{$links->linkfacebook}}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{$links->linktwitter}}"><i class="fa fa-twitter"></i></a>
+                            <a href="{{$links->linkyoutube}}"><i class="fa fa-youtube-play"></i></a>
+                            <a href="{{$links->linkinstagram}}"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

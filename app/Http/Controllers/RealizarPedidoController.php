@@ -20,8 +20,7 @@ class RealizarPedidoController extends Controller
     //
     public function conferirdados()
     {
-        $count = Cart::content()->count();
-        if($count == 0){
+        if(Cart::content()->count() == 0){
             return redirect()->back();
         }else{
             $id = Auth::id();
@@ -30,8 +29,7 @@ class RealizarPedidoController extends Controller
         }
     }
 
-    public function pagamento(Request $request){
-
+    public function concluirDados(Request $request){
         $id = Auth::id();
         $dadosusuario = Dadosusuario::find($id);
         $dadosusuario->telefone = $request->telefone;
@@ -39,11 +37,23 @@ class RealizarPedidoController extends Controller
         $dadosusuario->rua = $request->endereco;
         $dadosusuario->numero = $request->numero;
         $dadosusuario->complemento = $request->complemento;
-        $dadosusuario->save(); 
+        $dadosusuario->save();
 
-        $total = Cart::total();
-        $subtotal = Cart::subtotal();
+        return redirect('pagamento');
+    }
 
-        return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal'));
+    public function pagamento(){
+
+        if(Cart::content()->count() == 0){
+            return redirect()->back();
+        }else{
+            
+            $total = Cart::total();
+            $subtotal = Cart::subtotal();
+    
+            return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal'));
+        }
+
+        
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Suporte;
 class HomeController extends Controller
 {
     /**
@@ -19,6 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $count = Suporte::where('status', 0)->count();
+        return view('admin.home')->with('count', $count);
     }
 }

@@ -28,6 +28,10 @@ Route::get('remover/{id}', 'CarrinhoController@remover');
 
 //Route::get('/produto', 'CarrinhoController@indexCarrinho');
 
+Route::get('listasuporte', 'SuporteController@listaSuporte');
+Route::get('mensagemsuporte/{id}', 'SuporteController@mensagemSuporte');
+Route::post('resposta/{id}', 'SuporteController@resposta');
+
 //Route::resource('produtos', 'ProdutoController');
 Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
@@ -66,11 +70,18 @@ Route::get('comprados/{id}', 'HomeController@comprados')->middleware('verified')
 Route::get('editarconta', 'HomeController@editarConta')->middleware('verified');
 Route::get('home', 'HomeController@index')->name('home')->middleware('verified');
 Route::post('atualizardadosusuario', 'HomeController@updateUsuario')->middleware('verified');
+Route::post('trocaremail', 'HomeController@trocarEmail')->middleware('verified');
+
+Route::get('/authenticate/index/iniciapagamento', 'PagSeguroController@iniciaPagamentoAction')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentocartao', 'PagSeguroController@efetuaPagamentoCartao')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentoboleto', 'PagSeguroController@efetuaPagamentoBoleto')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentodebito', 'PagSeguroController@efetuaPagamentoDebito')->middleware('verified');
 
 Auth::routes(['verify' => true]);
 
-Route::get('conferirdados', 'RealizarPedidoController@conferirdados');
-Route::post('pagamento', 'RealizarPedidoController@pagamento');
+Route::get('conferirdados', 'RealizarPedidoController@conferirdados')->middleware('verified');
+Route::post('concluirdados', 'RealizarPedidoController@concluirDados')->middleware('verified');
+Route::get('pagamento', 'RealizarPedidoController@pagamento')->middleware('verified');
 
 Route::post('emailnotificacao', 'IndexController@emailNotificacao');
 Route::post('mensagemsuporte', 'IndexController@mensagemSuporte');
@@ -80,3 +91,6 @@ Route::get('/pagamento/requisicao/{assinatura_id}'
 
 Route::post('/pagamento/pagar'
 ,'PagseguroController@criaPagamento')->middleware('auth')->name('pagar');
+
+
+

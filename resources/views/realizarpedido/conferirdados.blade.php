@@ -52,7 +52,7 @@
     <div class="container">
         <div class="row">
                 <br><br><br>
-                    <form action="/pagamento" class="checkout__form" method="post" >
+                    <form action="/concluirdados" class="checkout__form" method="post" >
                         @csrf
                         <h5>Dados da Entrega <a style="float: right;" onclick="editardados();" href="#">Editar Dados</a></h5>
                             <div class="row">

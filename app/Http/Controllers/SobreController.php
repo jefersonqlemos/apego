@@ -20,7 +20,10 @@ class SobreController extends Controller
         $sobre = Storage::disk('public')->get('sobre.json');
         $sobre = json_decode($sobre);
 
-        return view('editarsobre')->with('sobre', $sobre);
+        $links = Storage::disk('public')->get('links.json');
+        $links = json_decode($links);
+
+        return view('admin/editarsobre')->with(compact('sobre', 'links'));
     }
 
     public function updateSobre(Request $request)
@@ -35,7 +38,16 @@ class SobreController extends Controller
 
         Storage::disk('public')->put('sobre.json', json_encode($data));
 
-        return redirect('index');
+        $data = [
+            "linkfacebook" => $request->linkfacebook,
+            "linktwitter" => $request->linktwitter,
+            "linkyoutube" => $request->linkyoutube,
+            "linkinstagram" => $request->linkinstagram
+        ];
+
+        Storage::disk('public')->put('links.json', json_encode($data));
+
+        return redirect('admin');
 
     }
 
