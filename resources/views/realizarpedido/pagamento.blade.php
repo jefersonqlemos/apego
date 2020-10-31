@@ -3,9 +3,11 @@
 @section('content')   
 
 <head>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
     <script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/matheuscuba/icones-bancos-brasileiros@1.1/dist/all.css">
     <script type="text/javascript">
 
         $(document).ready(function($){
@@ -112,6 +114,14 @@
 
             });
 
+            $("#btncartaodebito").click(function(){
+
+                identificador = PagSeguroDirectPayment.getSenderHash();
+                $(".hashPagSeguro").val(identificador);
+                $('#formcartaodebito').find('button').trigger('click');
+
+            });
+
             $("#btncartaocredito").click(function(){
 
                 identificador = PagSeguroDirectPayment.getSenderHash();
@@ -184,6 +194,28 @@
             background-position: center;
         }
 
+        /* HIDE RADIO */
+        [type=radio] { 
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 2px solid MediumBlue;
+        }
+
+        .bank{
+            margin: 20px; 
+        }
+
     </style>
 </head>
 
@@ -227,7 +259,7 @@
                                 <li><a id="pe" href="#">Pagar na Entrega </a></li>
                                 <li><a id="bo" href="#">Boleto Bancário </a></li>
                                 <li><a id="cc" href="#">Cartão de Credito </a></li>
-                                <li><a id="cd" href="#">Cartão de Debito </a></li>
+                                <li><a id="cd" href="#">Debito Online </a></li>
                             </ul>
                             <form action="#" class="checkout__form">
                                 <br><br>
@@ -364,24 +396,38 @@
                         <button id="btncartaocredito" style="float: right;;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
                     </div>
                     
-                    <div id="cartaodebito">
-                        <form id="formcartaodebito" action="{{url('/atualizardadosusuario')}}" class="checkout__form" method="post" style="display:none">
-                            <br> 
-                            <h5>Pagar no Cartão de Debito</h5>
+                    <div id="cartaodebito" style="display:none">
+                        <form id="formcartaodebito" action="{{url('/authenticate/index/efetuapagamentodebito')}}" class="checkout__form" method="post">
+                            <br>
+                            @csrf
+                            <input class="tokenPagamentoCartao" name="tokenPagamentoCartao" type="hidden" required>
+                            <h5>Debito Online</h5>
                                 <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="col-lg-12">
                                         <div class="checkout__form__input">
-                                                <p>Primeiro Nome <span>*</span></p>
-                                                <input id="nome" name="nome" type="text" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="checkout__form__input">
-                                            <button style="float: right;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
+                                            <p>Bancos Disponiveis</p>
+                                            <label>
+                                                <input type="radio" name="banco" value="bancodobrasil" checked>
+                                                <img class="bank" src="img/banks/Banco_do_Brasil.png">
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="banco" value="itau">
+                                                <img class="bank" src="img/banks/Itau.png">
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="banco" value="banrisul">
+                                                <img class="bank" src="img/banks/Banrisul.png">
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="banco" value="bradesco">
+                                                <img class="bank" src="img/banks/Bradesco.png">
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
+                                <button style="display:none" class="site-btn">Finalizar Pedido</button>
                         </form>
+                        <button id="btncartaodebito" style="float: right;;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
                     </div> 
                 </div>
             </div>    

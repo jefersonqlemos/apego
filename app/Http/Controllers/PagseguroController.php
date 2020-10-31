@@ -350,6 +350,87 @@ class PagseguroController extends Controller
 
 	public function efetuaPagamentoDebito(Request $request) {
 
+		dd($request->banco);
+
+		$emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
+		$tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
+		
+		$dadosusuario = Dadosusuario::find(Auth::id());
+
+		$telefone = $dadosusuario->telefone;
+        $telefone = str_replace('(', '', $telefone);
+        $telefone = str_replace(')', '', $telefone);
+        $telefone = str_replace('-', '', $telefone); 
+        $codeArea = substr($telefone, 0, 2);
+		$telefone = substr($telefone, 2);
+		
+		$email = Auth::user()->email;
+
+		$cpf = $dadosusuario->cpf;
+        $cpf = str_replace('.', '', $cpf);
+		$cpf = str_replace('-', '', $cpf);
+		
+		$produtos = Cart::content();//busca produtos do carrinho
+
+        $i = 0;
+
+        //busca informações dos produtos na base de dados, contidos no carrinho
+        foreach($produtos as $produto){
+
+            $i++;
+            
+            $item = Produto::find($produto->id);
+            //troca virgula por ponto
+            $preco = str_replace(',', '.', $item->preco);
+
+            $data['itemId'.$i] = "".$item->idprodutos;
+            $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
+            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemAmount'.$i] = $preco;
+
+        }
+
+		$data['email'] = $emailPagseguro;
+		$data['token'] = $tokenPagseguro;
+
+		$data['paymentMode'] = 'default';
+		$data['senderhash'] = $request->hashPagSeguro;
+		$data['paymentMethod'] = 'eft';
+		$data['bankName'] = $request->banco;
+		$data['receiverEmail'] = $emailPagseguro;
+		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome;
+		$data['senderAreaCode'] = $codeArea;
+		$data['senderPhone'] = $telefone;
+		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderCPF'] = $cpf;
+		$data['currency'] = 'BRL';
+
+		$data['reference'] = "".Auth::id();
+		$data['shippingAddressRequired'] = 'false';
+
+		$data = http_build_query($data);
+		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+
+		$curl = curl_init();
+
+		$headers = array('Content-Type: application/x-www-form-urlencoded; charset=ISO-8859-1');
+
+		curl_setopt($curl, CURLOPT_URL, $url . "?email=" . $emailPagseguro);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		//curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		$xml = curl_exec($curl);
+
+		curl_close($curl);
+
+		$xml= simplexml_load_string($xml);
+
+		dd($xml);
+		
 	}
 
 }
