@@ -4,16 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Pedido;
+
+use App\Produto;
+
+use App\Comprados;
+
+use App\Statu;
+
+use App\Dadosusuario;
+
 class PedidoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
+        $pedidos = Pedido::join('status', 'pedidos.status_idstatus', '=', 'status.idstatus')->orderBy('idpedidos', 'desc')->simplePaginate(15);
+        //dd($produtos);
+        return view('pedidos/listapedido')->with('pedidos', $pedidos);
     }
 
     /**
@@ -46,6 +66,16 @@ class PedidoController extends Controller
     public function show($id)
     {
         //
+        $produtos = Produto::join('comprados', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')
+        ->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')
+        ->where('comprados.pedidos_idpedidos', $id)->get();
+
+        $pedido = Pedido::find($id);
+        $status = Statu::find($pedido->status_idstatus);
+        $dadosusuario = Dadosusuario::find($pedido->users_id);
+
+        return view('/pedidos/show')->with(compact('produtos', 'pedido', 'status', 'dadosusuario'));
+
     }
 
     /**
@@ -69,6 +99,11 @@ class PedidoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pedido = Pedido::find($id);
+        $pedido->status_idstatus = 101;
+        $pedido->save();
+
+        return redirect('pedidos/'.$id)->with('message', 'Status Atualizado Para Produto Entregue');
     }
 
     /**

@@ -150,6 +150,8 @@
 </table>
 {{ $produtos->links() }}
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 @endsection
   
 

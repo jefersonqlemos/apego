@@ -16,6 +16,8 @@ use App\Comprado;
 
 use App\Produto;
 
+use App\Statu;
+
 class HomeController extends Controller
 {
     /**
@@ -43,7 +45,7 @@ class HomeController extends Controller
     public function meusPedidos()
     {
         $id = Auth::id();
-        $data = Pedido::where('users_id', $id)->get();
+        $data = Pedido::orderBy('idpedidos', 'desc')->where('users_id', $id)->get();
         return response()->json($data);
     }
 
@@ -51,9 +53,18 @@ class HomeController extends Controller
     {
         $produtos = Produto::join('comprados', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')
     ->where('comprados.pedidos_idpedidos', $id)->get();
-        $dadospedido = Produto::find($id);
+        $pedido = Pedido::find($id);
+        $status = Statu::find($pedido->status_idstatus);
         
-        return view('produtos/show')->with(compact('produtos', 'dadospedido'));
+        return view('listapedido')->with(compact('produtos', 'pedido', 'status'));
+    }
+
+    public function avaliacao(Request $request, $id)
+    {
+        $produto = Produto::find($id);
+        $produto->avaliacao = $request->rating;
+        $produto->save();
+        return redirect('comprados/'.$request->idpedidos);
     }
 
     public function editarConta()

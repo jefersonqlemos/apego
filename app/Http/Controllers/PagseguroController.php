@@ -188,17 +188,19 @@ class PagseguroController extends Controller
 		$xml= simplexml_load_string($xml);
 
 		$code = $xml->code;
+
+		dd($xml);
 		
 		if($code!=null){
 			
 			$pedido = new Pedido;
 			$pedido->numeroitens = $xml->itemCount;
-			$pedido->tipotransacao = '1';
+			$pedido->tipotransacao = 1;
 			$pedido->valortotal = $xml->grossAmount;
 			$pedido->valorrecebido = $xml->netAmount;
 			$pedido->taxapagseguro = $xml->feeAmount;
 			$pedido->date = $xml->date;
-			$pedido->status = $xml->status;
+			$pedido->status_idstatus = $xml->status;
 			$pedido->numeroparcelas = $xml->installmentCount;
 			$pedido->code = $code;
 			$pedido->users_id = Auth::id();
@@ -207,6 +209,10 @@ class PagseguroController extends Controller
 			foreach($produtos as $produto){
 
 				$comprados = new Comprado;
+
+				$item = Produto::find($produto->id);
+				$item->quantidade = $item->quantidade-$produto->qty;
+				$item->save();
 				
 				$comprados->produtos_idprodutos = $produto->id;
 				$comprados->quantidade = $produto->qty;
@@ -218,7 +224,7 @@ class PagseguroController extends Controller
 
 			Cart::destroy();
 
-			return view('conclusaopedido')->with('pedido', $pedido);
+			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
 
 		}else{
 			return redirect('pagamento')->with('message', 
@@ -313,21 +319,25 @@ class PagseguroController extends Controller
 			
 			$pedido = new Pedido;
 			$pedido->numeroitens = $xml->itemCount;
-			$pedido->tipotransacao = '1';
+			$pedido->tipotransacao = 2;
 			$pedido->valortotal = $xml->grossAmount;
 			$pedido->valorrecebido = $xml->netAmount;
 			$pedido->taxapagseguro = $xml->feeAmount;
 			$pedido->date = $xml->date;
-			$pedido->status = $xml->status;
+			$pedido->status_idstatus = $xml->status;
 			$pedido->numeroparcelas = $xml->installmentCount;
 			$pedido->code = $code;
-			$pedido->linkboleto = $xml->paymentLink;
+			$pedido->link = $xml->paymentLink;
 			$pedido->users_id = Auth::id();
 			$pedido->save();
 
 			foreach($produtos as $produto){
 
 				$comprados = new Comprado;
+
+				$item = Produto::find($produto->id);
+				$item->quantidade = $item->quantidade-$produto->qty;
+				$item->save();
 				
 				$comprados->produtos_idprodutos = $produto->id;
 				$comprados->quantidade = $produto->qty;
@@ -339,7 +349,7 @@ class PagseguroController extends Controller
 
 			Cart::destroy();
 
-			return view('conclusaopedido')->with('pedido', $pedido);
+			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
 
 		}else{
 			return redirect('pagamento')->with('message', 
@@ -429,8 +439,49 @@ class PagseguroController extends Controller
 
 		$xml= simplexml_load_string($xml);
 
-		dd($xml);
-		
+		$code = $xml->code;
+
+		if($code!=null){
+			
+			$pedido = new Pedido;
+			$pedido->numeroitens = $xml->itemCount;
+			$pedido->tipotransacao = 3;
+			$pedido->valortotal = $xml->grossAmount;
+			$pedido->valorrecebido = $xml->netAmount;
+			$pedido->taxapagseguro = $xml->feeAmount;
+			$pedido->date = $xml->date;
+			$pedido->status_idstatus = $xml->status;
+			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->code = $code;
+			$pedido->link = $xml->paymentLink;
+			$pedido->users_id = Auth::id();
+			$pedido->save();
+
+			foreach($produtos as $produto){
+
+				$comprados = new Comprado;
+
+				$item = Produto::find($produto->id);
+				$item->quantidade = $item->quantidade-$produto->qty;
+				$item->save();
+				
+				$comprados->produtos_idprodutos = $produto->id;
+				$comprados->quantidade = $produto->qty;
+				$comprados->pedidos_idpedidos = $pedido->idpedidos;
+
+				$comprados->save();
+
+			}
+
+			Cart::destroy();
+
+			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
+
+		}else{
+			return redirect('pagamento')->with('message', 
+			'Ouve um erro na transação tente novamente, no caso de insucesso contate o suporte');
+		}
+
 	}
 
 }

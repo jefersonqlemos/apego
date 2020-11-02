@@ -83,7 +83,7 @@
     <label for="tamanho">Tamanho</label><br>
     <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
         @foreach($tamanhos as $tamanho)
-            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->nome}}</option>
+            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
         @endforeach 
     </select>
     <br><br>

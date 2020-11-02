@@ -116,12 +116,12 @@
     <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
         @foreach($tamanhos as $tamanho)
             @if($produto->tamanhos_idtamanhos == $tamanho->idtamanhos)
-                <option value="{{ $produto->tamanhos_idtamanhos }}">{{ $tamanho->nome }}</option>
+                <option value="{{ $produto->tamanhos_idtamanhos }}">{{ $tamanho->tamanho }}</option>
             @endif
         @endforeach 
             <optgroup label="Tamanho">
         @foreach($tamanhos as $tamanho)
-            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->nome}}</option>
+            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
         @endforeach 
         </optgroup>
     </select><br><br>

@@ -1,8 +1,9 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
 @extends('layouts.app')
 
 @section('content')
-
-<html>
 
 <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -160,12 +161,6 @@
         }
 
         .modal-body {padding: 2px 16px;}
-
-
-
-
-
-
 
 
     </style>
@@ -538,6 +533,6 @@
     
 </body>
 
-</html>
-
 @endsection
+
+</html>

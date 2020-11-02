@@ -90,6 +90,7 @@
                                 <ul class="dropdown">
                                     <li><a href="{{ url('/home')}}">Minha Conta</a></li>
                                     <li><a href="{{ url('/home')}}">Meus Pedidos</a></li>
+                                    <li><a href="{{ url('/sobre')}}">Suporte</a></li>
                                     <li><a href="{{ url('/carrinho')}}">Meu Carrinho</a></li>
                                 </ul>
                             </li>

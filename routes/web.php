@@ -63,6 +63,9 @@ Route::get('verproduto/{id}', 'IndexController@verProduto');
 
 Route::get('search', 'AppController@search');
 
+Route::post('emailnotificacao', 'IndexController@emailNotificacao');
+Route::post('mensagemsuporte', 'IndexController@mensagemSuporte');
+
 Auth::routes();
 
 Route::get('meuspedidos', 'HomeController@meusPedidos')->middleware('verified');
@@ -71,6 +74,7 @@ Route::get('editarconta', 'HomeController@editarConta')->middleware('verified');
 Route::get('home', 'HomeController@index')->name('home')->middleware('verified');
 Route::post('atualizardadosusuario', 'HomeController@updateUsuario')->middleware('verified');
 Route::post('trocaremail', 'HomeController@trocarEmail')->middleware('verified');
+Route::post('avaliacao/{id}', 'HomeController@avaliacao')->middleware('verified');
 
 Route::get('/authenticate/index/iniciapagamento', 'PagSeguroController@iniciaPagamentoAction')->middleware('verified');
 Route::post('/authenticate/index/efetuapagamentocartao', 'PagSeguroController@efetuaPagamentoCartao')->middleware('verified');
@@ -82,15 +86,4 @@ Auth::routes(['verify' => true]);
 Route::get('conferirdados', 'RealizarPedidoController@conferirdados')->middleware('verified');
 Route::post('concluirdados', 'RealizarPedidoController@concluirDados')->middleware('verified');
 Route::get('pagamento', 'RealizarPedidoController@pagamento')->middleware('verified');
-
-Route::post('emailnotificacao', 'IndexController@emailNotificacao');
-Route::post('mensagemsuporte', 'IndexController@mensagemSuporte');
-
-Route::get('/pagamento/requisicao/{assinatura_id}'
-,'PagseguroController@criaRequisicao')->middleware('auth')->name('requisicao');
-
-Route::post('/pagamento/pagar'
-,'PagseguroController@criaPagamento')->middleware('auth')->name('pagar');
-
-
-
+Route::post('pagamentonaentrega', 'RealizarPedidoController@pagamentoNaEntrega')->middleware('verified');

@@ -176,8 +176,8 @@
                             <div class="lista_tamanho">
                                 <form id="form_tamanho">
                                     @foreach($tamanhos as $tamanho)
-                                        <input type="radio" id="{{$tamanho->nome}}" name="tamanho" value="{{$tamanho->idtamanhos}}">
-                                        <label for="{{$tamanho->nome}}">{{$tamanho->nome}}</label><br>
+                                        <input type="radio" id="{{$tamanho->tamanho}}" name="tamanho" value="{{$tamanho->idtamanhos}}">
+                                        <label for="{{$tamanho->tamanho}}">{{$tamanho->tamanho}}</label><br>
                                     @endforeach
 
                                     <div class="sidebar__filter">

@@ -288,7 +288,10 @@
                             <hr>
                             <p><b>Pague na entrega no dinheiro, deposito ou transferencia Bancaria</b></p>
                         </div>
-                        <button style="float: right;" class="site-btn">Finalizar Pedido</button>
+                        <form action="{{url('pagamentonaentrega')}}" method="post">
+                            @csrf
+                            <button style="float: right;" class="site-btn">Finalizar Pedido</button>
+                        </form>
                     </div>
                 </div>
                    
@@ -405,7 +408,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="checkout__form__input">
-                                            <p>Bancos Disponiveis</p>
+                                            <p>Bancos Disponiveis, Selecione o Seu:</p>
                                             <label>
                                                 <input type="radio" name="banco" value="bancodobrasil" checked>
                                                 <img class="bank" src="img/banks/Banco_do_Brasil.png">

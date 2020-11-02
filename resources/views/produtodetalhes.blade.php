@@ -107,7 +107,7 @@
                                     <div class="size__btn">
                                         <label for="xs-btn" class="active">
                                             <input type="radio" id="xs-btn">
-                                            {{$tamanho->nome}}
+                                            {{$tamanho->tamanho}}
                                         </label>
                                     </div>
                                 </li>
