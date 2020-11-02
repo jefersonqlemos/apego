@@ -65,6 +65,7 @@
             text-decoration: none;
             margin: 4px 2px;
             cursor: pointer;
+            margin-left:45%;
         }
         #files{
             display:none
@@ -75,58 +76,75 @@
 </head>
 <body>
 
-<form id="formsubmit" action="/produtos" method="post" enctype="multipart/form-data">
+    <br><br><br>
 
-    <label for="nome">Nome:</label><br>
-    <input type="text" required name="nome" ><br><br>
+    <div class="container">
 
-    <label for="tamanho">Tamanho</label><br>
-    <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
-        @foreach($tamanhos as $tamanho)
-            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
-        @endforeach 
-    </select>
-    <br><br>
+    <form style="display: hidden" action="/produtos" method="get" id="form">
+                <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+                </button>
+            </form>
 
-    <label for="quantidade">Quantidade:</label><br>
-    <input class="quantidade" name="quantidade" required type="text" ><br><br>
+            <br><br><br>
 
-    <label for="preco">Preço:</label><br>
-    <input class="preco" required type="text" name="preco" ><br><br> 
+    <form id="formsubmit" action="/produtos" method="post" enctype="multipart/form-data">
 
-    <label for="descricao">Descrição:</label><br>
-    <textarea name="descricao" required rows="10" cols="30"></textarea>
+        <label for="nome">Nome do Produto:</label><br>
+        <input type="text" required name="nome" ><br><br>
 
-    <br><br>
-    
-    <label for="genero">Genero:</label><br>
+        <label for="tamanho">Tamanho</label><br>
+        <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
+            @foreach($tamanhos as $tamanho)
+                <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
+            @endforeach 
+        </select>
+        <br><br>
 
-    <input type="radio" id="1" name="genero" value="1" checked>
-    <label for="male">Masculino</label><br>
-    <input type="radio" id="2" name="genero" value="2">
-    <label for="female">Feminino</label><br>
-    <input type="radio" id="3" name="genero" value="3">
-    <label for="female">Qualquer Gênero</label><br><br>
-    
-    <label for="categoria">Categoria</label><br>
-    <select id="select1" required aria-required="true" name="categoria" style="width:350px;">
-        @foreach($categorias as $categoria)
-            <option value="{{$categoria->idcategorias}}">{{$categoria->nome}}</option>
-        @endforeach
-    </select>
-    <br><br>
-    
-    <input id="files" type="file" name="files[]">
-    @csrf
-</form>
+        <label for="quantidade">Quantidade:</label><br>
+        <input class="quantidade" name="quantidade" required type="text" ><br><br>
 
-<div id="output"></div>
+        <label for="preco">Preço:</label><br>
+        <input class="preco" required type="text" name="preco" ><br><br> 
 
-<button id="open_btn" class="btn btn-primary">Adicionar Fotos</button>
+        <label for="descricao">Descrição:</label><br>
+        <textarea name="descricao" required rows="10" cols="80"></textarea>
 
-<br><hr>
+        <br><br>
+        
+        <label for="genero">Genero:</label><br>
 
-<input form="formsubmit" id="salvar" type="submit" value="Salvar">
+        <input type="radio" id="1" name="genero" value="1" checked>
+        <label for="male">Masculino</label><br>
+        <input type="radio" id="2" name="genero" value="2">
+        <label for="female">Feminino</label><br>
+        <input type="radio" id="3" name="genero" value="3">
+        <label for="female">Qualquer Gênero</label><br><br>
+        
+        <label for="categoria">Categoria</label><br>
+        <select id="select1" required aria-required="true" name="categoria" style="width:350px;">
+            @foreach($categorias as $categoria)
+                <option value="{{$categoria->idcategorias}}">{{$categoria->nome}}</option>
+            @endforeach
+        </select>
+        <br><br>
+        
+        <input id="files" type="file" name="files[]">
+        @csrf
+    </form>
+
+    <div id="output"></div>
+
+    <button id="open_btn" class="btn btn-primary">Adicionar Fotos</button>
+
+    <br><hr>
+        
+            <input form="formsubmit" id="salvar" type="submit" value="Salvar">
+        
+    </div>
+
+
+<br><br><br><br><br><br>
 
 </body>
 

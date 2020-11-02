@@ -66,6 +66,10 @@
 
     .buttonHolder{ text-align: center; }
 
+    h1{
+        text-align: center;
+    }
+
 </style>
 
 <script type="text/javascript">
@@ -107,97 +111,117 @@
 </head>
 <body>
 
-<form action="/produtos/{{$produto->idprodutos}}" method="post">
+<br><br><br>
 
-    <label for="nome">Nome:</label><br>
-    <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
+<div class="container">
 
-    <label for="tamanho">Tamanho</label><br>
-    <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
-        @foreach($tamanhos as $tamanho)
-            @if($produto->tamanhos_idtamanhos == $tamanho->idtamanhos)
-                <option value="{{ $produto->tamanhos_idtamanhos }}">{{ $tamanho->tamanho }}</option>
+            <form style="display: hidden" action="/produtos" method="get" id="form">
+                <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+                </button>
+            </form>
+
+            <br><br><br>
+
+            <form id="formproduto" action="/produtos/{{$produto->idprodutos}}" method="post">
+
+                <label for="nome">Nome:</label><br>
+                <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
+
+                <label for="tamanho">Tamanho</label><br>
+                <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
+                    @foreach($tamanhos as $tamanho)
+                        @if($produto->tamanhos_idtamanhos == $tamanho->idtamanhos)
+                            <option value="{{ $produto->tamanhos_idtamanhos }}">{{ $tamanho->tamanho }}</option>
+                        @endif
+                    @endforeach 
+                        <optgroup label="Tamanho">
+                    @foreach($tamanhos as $tamanho)
+                        <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
+                    @endforeach 
+                    </optgroup>
+                </select><br><br>
+
+                <label for="quantidade">Quantidade:</label><br>
+                <input class="quantidade" name="quantidade" required type="text" value="{{$produto->quantidade}}"><br><br>
+
+                <label for="preco">Preço:</label><br>
+                <input class="preco" required type="text" name="preco" value="{{$produto->preco}}"><br><br> 
+
+                <label for="descricao">Descrição:</label><br>
+                <textarea name="descricao" required rows="10" cols="80">{{$produto->descricao}}</textarea>
+
+                <br><br>
+                
+                <label for="genero">Genero:</label><br>
+
+                <input type="radio" id="1" name="genero" value="1">
+                <label for="male">Masculino</label><br>
+                <input type="radio" id="2" name="genero" value="2">
+                <label for="female">Feminino</label><br>
+                <input type="radio" id="2" name="genero" value="3">
+                <label for="female">Qualquer Gênero</label><br><br>
+                
+                <label for="categoria">Categoria</label><br>
+                <select id="select1" required aria-required="true" name="categoria" style="width:350px;">
+                    @foreach($categorias as $categoria)
+                        @if($produto->categorias_idcategorias == $categoria->idcategorias)
+                            <option value="{{ $produto->categorias_idcategorias }}">{{ $categoria->nome }}</option>
+                        @endif
+                    @endforeach 
+                        <optgroup label="Categoria">
+                    @foreach($categorias as $categoria)
+                        <option value="{{$categoria->idcategorias}}">{{$categoria->nome}}</option>
+                    @endforeach 
+                    </optgroup>
+                </select>
+                <br><br><hr>
+                @method('put')
+                @csrf    
+                
+            </form>
+
+            <h1>Fotos do Produto</h1>
+
+            <form id="addfoto" action="/fotos/{{$produto->idprodutos}}" method="post" enctype="multipart/form-data">
+                <b>Adicionar Fotos</b><br>
+                <input id="foto" type="file" name="foto" accept="image/*" /><br/>
+                @method('put')
+                @csrf
+            </form>
+
+        <br><h4><b>Para Excluir Clique No "X"</b></h4><br>
+
+
+
+        @foreach($fotos as $foto)
+
+            @if ($loop->first) 
+                <input form="addfoto" type="hidden" name="fotoproduto" value="{{$foto->fotos}}">
             @endif
+            <form action="/fotos/{{$foto->idfotos}}" method="post">
+                <div class="image-area">
+                <img src="{{$foto->fotos}}"  alt="Preview">
+                <button class="remove-image" type="submit" style="display: inline;">&#215;</button>
+                @method('delete')
+                @csrf
+                </div>
+            </form>
+            <br>
+        
+
         @endforeach 
-            <optgroup label="Tamanho">
-        @foreach($tamanhos as $tamanho)
-            <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
-        @endforeach 
-        </optgroup>
-    </select><br><br>
 
-    <label for="quantidade">Quantidade:</label><br>
-    <input class="quantidade" name="quantidade" required type="text" value="{{$produto->quantidade}}"><br><br>
-
-    <label for="preco">Preço:</label><br>
-    <input class="preco" required type="text" name="preco" value="{{$produto->preco}}"><br><br> 
-
-    <label for="descricao">Descrição:</label><br>
-    <textarea name="descricao" required rows="10" cols="30">{{$produto->descricao}}</textarea>
-
-    <br><br>
     
-    <label for="genero">Genero:</label><br>
-
-    <input type="radio" id="1" name="genero" value="1">
-    <label for="male">Masculino</label><br>
-    <input type="radio" id="2" name="genero" value="2">
-    <label for="female">Feminino</label><br>
-    <input type="radio" id="2" name="genero" value="3">
-    <label for="female">Qualquer Gênero</label><br><br>
-    
-    <label for="categoria">Categoria</label><br>
-    <select id="select1" required aria-required="true" name="categoria" style="width:350px;">
-        @foreach($categorias as $categoria)
-            @if($produto->categorias_idcategorias == $categoria->idcategorias)
-                <option value="{{ $produto->categorias_idcategorias }}">{{ $categoria->nome }}</option>
-            @endif
-        @endforeach 
-            <optgroup label="Categoria">
-        @foreach($categorias as $categoria)
-            <option value="{{$categoria->idcategorias}}">{{$categoria->nome}}</option>
-        @endforeach 
-        </optgroup>
-    </select>
-    <br><br><hr>
-    @method('put')
-    @csrf    
-    <div class="buttonHolder">
-        <input type="submit" value="Salvar">
-    </div>
-    <hr>
-</form>
-
-<h1>Fotos do Produto</h1>
-
-<form id="addfoto" action="/fotos/{{$produto->idprodutos}}" method="post" enctype="multipart/form-data">
-    <b>Adicionar Fotos</b><br>
-    <input id="foto" type="file" name="foto" accept="image/*" /><br/>
-    @method('put')
-    @csrf
-</form>
-
-<br><h2>Para Excluir Clique No "X"<h2><br>
-
-@foreach($fotos as $foto)
-
-    @if ($loop->first) 
-        <input form="addfoto" type="hidden" name="fotoproduto" value="{{$foto->fotos}}">
-    @endif
-      <form action="/fotos/{{$foto->idfotos}}" method="post">
-        <div class="image-area">
-          <img src="{{$foto->fotos}}"  alt="Preview">
-          <button class="remove-image" type="submit" style="display: inline;">&#215;</button>
-          @method('delete')
-          @csrf
+        <hr>
+        <div class="buttonHolder">
+            <input form="formproduto" type="submit" value="Salvar">
         </div>
-      </form>
-      <br>
-  </div>
+        
 
+</div>
 
-@endforeach 
-
+<br><br><br><br><br><br>
 
 </body>
 

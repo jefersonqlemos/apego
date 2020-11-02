@@ -305,13 +305,13 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout__form__input">
-                                    <p><b>Se deseja pagar no boleto, clique em finalizar para gerar o link para impressão</b></p>
+                                    <p><b>Obs: Compras no boleto é fixada uma taxa de R$ 1,00 para geração do boleto,</b></p>
                                     </div>
                                 </div>
                             </div>
                             <button style="display:none" class="site-btn">Finalizar Pedido</button>
                         </form>
-                        <button id="btnboleto" style="float: right;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
+                        <button id="btnboleto" style="float: right;margin-top: 40px" class="site-btn">Finalizar Pedido Com Boleto</button>
                     </div>
 
                     

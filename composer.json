@@ -14,8 +14,7 @@
         "laravel/framework": "^6.18.35",
         "laravel/scout": "^8.3",
         "laravel/tinker": "^2.0",
-        "olimortimer/laravelshoppingcart": "^4.0",
-        "pagseguro/pagseguro-php-sdk": "^6.0"
+        "olimortimer/laravelshoppingcart": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

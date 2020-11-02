@@ -16,6 +16,8 @@ use App\Pedido;
 
 use App\Comprado;
 
+use App\Statu;
+
 class PagseguroController extends Controller
 {
 	public function __construct()
@@ -189,19 +191,19 @@ class PagseguroController extends Controller
 
 		$code = $xml->code;
 
-		dd($xml);
+		//dd($xml);
 		
 		if($code!=null){
 			
 			$pedido = new Pedido;
-			$pedido->numeroitens = $xml->itemCount;
+			$pedido->numeroitens = intval($xml->itemCount);
 			$pedido->tipotransacao = 1;
 			$pedido->valortotal = $xml->grossAmount;
 			$pedido->valorrecebido = $xml->netAmount;
 			$pedido->taxapagseguro = $xml->feeAmount;
 			$pedido->date = $xml->date;
-			$pedido->status_idstatus = $xml->status;
-			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->status_idstatus = intval($xml->status);
+			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
 			$pedido->users_id = Auth::id();
 			$pedido->save();
@@ -224,7 +226,9 @@ class PagseguroController extends Controller
 
 			Cart::destroy();
 
-			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
+			$status = Statu::find($pedido->status_idstatus);
+
+			return view('realizarpedido/conclusaopedido')->with(compact('pedido', 'status'));
 
 		}else{
 			return redirect('pagamento')->with('message', 
@@ -318,14 +322,14 @@ class PagseguroController extends Controller
 		if($code!=null){
 			
 			$pedido = new Pedido;
-			$pedido->numeroitens = $xml->itemCount;
+			$pedido->numeroitens = intval($xml->itemCount);
 			$pedido->tipotransacao = 2;
 			$pedido->valortotal = $xml->grossAmount;
 			$pedido->valorrecebido = $xml->netAmount;
 			$pedido->taxapagseguro = $xml->feeAmount;
 			$pedido->date = $xml->date;
-			$pedido->status_idstatus = $xml->status;
-			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->status_idstatus = intval($xml->status);
+			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
 			$pedido->link = $xml->paymentLink;
 			$pedido->users_id = Auth::id();
@@ -349,7 +353,9 @@ class PagseguroController extends Controller
 
 			Cart::destroy();
 
-			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
+			$status = Statu::find($pedido->status_idstatus);
+
+			return view('realizarpedido/conclusaopedido')->with(compact('pedido', 'status'));
 
 		}else{
 			return redirect('pagamento')->with('message', 
@@ -359,8 +365,6 @@ class PagseguroController extends Controller
 	}
 
 	public function efetuaPagamentoDebito(Request $request) {
-
-		dd($request->banco);
 
 		$emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
 		$tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
@@ -444,14 +448,14 @@ class PagseguroController extends Controller
 		if($code!=null){
 			
 			$pedido = new Pedido;
-			$pedido->numeroitens = $xml->itemCount;
+			$pedido->numeroitens = intval($xml->itemCount);
 			$pedido->tipotransacao = 3;
 			$pedido->valortotal = $xml->grossAmount;
 			$pedido->valorrecebido = $xml->netAmount;
 			$pedido->taxapagseguro = $xml->feeAmount;
 			$pedido->date = $xml->date;
-			$pedido->status_idstatus = $xml->status;
-			$pedido->numeroparcelas = $xml->installmentCount;
+			$pedido->status_idstatus = intval($xml->status);
+			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
 			$pedido->link = $xml->paymentLink;
 			$pedido->users_id = Auth::id();
@@ -475,7 +479,9 @@ class PagseguroController extends Controller
 
 			Cart::destroy();
 
-			return view('realizarpedido/conclusaopedido')->with('pedido', $pedido);
+			$status = Statu::find($pedido->status_idstatus);
+
+			return view('realizarpedido/conclusaopedido')->with(compact('pedido', 'status'));
 
 		}else{
 			return redirect('pagamento')->with('message', 
