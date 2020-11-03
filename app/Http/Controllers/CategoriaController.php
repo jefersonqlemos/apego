@@ -16,7 +16,7 @@ class CategoriaController extends Controller
 
     public function categoriaFeminino($id)
     {
-        $produtos = Produto::where('categorias_idcategorias', $id)->where('generos_idgeneros', 2)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->paginate(9);
+        $produtos = Produto::where('categorias_idcategorias', $id)->where('generos_idgeneros', 2)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->paginate(12);
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
@@ -24,7 +24,7 @@ class CategoriaController extends Controller
 
     public function categoriaMasculino($id)
     {
-        $produtos = Produto::where('categorias_idcategorias', $id)->where('generos_idgeneros', 1)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->paginate(9);
+        $produtos = Produto::where('categorias_idcategorias', $id)->where('generos_idgeneros', 1)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->paginate(12);
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
@@ -32,7 +32,7 @@ class CategoriaController extends Controller
 
     public function todasCategorias($id)
     {
-        $produtos = Produto::where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->paginate(9);
+        $produtos = Produto::where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->paginate(12);
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));

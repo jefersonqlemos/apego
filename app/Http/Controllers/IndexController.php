@@ -30,13 +30,13 @@ class IndexController extends Controller
         $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->take(3)->get();
         $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->take(3)->get();
         $numeroitemsmasculino = Produto::where("generos_idgeneros", 1)->count();
-        $numeroitemspulseiras = Produto::where("categorias_idcategorias", 17)->count();
+        $numeroitemscalcados = Produto::where("categorias_idcategorias", 9)->count();
         $numeroitemscolares = Produto::where("categorias_idcategorias", 16)->count();
         $numeroitemsacessorios = Produto::where("categorias_idcategorias", 19)->count();
 
         //dd($numeroitemsmasculino);
         return view('index')->with(compact('produtos', 'ultimosavaliados', 'numeroitemsmasculino', 
-        'numeroitemspulseiras', 'numeroitemscolares', 'numeroitemsacessorios', 'ultimosvendidos', 'maisbaratos'));
+        'numeroitemscalcados', 'numeroitemscolares', 'numeroitemsacessorios', 'ultimosvendidos', 'maisbaratos'));
 
     }
 

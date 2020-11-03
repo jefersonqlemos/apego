@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-3.jpg">
+                        <div class="categories__item set-bg" data-setbg="img/categories/calcados.jpg">
                             <div class="categories__text">
-                                <h4>Pulseiras</h4>
-                                <p>{{$numeroitemspulseiras}} items</p>
-                                <a href="{{ url('todascategorias/17')}}">Compre agora</a>
+                                <h4>Calçados</h4>
+                                <p>{{$numeroitemscalcados}} items</p>
+                                <a href="{{ url('todascategorias/9')}}">Compre agora</a>
                             </div>
                         </div>
                     </div>
