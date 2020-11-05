@@ -490,4 +490,13 @@ class PagseguroController extends Controller
 
 	}
 
+	public function cancelamento($id)
+    {
+		$pedido = Pedido::find($id);
+        $pedido->status_idstatus = 7;
+        $pedido->save();
+
+        return redirect('pedidos/'.$id)->with('message', 'Pedido Cancelado');
+    }
+
 }

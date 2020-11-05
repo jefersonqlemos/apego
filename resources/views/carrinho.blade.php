@@ -12,6 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Apego</title>
+
+    <script>
+        function update(){
+            document.getElementById('formqty').submit();
+        }
+    </script>
+
 </head>
 
 <body>
@@ -52,24 +59,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($carrinho as $produto)
-                                    <tr>
-                                        <td class="cart__product__item">
-                                            <img src="{{$produto->options->foto}}" alt="">
-                                            <div class="cart__product__item__title">
-                                                <h6><a href="{{url('verproduto/'.$produto->id)}}">{{$produto->name}}</a></h6>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price">R$ {{$produto->price}}</td>
-                                        <td class="cart__quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="{{$produto->qty}}" disabled>
-                                            </div>
-                                        </td>
-                                        <td class="cart__total">R$ {{$produto->price}}</td>
-                                        <td class="cart__close"><a href="{{url('remover/'.$produto->rowId)}}"><span class="icon_close"></span></a></td>
-                                    </tr>
-                                @endforeach
+                                <form id="formqty" method="post" action="{{url('atualizarcarrinho')}}">
+                                    @csrf
+                                    @foreach($carrinho as $produto)
+                                        <input name="rowId[]" type="hidden" value="{{$produto->rowId}}">
+                                        <tr>
+                                            <td class="cart__product__item">
+                                                <img src="{{$produto->options->foto}}" alt="">
+                                                <div class="cart__product__item__title">
+                                                    <h6><a href="{{url('verproduto/'.$produto->id)}}">{{$produto->name}}</a></h6>
+                                                </div>
+                                            </td>
+                                            <td class="cart__price">R$ {{$produto->price}}</td>
+                                            <td class="cart__quantity">                                          
+                                                <div class="pro-qty">                                                  
+                                                    @if($produto->qty > 0)
+                                                        <input name="qty[]" type="text" value="{{$produto->qty}}" readonly min="1" max="{{$produto->options->max}}">
+                                                    @else
+                                                        <input name="qty[]" type="text" value="0" readonly min="0" max="0">
+                                                    @endif                   
+                                                </div>
+                                            </td>
+                                            <td class="cart__total">R$ {{$produto->price}}</td>
+                                            <td class="cart__close"><a href="{{url('remover/'.$produto->rowId)}}"><span class="icon_close"></span></a></td>
+                                        </tr>
+                                    @endforeach
+                                </form>
                             </tbody>
                         </table>
                     </div>
@@ -83,7 +98,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn update__btn">
-                        <a href="{{url('carrinho')}}"><span class="icon_loading"></span> Atualizar Pagina</a>
+                        <a href="#" onclick="update()"><span class="icon_loading"></span> Atualizar</a>
                     </div>
                 </div>
             </div>

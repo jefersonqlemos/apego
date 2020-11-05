@@ -109,7 +109,7 @@
                     <div class="product__item__pic set-bg" data-setbg="{{$produto->foto}}">
                         <ul class="product__hover">
                             <li><a href="{{$produto->foto}}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                            <li><a href="{{url('adicionaraocarrinho/'.$produto->idprodutos)}}"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="{{url('verproduto/'.$produto->idprodutos)}}"><span class="icon_search"></span></a></li>
                         </ul>
                     </div>

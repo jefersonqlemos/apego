@@ -89,15 +89,22 @@
                         <div class="product__details__price">R$ {{$produto->preco}} <span></span></div>
                         <p>{{$produto->descricao}}</p>
                         <div class="product__details__button">
-                            <div class="quantity">
-                                <span>Quantidade:</span>
-                                <div class="pro-qty">
-                                    <input type="text" value="{{$produto->quantidade}}" disabled>
+                            <form action="{{url('adicionaraocarrinho/'.$produto->idprodutos)}}" method="post">
+                                @csrf
+                                <div class="quantity">
+                                    <span>Quantidade:</span>
+                                    <div class="pro-qty">
+                                        @if($produto->quantidade > 0)
+                                            <input name="qty" type="text" value="1" readonly min="1" max="{{$produto->quantidade}}">
+                                        @else
+                                            <input name="qty" type="text" value="0" readonly min="0" max="0">
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
-                            @if($produto->quantidade > 0)
-                                <a href="{{url('adicionaraocarrinho/'.$produto->idprodutos)}}" class="cart-btn"><span class="icon_heart_alt"></span> Adicionar ao Carrinho</a>
-                            @endif
+                                @if($produto->quantidade > 0)
+                                    <button type="submit" class="cart-btn"><span class="icon_heart_alt"></span> Adicionar ao Carrinho</button>
+                                @endif
+                            </form>
                             
                         </div>
                         <div class="product__details__widget">

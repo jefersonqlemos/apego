@@ -41,7 +41,7 @@
                             <td>ID Tipo Transação: {{$pedido->tipotransacao}}</td>
                         </tr>
                         <tr>
-                            <td colspan="2">link boleto ou debito online: <a href="{{$pedido->link}}">{{$pedido->link}}</a></td>
+                            <td colspan="2">link se for boleto ou debito online: <a href="{{$pedido->link}}">{{$pedido->link}}</a></td>
                             <td>Numero de Parcelas: {{$pedido->numeroparcelas}}</td>
                         </tr>
                         <tr>
@@ -117,9 +117,17 @@
             <form>
                 <input style="align:center;" type="button" value="Imprimir Pedido" onClick="window.print()"/>
             </form>
-            <br>
+            <br><br><br>
 
             @if($status->idstatus == 3 || $status->idstatus == 100)
+
+                <form action="{{url('cancelamento').'/'.$pedido->idpedidos}}" method="post"> 
+                    @csrf
+                    <span style="float:left"> : 
+                        <input type="submit" value="Se a venda foi cancelada clique aqui"></input>
+                    </span>
+                </form>
+
                 <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
                     @csrf
                     @method('put')
@@ -127,6 +135,7 @@
                         <input type="submit" value="Pedido Entregue ao Cliente"></input>
                     </span>
                 </form>
+                
             @endif
         </div>
     </div>

@@ -23,4 +23,5 @@ class HomeController extends Controller
         $count = Suporte::where('status', 0)->count();
         return view('admin.home')->with('count', $count);
     }
+
 }

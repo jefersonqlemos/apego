@@ -23,7 +23,9 @@ Route::namespace("Admin")->prefix('admin')->group(function(){
 });
 
 Route::get('carrinho', 'CarrinhoController@index');
-Route::get('adicionaraocarrinho/{id}', 'CarrinhoController@adicionar');
+Route::post('adicionaraocarrinho/{id}', 'CarrinhoController@adicionar');
+Route::post('atualizarcarrinho/', 'CarrinhoController@atualizarCarrinho');
+Route::get('adicaorapida/{id}', 'CarrinhoController@adicaoRapida');
 Route::get('remover/{id}', 'CarrinhoController@remover');
 
 //Route::get('/produto', 'CarrinhoController@indexCarrinho');
@@ -36,6 +38,8 @@ Route::post('resposta/{id}', 'SuporteController@resposta');
 Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 Route::resource('fotos', 'FotoController');
+
+Route::post('cancelamento/{id}', 'PagseguroController@cancelamento');
 
 Route::get('produtosvendidos', 'FiltragemProdutoController@filtragemProdutoVendido');
 Route::get('produtosemestoque', 'FiltragemProdutoController@filtragemProdutoEmEstoque');

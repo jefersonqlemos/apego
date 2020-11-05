@@ -19,19 +19,53 @@ class CarrinhoController extends Controller
         return view('carrinho')->with(compact('carrinho', 'total', 'subtotal'));
     }
 
-    public function adicionar($id)
+    public function adicionar($id, Request $request)
     {
-        
+
         $aa = Cart::search(function ($cart, $rowId) use($id){
             return $cart->id == $id;
-        });
+        }); 
         
         if($aa->count() == 0){
             $produto = Produto::find($id);
             $preco=str_replace(',','.', $produto->preco);
-            Cart::add($id, $produto->nome, $produto->quantidade, $preco, ['foto' => $produto->foto]);
+            Cart::add($id, $produto->nome, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade]);
+        }else{
+            foreach($aa as $a){
+                //Cart::remove($a->rowId);
+                Cart::update($a->rowId, $request->qty);
+            }
+            /*($produto = Produto::find($id);
+            $preco=str_replace(',','.', $produto->preco);
+            Cart::add($id, $produto->nome, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade]);*/
         }
         
+        return redirect('carrinho');
+    }
+
+    public function adicaoRapida($id)
+    {
+
+        $aa = Cart::search(function ($cart, $rowId) use($id){
+            return $cart->id == $id;
+        }); 
+        
+        if($aa->count() == 0){
+            $produto = Produto::find($id);
+            $preco=str_replace(',','.', $produto->preco);
+            Cart::add($id, $produto->nome, 1, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade]);
+        }
+        
+        return redirect('carrinho');
+    }
+
+    public function atualizarCarrinho(Request $request)
+    {
+        $quantidades=$request->qty;
+        $rowId=$request->rowId;
+        foreach($quantidades as $index => $qty){
+            Cart::update($rowId[$index], $qty);
+        }
         return redirect('carrinho');
     }
 
