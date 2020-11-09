@@ -30,10 +30,10 @@ class PagseguroController extends Controller
 
 		//$id = (string) $this->params ()->fromRoute( 'confirma', null );
 
-		$data['token'] = 'FDC638D2BFBE4279936F982471A50C9E'; //token teste SANDBOX
+		$data['token'] = ''; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 
 				//$_SERVER['REMOTE_ADDR']
-		$emailPagseguro = 'jefersonquagliottolemos2@yahoo.com';
+		$emailPagseguro = 'exemplo@gmail.com'; //aqui colocar o email cadastrado no pagseguro
 
 		$data = http_build_query($data);
 		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions';
@@ -67,8 +67,8 @@ class PagseguroController extends Controller
     public function efetuaPagamentoCartao(Request $request) {
 
         //$_SERVER['REMOTE_ADDR']
-        $emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
-        $tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
+        $emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
+    	$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 
         $dadosusuario = Dadosusuario::find(Auth::id());
 
@@ -111,7 +111,7 @@ class PagseguroController extends Controller
 		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome; //nome do usuário deve conter nome e sobrenome
 		$data['senderAreaCode'] = $codeArea;
 		$data['senderPhone'] = $telefone;
-		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderEmail'] = $email;//'c52604891380076987330@sandbox.pagseguro.com.br';
 		$data['senderCPF'] = $cpf;
         
 
@@ -124,7 +124,13 @@ class PagseguroController extends Controller
 
             $i++;
             
-            $item = Produto::find($produto->id);
+			$item = Produto::find($produto->id);
+			
+			if($item->quantidade==0){
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				return redirect('carrinho')->with('message', $message);
+			}
+
             //troca virgula por ponto
             $preco = str_replace(',', '.', $item->preco);
 
@@ -239,9 +245,9 @@ class PagseguroController extends Controller
     
     public function efetuaPagamentoBoleto(Request $request) {
 
-		$emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
-		$tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
-		
+		$emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
+		$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+			
 		$dadosusuario = Dadosusuario::find(Auth::id());
 
 		$telefone = $dadosusuario->telefone;
@@ -264,9 +270,15 @@ class PagseguroController extends Controller
         //busca informações dos produtos na base de dados, contidos no carrinho
         foreach($produtos as $produto){
 
-            $i++;
-            
-            $item = Produto::find($produto->id);
+			$i++;
+			
+			$item = Produto::find($produto->id);
+			
+			if($item->quantidade==0){
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				return redirect('carrinho')->with('message', $message);
+			}
+
             //troca virgula por ponto
             $preco = str_replace(',', '.', $item->preco);
 
@@ -286,7 +298,7 @@ class PagseguroController extends Controller
 		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome;
 		$data['senderAreaCode'] = $codeArea;
 		$data['senderPhone'] = $telefone;
-		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderEmail'] = $email;//'c52604891380076987330@sandbox.pagseguro.com.br';
 		$data['senderCPF'] = $cpf;
 		$data['currency'] = 'BRL';
 		//dd($cpf);
@@ -366,9 +378,9 @@ class PagseguroController extends Controller
 
 	public function efetuaPagamentoDebito(Request $request) {
 
-		$emailPagseguro = "jefersonquagliottolemos2@yahoo.com";
-		$tokenPagseguro = "FDC638D2BFBE4279936F982471A50C9E";
-		
+		$emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
+		$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+			
 		$dadosusuario = Dadosusuario::find(Auth::id());
 
 		$telefone = $dadosusuario->telefone;
@@ -393,7 +405,13 @@ class PagseguroController extends Controller
 
             $i++;
             
-            $item = Produto::find($produto->id);
+			$item = Produto::find($produto->id);
+			
+			if($item->quantidade==0){
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				return redirect('carrinho')->with('message', $message);
+			}
+
             //troca virgula por ponto
             $preco = str_replace(',', '.', $item->preco);
 
@@ -415,7 +433,7 @@ class PagseguroController extends Controller
 		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome;
 		$data['senderAreaCode'] = $codeArea;
 		$data['senderPhone'] = $telefone;
-		$data['senderEmail'] = 'c52604891380076987330@sandbox.pagseguro.com.br';
+		$data['senderEmail'] = $email;//'c52604891380076987330@sandbox.pagseguro.com.br';
 		$data['senderCPF'] = $cpf;
 		$data['currency'] = 'BRL';
 

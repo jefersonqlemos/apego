@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'clienetsoftware@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'example@gmail.com'), //Colocar o Email que vai utilizar
         'name' => env('MAIL_FROM_NAME', ''),
     ],
 

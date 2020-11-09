@@ -70,6 +70,16 @@ class RealizarPedidoController extends Controller
 
             $produtos = Cart::content();
             
+            foreach($produtos as $produto){
+
+                $item = Produto::find($produto->id);
+                    if($item->quantidade==0){
+                        $message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+                        return redirect('carrinho')->with('message', $message);
+                    }
+
+            }
+
             $pedido = new Pedido;
             $pedido->numeroitens = Cart::content()->count();
             $pedido->tipotransacao = 100;

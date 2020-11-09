@@ -27,6 +27,12 @@
         <div class="loader"></div>
     </div>
 
+    @if(session()->has('message'))
+        <script>
+            alert("{{ session()->get('message') }}");
+        </script>
+    @endif
+
     <!-- Breadcrumb Begin -->
     <div class="breadcrumb-option">
         <div class="container">
