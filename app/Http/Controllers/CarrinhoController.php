@@ -61,10 +61,12 @@ class CarrinhoController extends Controller
 
     public function atualizarCarrinho(Request $request)
     {
-        $quantidades=$request->qty;
-        $rowId=$request->rowId;
-        foreach($quantidades as $index => $qty){
-            Cart::update($rowId[$index], $qty);
+        if($request->qty!=null){
+            $quantidades=$request->qty;
+            $rowId=$request->rowId;
+            foreach($quantidades as $index => $qty){
+                Cart::update($rowId[$index], $qty);
+            }
         }
         return redirect('carrinho');
     }
