@@ -50,6 +50,12 @@ class FotoController extends Controller
             $foto->fotos = $fototemp;
         }
 
+        /*if($request->hasFile('foto')){
+            $fototemp = $request->foto->store('/storage/upload', 'uploads');
+            //$fototemp = Storage::url($fototemp);
+            $foto->fotos = '/'.$fototemp;
+        }*/
+
         $foto->produtos_idprodutos = $request->idproduto;
 
         $foto->save();
@@ -100,8 +106,17 @@ class FotoController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        //dd($request->foto);
+
         $foto = new Foto();
 
+        /*if($request->hasFile('foto')){
+            $fototemp = $request->foto->store('/storage/upload', 'uploads');
+            //$fototemp = Storage::url($fototemp);
+            $foto->fotos = '/'.$fototemp;
+        }*/
+        
         if($request->hasFile('foto')){
             $fototemp = $request->foto->store('/public/upload');
             $fototemp = Storage::url($fototemp);
