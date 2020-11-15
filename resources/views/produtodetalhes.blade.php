@@ -83,7 +83,7 @@
                                     <i class="fa fa-star"></i>
                                 @endfor
                             @else
-                                <span>Produto ainda não avaliado</span>
+                                <span>produto ainda não avaliado</span>
                             @endif
                         </div>
                         <div class="product__details__price">R$ {{$produto->preco}} <span></span></div>

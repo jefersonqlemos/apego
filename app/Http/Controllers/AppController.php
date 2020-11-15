@@ -49,6 +49,8 @@ class AppController extends Controller
 
         $sobre = Storage::disk('public')->get('sobre.json');
         $sobre = json_decode($sobre);
+        $sobre = decrypt($sobre->data);
+        $sobre = json_decode($sobre);
 
         return view('sobre')->with('sobre', $sobre);
     }

@@ -18,6 +18,8 @@ use App\Comprado;
 
 use App\Statu;
 
+use Illuminate\Support\Facades\Storage;
+
 class RealizarPedidoController extends Controller
 {
     public function __construct()
@@ -58,8 +60,13 @@ class RealizarPedidoController extends Controller
             
             $total = Cart::total();
             $subtotal = Cart::subtotal();
+
+            $pagamentos = Storage::disk('public')->get('pagamentos.json');
+            $pagamentos = json_decode($pagamentos);
+            $pagamentos = decrypt($pagamentos->data);
+            $pagamentos = json_decode($pagamentos);
     
-            return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal'));
+            return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal', 'pagamentos'));
         }
         
     }

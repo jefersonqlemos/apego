@@ -83,6 +83,7 @@
             <table class="table">
 
                 <tr align=center style="font-size:20px;" height="30px">
+                    <td style="vertical-align:middle; color:#fafafa" bgcolor="#262626">ID</td>
                     <td style="vertical-align:middle; color:#fafafa" bgcolor="#262626"></td>
                     <td style="vertical-align:middle; color:#fafafa" bgcolor="gray">Produto</td>
                     <td style="vertical-align:middle; color:#fafafa" bgcolor="#262626">Quantidade</td>
@@ -93,11 +94,14 @@
                 @foreach($produtos as $produto)
 
                     <tr align=center height="30px" >
+                        <td style="vertical-align:middle;" >
+                            <h4>{{ $produto->idprodutos }}<h4>
+                        </td>
                         <td style="vertical-align:middle" bgcolor="gray">
                             <img src="{{$produto->foto}}" height="100" width="100"/><br>          
                         </td>
                         <td style="vertical-align:middle;" >
-                            <h3><a href="{{url('verproduto').'/'.$produto->idprodutos}}">{{ $produto->nome }}</a><h3>
+                            <h3><a href="{{url('produtos').'/'.$produto->idprodutos}}">{{ $produto->nome }}</a><h3>
                         </td>
                         <td style="vertical-align:middle;" >
                             <h4>{{ $produto->quantidade }}<h4>

@@ -54,7 +54,7 @@
     <hr>
     <button class="btn" onclick="window.location.href='/pedidos'"><i class="fa fa-clipboard-list"></i> Pedidos</button>
     <hr>
-    <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar Sobre/Links</button>
+    <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar Dados da Loja</button>
     <hr>
     <button class="btn" onclick="window.location.href='/listasuporte'"><i style="font-size:24px" class="fa fa-headset"></i><span id='lblCartCount'>{{$count}}</span> Atender Suporte</button>
     <hr>

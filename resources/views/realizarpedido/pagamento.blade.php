@@ -12,8 +12,6 @@
 
         $(document).ready(function($){
 
-            
-
             $('#telefone').mask("(99)99999-999?9").focusout(function (event) {  
                 var target, phone, element;  
                 target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
@@ -62,18 +60,29 @@
                     $("#cartaodebito").show(); 
             });
             
-            $.ajax({
-                url : "{{URL::to('/authenticate/index/iniciapagamento')}}",
-                type : 'get',
-                dataType : 'json',
-                async : false,
-                timeout: 20000,
-                success: function(data){
-                    console.log(data);
-                    PagSeguroDirectPayment.setSessionId(data.id);
-                    $('.preloaderjquery').fadeOut('slow');
-                }
-            });   
+            if({{$pagamentos->cartaodecredito}}==0 && {{$pagamentos->boleto}}==0 && {{$pagamentos->debitoonline}}==0 && {{$pagamentos->pagamentonaentrega}}==0){
+                alert("Nenhum método de pagamento esta ativado no momento, entre em contato com o suporte para saber mais");
+                window.location.href = "{{url('/carrinho')}}"
+            }
+
+            if({{$pagamentos->cartaodecredito}}>0 || {{$pagamentos->boleto}}>0 || {{$pagamentos->debitoonline}}>0){
+                $.ajax({
+                    url : "{{URL::to('/authenticate/index/iniciapagamento')}}",
+                    type : 'get',
+                    dataType : 'json',
+                    async : false,
+                    timeout: 20000,
+                    success: function(data){
+                        console.log(data);
+                        PagSeguroDirectPayment.setSessionId(data.id);
+                        $('.preloaderjquery').fadeOut('slow');
+                    },
+                    error: function() {
+                        alert("Ocorreu um erro ao iniciar o pagamento. Tente novamente mais tarde, se persistir entre em contato com o suporte");
+                        window.location.href = "{{url('/carrinho')}}"
+                    }
+                });
+            }   
 
             $("#numCartao").keyup(function(){
 
@@ -221,7 +230,13 @@
 
 <body>
     <!-- Page Preloder -->
-    <div class="preloaderjquery"></div>
+    @if($pagamentos->cartaodecredito > 0 || $pagamentos->boleto > 0 || $pagamentos->debitoonline > 0)
+        <div class="preloaderjquery"></div>
+    @else
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+    @endif
 
     @if(session()->has('message'))
         <script>
@@ -256,10 +271,18 @@
                                 <h4>Forma de Pagamento</h4>
                             </div>
                             <ul>
-                                <li><a id="pe" href="#">Pagar na Entrega </a></li>
-                                <li><a id="bo" href="#">Boleto Bancário </a></li>
-                                <li><a id="cc" href="#">Cartão de Credito </a></li>
-                                <li><a id="cd" href="#">Debito Online </a></li>
+                                @if($pagamentos->pagamentonaentrega > 0)
+                                    <li><a id="pe" href="#">Pagar na Entrega </a></li>
+                                @endif
+                                @if($pagamentos->boleto > 0)
+                                    <li><a id="bo" href="#">Boleto Bancário </a></li>
+                                @endif
+                                @if($pagamentos->cartaodecredito > 0)
+                                    <li><a id="cc" href="#">Cartão de Credito </a></li>
+                                @endif
+                                @if($pagamentos->debitoonline > 0)
+                                    <li><a id="cd" href="#">Debito Online </a></li>
+                                @endif
                             </ul>
                             <form action="#" class="checkout__form">
                                 <br><br>
@@ -305,7 +328,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout__form__input">
-                                    <p><b>Obs: Compras no boleto é fixada uma taxa de R$ 1,00 para geração do boleto,</b></p>
+                                    <p><b>Obs: Para geração do boleto é fixada uma taxa de R$ 1,00</b></p>
                                     </div>
                                 </div>
                             </div>

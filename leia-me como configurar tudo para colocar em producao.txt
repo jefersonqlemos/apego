@@ -1,5 +1,10 @@
+-Se desejar ativar pagamentos online, crie gratuitamente uma conta pagseguro, 
+depois va em integrações, e gere um token, depois é só entrar no site da loja como admin,
+no menu principal "editar dados da loja", no formulario procure por email pagseguro e token,
+basta preencher com os mesmos.
+
 - Para funcionar as fotos dos produtos, no servidor é necessario criar um link simbolico
-copie o trecho abaixo, e cole em routes/web.php  , em seguida execute o link da rota no navegador,
+copie o trecho abaixo, e cole em routes/web.php, em seguida execute o link da rota no navegador,
 depois confira se foi realmente criado o link simbolico.
 
     Route::get('/storage-link', function() {
@@ -11,7 +16,6 @@ servidor de hospedagem, para eles explicarem como criar.
 
 -Para configurar o email: (é necessario criar uma conta de email, para que o site 
 possa usar o sistema de autenticações)
-
 
 -Se for utilizar g-mail tem que habilitar "acesso a app menos seguro gmail" na conta google.
 depois configure no arquivo .env
@@ -33,9 +37,6 @@ depois configure no arquivo .env
             'name' => env('MAIL_FROM_NAME', ''),
     ],
 
-
-
-
 -Para configurar Base de dados, só exportar o arquivo "apego.sql" encontrado dentro desta pasta principal 
 para o banco de dados do servidor
 -depois configurar de acordo com os dados de base dados do servidor no arquivo .env
@@ -48,71 +49,3 @@ para o banco de dados do servidor
     DB_PASSWORD=
 
 
-
-
--Configurar pagseguro, para usar o pagseguro simplesmente crie uma conta gratuita no site do pagseguro
-e depois gere o token, dentro de integrações, (pesquisar como gerar token para api pagseguro) 
-
--no controller app/Http/Controllers/Pagseguro.php
-
--metodo "iniciaPagamentoAction()" modificar as seguintes linhas
-
-    $data['token'] = ''; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
-
-				//$_SERVER['REMOTE_ADDR']
-    $emailPagseguro = 'exemplo@gmail.com'; //aqui colocar o email cadastrado no pagseguro
-
-
-
--metodo "efetuaPagamentoCartao" modificar as seguintes linhas
-
-    $emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-    $tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
-
-
-
--metodo "efetuaPagamentoBoleto" modificar as seguintes linhas
-
-    $emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-    $tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
-
-
--metodo "efetuaPagamentoDebito"
-
-    $emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-    $tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
-
-
--no Arquivo resources/views/realizarpedido/pagamento.blade.php
-
--se desejar tirar a parte dos pagamentos e deixar somente como entrega basta trocar as seguintes linhas, (proximo a linha 260) 
-e depois tirar pre-loader, são 4 etapas
-
-        -Excluir esse:
-                            <ul>
-                                <li><a id="pe" href="#">Pagar na Entrega </a></li>
-                                <li><a id="bo" href="#">Boleto Bancário </a></li>
-                                <li><a id="cc" href="#">Cartão de Credito </a></li>
-                                <li><a id="cd" href="#">Debito Online </a></li>
-                            </ul>
-
-        -Copie e cole este
-
-                            <ul>
-                                <li><a id="pe" href="#">Pagar na Entrega </a></li>
-                                <!--<li><a id="bo" href="#">Boleto Bancário </a></li>
-                                <li><a id="cc" href="#">Cartão de Credito </a></li>
-                                <li><a id="cd" href="#">Debito Online </a></li>-->
-                            </ul>
-
-
-
-        -Excluir esse na linha proximo a linha 223:
-
-                            <!-- Page Preloder -->
-                            <div class="preloaderjquery"></div>
-
-        -copie e cole este
-
-                            <!-- Page Preloder
-                            <div class="preloaderjquery"></div>-->

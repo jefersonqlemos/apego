@@ -35,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         {
             $links = Storage::disk('public')->get('links.json');
             $links = json_decode($links);
+            $links = decrypt($links->data);
+            $links = json_decode($links);
 
             $cartcount = Cart::content()->count();
             $view->with(compact('cartcount', 'links'));

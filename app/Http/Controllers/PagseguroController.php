@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+use Illuminate\Support\Facades\Storage;
+
 use App\Dadosusuario;
 
 use App\Produto;
@@ -30,13 +32,18 @@ class PagseguroController extends Controller
 
 		//$id = (string) $this->params ()->fromRoute( 'confirma', null );
 
-		$data['token'] = ''; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+		$importante = Storage::disk('public')->get('importante.json');
+		$importante = json_decode($importante);
+		$importante = decrypt($importante->data);
+		$importante = json_decode($importante);
+
+		$data['token'] = $importante->token; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 
 				//$_SERVER['REMOTE_ADDR']
-		$emailPagseguro = 'exemplo@gmail.com'; //aqui colocar o email cadastrado no pagseguro
+		$emailPagseguro = $importante->email_pagseguro; //aqui colocar o email cadastrado no pagseguro
 
 		$data = http_build_query($data);
-		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions';
+		$url = 'https://ws.pagseguro.uol.com.br/v2/sessions';
 
 		$curl = curl_init();
 
@@ -66,9 +73,14 @@ class PagseguroController extends Controller
     
     public function efetuaPagamentoCartao(Request $request) {
 
+		$importante = Storage::disk('public')->get('importante.json');
+		$importante = json_decode($importante);
+		$importante = decrypt($importante->data);
+        $importante = json_decode($importante);
+
         //$_SERVER['REMOTE_ADDR']
-        $emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-    	$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+        $emailPagseguro = $importante->email_pagseguro; //aqui colocar o email cadastrado no pagseguro
+    	$tokenPagseguro = $importante->token; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 
         $dadosusuario = Dadosusuario::find(Auth::id());
 
@@ -174,7 +186,7 @@ class PagseguroController extends Controller
         //dd($data); //para visualização xml
 
 		$data = http_build_query($data);
-		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+		$url = 'https://ws.pagseguro.uol.com.br/v2/transactions'; //URL de teste
 
 
 		$curl = curl_init();
@@ -245,8 +257,14 @@ class PagseguroController extends Controller
     
     public function efetuaPagamentoBoleto(Request $request) {
 
-		$emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-		$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+		$importante = Storage::disk('public')->get('importante.json');
+		$importante = json_decode($importante);
+		$importante = decrypt($importante->data);
+        $importante = json_decode($importante);
+
+        //$_SERVER['REMOTE_ADDR']
+        $emailPagseguro = $importante->email_pagseguro; //aqui colocar o email cadastrado no pagseguro
+    	$tokenPagseguro = $importante->token; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 			
 		$dadosusuario = Dadosusuario::find(Auth::id());
 
@@ -307,7 +325,7 @@ class PagseguroController extends Controller
 		$data['shippingAddressRequired'] = 'false';
 
 		$data = http_build_query($data);
-		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+		$url = 'https://ws.pagseguro.uol.com.br/v2/transactions'; //URL de teste
 
 		$curl = curl_init();
 
@@ -378,8 +396,14 @@ class PagseguroController extends Controller
 
 	public function efetuaPagamentoDebito(Request $request) {
 
-		$emailPagseguro = "exemplo@gmail.com"; //aqui colocar o email cadastrado no pagseguro
-		$tokenPagseguro = ""; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
+		$importante = Storage::disk('public')->get('importante.json');
+		$importante = json_decode($importante);
+		$importante = decrypt($importante->data);
+        $importante = json_decode($importante);
+
+        //$_SERVER['REMOTE_ADDR']
+        $emailPagseguro = $importante->email_pagseguro; //aqui colocar o email cadastrado no pagseguro
+    	$tokenPagseguro = $importante->token; //aqui dentro das aspas colocar o token do pagseguro que deve ser gerado em integrações
 			
 		$dadosusuario = Dadosusuario::find(Auth::id());
 
@@ -441,7 +465,7 @@ class PagseguroController extends Controller
 		$data['shippingAddressRequired'] = 'false';
 
 		$data = http_build_query($data);
-		$url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions'; //URL de teste
+		$url = 'https://ws.pagseguro.uol.com.br/v2/transactions'; //URL de teste
 
 		$curl = curl_init();
 
