@@ -80,10 +80,10 @@ Route::post('atualizardadosusuario', 'HomeController@updateUsuario')->middleware
 Route::post('trocaremail', 'HomeController@trocarEmail')->middleware('verified');
 Route::post('avaliacao/{id}', 'HomeController@avaliacao')->middleware('verified');
 
-Route::get('/authenticate/index/iniciapagamento', 'PagSeguroController@iniciaPagamentoAction')->middleware('verified');
-Route::post('/authenticate/index/efetuapagamentocartao', 'PagSeguroController@efetuaPagamentoCartao')->middleware('verified');
-Route::post('/authenticate/index/efetuapagamentoboleto', 'PagSeguroController@efetuaPagamentoBoleto')->middleware('verified');
-Route::post('/authenticate/index/efetuapagamentodebito', 'PagSeguroController@efetuaPagamentoDebito')->middleware('verified');
+Route::get('/authenticate/index/iniciapagamento', 'PagseguroController@iniciaPagamentoAction')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentocartao', 'PagseguroController@efetuaPagamentoCartao')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentoboleto', 'PagseguroController@efetuaPagamentoBoleto')->middleware('verified');
+Route::post('/authenticate/index/efetuapagamentodebito', 'PagseguroController@efetuaPagamentoDebito')->middleware('verified');
 
 Auth::routes(['verify' => true]);
 
