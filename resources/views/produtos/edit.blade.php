@@ -185,7 +185,7 @@
 
             <form id="addfoto" action="/fotos/{{$produto->idprodutos}}" method="post" enctype="multipart/form-data">
                 <b>Adicionar Fotos</b><br>
-                <input id="foto" type="file" name="foto" accept="image/*" /><br/>
+                <input id="foto" type="file" name="foto" accept="image/jpeg" /><br/>
                 @method('put')
                 @csrf
             </form>

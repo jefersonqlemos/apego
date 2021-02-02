@@ -18,7 +18,9 @@ use App\Comprado;
 
 use App\Statu;
 
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
+
+use App\Formasdepagamento;
 
 class RealizarPedidoController extends Controller
 {
@@ -61,12 +63,14 @@ class RealizarPedidoController extends Controller
             $total = Cart::total();
             $subtotal = Cart::subtotal();
 
-            $pagamentos = Storage::disk('public')->get('pagamentos.json');
+            /*$pagamentos = Storage::disk('public')->get('pagamentos.json');
             $pagamentos = json_decode($pagamentos);
             $pagamentos = decrypt($pagamentos->data);
-            $pagamentos = json_decode($pagamentos);
+            $pagamentos = json_decode($pagamentos);*/
+
+            $formasdepagamento = Formasdepagamento::find(1);
     
-            return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal', 'pagamentos'));
+            return view('realizarpedido/pagamento')->with(compact( 'total', 'subtotal', 'formasdepagamento'));
         }
         
     }

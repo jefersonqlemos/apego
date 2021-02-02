@@ -5,8 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Informacoeslayout;
 
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -33,13 +34,13 @@ class AppServiceProvider extends ServiceProvider
         //
         view()->composer('layouts.app', function ($view)
         {
-            $links = Storage::disk('public')->get('links.json');
+            /*$links = Storage::disk('public')->get('links.json');
             $links = json_decode($links);
             $links = decrypt($links->data);
-            $links = json_decode($links);
-
+            $links = json_decode($links);*/
+            $informacoeslayout = Informacoeslayout::find(1); 
             $cartcount = Cart::content()->count();
-            $view->with(compact('cartcount', 'links'));
+            $view->with(compact('cartcount', 'informacoeslayout'));
         });
 
         $this->app->resolving(LengthAwarePaginator::class, static function (LengthAwarePaginator $paginator) {

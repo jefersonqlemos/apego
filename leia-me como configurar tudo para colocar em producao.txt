@@ -1,21 +1,21 @@
--Se desejar ativar pagamentos online, crie gratuitamente uma conta pagseguro, 
-depois va em integrações, e gere um token, depois é só entrar no site da loja como admin,
-no menu principal "editar dados da loja", no formulario procure por email pagseguro e token,
-basta preencher com os mesmos.
+-colocar dentro do register(), no app/providers/AppServiceProvider;
+
+    $this->app->bind('path.public', function() {
+            return base_path('public_html');
+    });
 
 - Para funcionar as fotos dos produtos, no servidor é necessario criar um link simbolico
 copie o trecho abaixo, e cole em routes/web.php, em seguida execute o link da rota no navegador,
-depois confira se foi realmente criado o link simbolico.
+depois confira se foi realmente criado o link simbolico, outra forma é o ssh pelo putty.
 
     Route::get('/storage-link', function() {
         \Artisan::call('storage:link');
     });
 
-caso não consiga criar o link simbolico dessa forma, entre em contato com o suporte do
-servidor de hospedagem, para eles explicarem como criar.
-
--Para configurar o email: (é necessario criar uma conta de email, para que o site 
-possa usar o sistema de autenticações)
+-Se desejar ativar pagamentos online, crie gratuitamente uma conta pagseguro, 
+depois va em integrações, e gere um token, depois é só entrar no site da loja como admin,
+no menu principal "editar dados da loja", no formulario procure por email pagseguro e token,
+basta preencher com os mesmos.
 
 -Se for utilizar g-mail tem que habilitar "acesso a app menos seguro gmail" na conta google.
 depois configure no arquivo .env

@@ -4,7 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Storage;
+//use Illuminate\Support\Facades\Storage;
+
+use App\Informacoesempresa;
+
+use App\Informacoeslayout;
+
+use App\Formasdepagamento;
+
+use App\Pagseguro;
 
 class SobreController extends Controller
 {
@@ -18,76 +26,50 @@ class SobreController extends Controller
     public function editarSobre()
     {
 
-        $sobre = Storage::disk('public')->get('sobre.json');
-        $sobre = json_decode($sobre);
-        $sobre = decrypt($sobre->data);
-        $sobre = json_decode($sobre);
-
-        $links = Storage::disk('public')->get('links.json');
-        $links = json_decode($links);
-        $links = decrypt($links->data);
-        $links = json_decode($links);
-
-        $importante = Storage::disk('public')->get('importante.json');
-        $importante = json_decode($importante);
-        $importante = decrypt($importante->data);
-        $importante = json_decode($importante);
-
-        $pagamentos = Storage::disk('public')->get('pagamentos.json');
+        /*$pagamentos = Storage::disk('public')->get('pagamentos.json');
         $pagamentos = json_decode($pagamentos);
         $pagamentos = decrypt($pagamentos->data);
-        $pagamentos = json_decode($pagamentos);
+        $pagamentos = json_decode($pagamentos);*/
+        
+        $informacoesempresa = Informacoesempresa::find(1);
+        $informacoeslayout = Informacoeslayout::find(1);
+        $formasdepagamento = Formasdepagamento::find(1);
+        $pagseguro = Pagseguro::find(1);
 
-        return view('admin/editarsobre')->with(compact('sobre', 'links', 'importante', 'pagamentos'));
+        return view('admin/editarsobre')->with(compact('informacoesempresa', 'informacoeslayout', 'formasdepagamento', 'pagseguro'));
     }
 
     public function updateSobre(Request $request)
     {
 
-        $data = [
-            "sobre" => $request->sobre,
-            "endereco" => $request->endereco,
-            "telefone" => $request->telefone,
-            "email" => $request->email
-        ];
+        $informacoesEmpresa = Informacoesempresa::find(1);
+        $informacoesEmpresa->sobreaempresa = $request->sobre;
+        $informacoesEmpresa->endereco = $request->endereco;
+        $informacoesEmpresa->telefone = $request->telefone;
+        $informacoesEmpresa->email = $request->email;
+        $informacoesEmpresa->save();
 
-        $data = json_encode($data);
+        $informacoesLayout = Informacoeslayout::find(1);
+        $informacoesLayout->frasehome = $request->frasehome;
+        $informacoesLayout->linkfacebook = $request->linkfacebook;
+        $informacoesLayout->linktwitter = $request->linktwitter;
+        $informacoesLayout->linkyoutube = $request->linkyoutube;
+        $informacoesLayout->linkinstagram = $request->linkinstagram;
+        $informacoesLayout->save();
 
-        $data = [
-            "data" =>  encrypt($data)
-        ];
+        $formasDePagamento = Formasdepagamento::find(1);
+        $formasDePagamento->pagamentonaentrega = $request->pagamentonaentrega;
+        $formasDePagamento->cartaodecredito = $request->cartaodecredito;
+        $formasDePagamento->boleto = $request->boleto;
+        $formasDePagamento->debitoonline = $request->debitoonline;
+        $formasDePagamento->save(); 
 
-        Storage::disk('public')->put('sobre.json', json_encode($data));
+        $PagSeguro = Pagseguro::find(1);
+        $PagSeguro->email = $request->emailpagseguro;
+        $PagSeguro->token = encrypt($request->token);
+        $PagSeguro->save();
 
-        $data = [
-            "linkfacebook" => $request->linkfacebook,
-            "linktwitter" => $request->linktwitter,
-            "linkyoutube" => $request->linkyoutube,
-            "linkinstagram" => $request->linkinstagram
-        ];
-
-        $data = json_encode($data);
-        
-        $data = [
-            "data" =>  encrypt($data)
-        ];
-
-        Storage::disk('public')->put('links.json', json_encode($data));
-
-        $data = [
-            "email_pagseguro" => $request->emailpagseguro,
-            "token" => $request->token
-        ];
-
-        $data = json_encode($data);
-        
-        $data = [
-            "data" =>  encrypt($data)
-        ];
-
-        Storage::disk('public')->put('importante.json', json_encode($data));
-
-        $data = [
+        /*$data = [
             "pagamentonaentrega" => $request->pagamentonaentrega,
             "cartaodecredito" => $request->cartaodecredito,
             "boleto" => $request->boleto,
@@ -100,7 +82,7 @@ class SobreController extends Controller
             "data" =>  encrypt($data)
         ];
 
-        Storage::disk('public')->put('pagamentos.json', json_encode($data));
+        Storage::disk('public')->put('pagamentos.json', json_encode($data));*/
 
         return redirect('admin');
 

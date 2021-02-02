@@ -84,10 +84,10 @@
                             <div class="categories__accordion">
                                 <div class="accordion" id="accordionExample">
                                     <div class="card">
-                                        <div class="card-heading active">
+                                        <div class="card-heading">
                                             <a data-toggle="collapse" data-target="#collapseOne">Feminino</a>
                                         </div>
-                                        <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                        <div id="collapseOne" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
                                                     <li><a href="{{ url('categoriafeminino/1' )}}">Saia</a></li>
@@ -181,17 +181,30 @@
                             <div class="section-title">
                                 <h4>Buscar por tamanho</h4>
                             </div>
-                            <div class="lista_tamanho">
-                                <form id="form_tamanho">
-                                    @foreach($tamanhos as $tamanho)
-                                        <input type="radio" id="{{$tamanho->tamanho}}" name="tamanho" value="{{$tamanho->idtamanhos}}">
-                                        <label for="{{$tamanho->tamanho}}">{{$tamanho->tamanho}}</label><br>
-                                    @endforeach
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-heading">
+                                            <a data-toggle="collapse" data-target="#collapseSix">Escolher Tamanho</a>
+                                        </div>
+                                        <div id="collapseSix" class="collapse" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <ul>
+                                                <form id="form_tamanho">
+                                                    @foreach($tamanhos as $tamanho)
+                                                        <input type="radio" id="{{$tamanho->tamanho}}" name="tamanho" value="{{$tamanho->idtamanhos}}">
+                                                        <label for="{{$tamanho->tamanho}}">{{$tamanho->tamanho}}</label><br>
+                                                    @endforeach
 
-                                    <div class="sidebar__filter">
-                                        <a href="#" onclick="tamanhoFiltragem()" id="busca_tamanho">Filtrar</a>
+                                                    <div class="sidebar__filter">
+                                                        <a href="#" onclick="tamanhoFiltragem()" id="busca_tamanho">Filtrar</a>
+                                                    </div>
+                                                </form>   
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -206,8 +219,8 @@
                                 <div class="product__item__pic set-bg" data-setbg="{{$produto->foto}}">
                                     <ul class="product__hover">
                                         <li><a href="{{$produto->foto}}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                        <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_heart_alt"></span></a></li>
                                         <li><a href="{{url('verproduto/'.$produto->idprodutos)}}"><span class="icon_search-2"></span></a></li>
+                                        <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_cart_alt"></span></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">

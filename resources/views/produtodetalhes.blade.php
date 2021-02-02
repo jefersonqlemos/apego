@@ -70,7 +70,7 @@
                         <h3>{{$produto->nome}} 
                             <span>
                             @if($produto->quantidade != 0)
-                                Produto em Estoque
+                                Produto em Estoque ({{$produto->quantidade}})
                             @else
                                 Produto Vendido
                             @endif
@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                                 @if($produto->quantidade > 0)
-                                    <button type="submit" class="cart-btn"><span class="icon_heart_alt"></span> Adicionar ao Carrinho</button>
+                                    <button type="submit" class="cart-btn"><span class="icon_cart_alt"></span> Adicionar ao Carrinho</button>
                                 @endif
                             </form>
                             

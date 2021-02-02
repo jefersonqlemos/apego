@@ -42,7 +42,7 @@
                     data-setbg="img/categories/category-1.jpg">
                     <div class="categories__text">
                         <h1>Feminino</h1>
-                        <p>Nosso desapego, seu apego. Vendas em Videira/SC. Preços baratinhos e produtos de qualidade! Fazemos Entregas.</p>
+                        <p>{{$informacoeslayout->frasehome}}</p>
                         <a href="/feminino">Compre agora</a>
                     </div>
                 </div>
@@ -109,8 +109,8 @@
                     <div class="product__item__pic set-bg" data-setbg="{{$produto->foto}}">
                         <ul class="product__hover">
                             <li><a href="{{$produto->foto}}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                            <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="{{url('verproduto/'.$produto->idprodutos)}}"><span class="icon_search-2"></span></a></li>
+                            <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_cart_alt"></span></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
@@ -256,7 +256,7 @@
                 <div class="discount__text">
                     <div class="discount__text__title">
                         <span>Para</span>
-                        <h2>Verão 2020</h2>
+                        <h2>Verão <script>document.write(new Date().getFullYear())</script></h2>
                         <h5><span>Faltam</span></h5>
                     </div>
                     <div class="discount__countdown" id="countdown-time">

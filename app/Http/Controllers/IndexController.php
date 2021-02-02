@@ -16,6 +16,8 @@ use App\Email;
 
 use App\Suporte;
 
+use App\Informacoeslayout;
+
 class IndexController extends Controller
 {
     
@@ -33,10 +35,11 @@ class IndexController extends Controller
         $numeroitemscalcados = Produto::where("categorias_idcategorias", 9)->count();
         $numeroitemscolares = Produto::where("categorias_idcategorias", 16)->count();
         $numeroitemsacessorios = Produto::where("categorias_idcategorias", 19)->count();
+        $informacoeslayout = Informacoeslayout::find(1);
 
         //dd($numeroitemsmasculino);
         return view('index')->with(compact('produtos', 'ultimosavaliados', 'numeroitemsmasculino', 
-        'numeroitemscalcados', 'numeroitemscolares', 'numeroitemsacessorios', 'ultimosvendidos', 'maisbaratos'));
+        'numeroitemscalcados', 'numeroitemscolares', 'numeroitemsacessorios', 'ultimosvendidos', 'maisbaratos', 'informacoeslayout'));
 
     }
 

@@ -60,12 +60,12 @@
                     $("#cartaodebito").show(); 
             });
             
-            if({{$pagamentos->cartaodecredito}}==0 && {{$pagamentos->boleto}}==0 && {{$pagamentos->debitoonline}}==0 && {{$pagamentos->pagamentonaentrega}}==0){
+            if({{$formasdepagamento->cartaodecredito}}==0 && {{$formasdepagamento->boleto}}==0 && {{$formasdepagamento->debitoonline}}==0 && {{$formasdepagamento->pagamentonaentrega}}==0){
                 alert("Nenhum método de pagamento esta ativado no momento, entre em contato com o suporte para saber mais");
                 window.location.href = "{{url('/carrinho')}}"
             }
 
-            if({{$pagamentos->cartaodecredito}}>0 || {{$pagamentos->boleto}}>0 || {{$pagamentos->debitoonline}}>0){
+            if({{$formasdepagamento->cartaodecredito}}>0 || {{$formasdepagamento->boleto}}>0 || {{$formasdepagamento->debitoonline}}>0){
                 $.ajax({
                     url : "{{URL::to('/authenticate/index/iniciapagamento')}}",
                     type : 'get',
@@ -230,7 +230,7 @@
 
 <body>
     <!-- Page Preloder -->
-    @if($pagamentos->cartaodecredito > 0 || $pagamentos->boleto > 0 || $pagamentos->debitoonline > 0)
+    @if($formasdepagamento->cartaodecredito > 0 || $formasdepagamento->boleto > 0 || $formasdepagamento->debitoonline > 0)
         <div class="preloaderjquery"></div>
     @else
         <div id="preloder">
@@ -271,16 +271,16 @@
                                 <h4>Forma de Pagamento</h4>
                             </div>
                             <ul>
-                                @if($pagamentos->pagamentonaentrega > 0)
+                                @if($formasdepagamento->pagamentonaentrega > 0)
                                     <li><a id="pe" href="#">Pagar na Entrega </a></li>
                                 @endif
-                                @if($pagamentos->boleto > 0)
+                                @if($formasdepagamento->boleto > 0)
                                     <li><a id="bo" href="#">Boleto Bancário </a></li>
                                 @endif
-                                @if($pagamentos->cartaodecredito > 0)
+                                @if($formasdepagamento->cartaodecredito > 0)
                                     <li><a id="cc" href="#">Cartão de Credito </a></li>
                                 @endif
-                                @if($pagamentos->debitoonline > 0)
+                                @if($formasdepagamento->debitoonline > 0)
                                     <li><a id="cd" href="#">Debito Online </a></li>
                                 @endif
                             </ul>

@@ -83,54 +83,57 @@
             <form action="{{url('/updatesobre')}}" method="post">
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input name="endereco" type="text" class="form-control" id="endereco" value="{{$sobre->endereco}}">
+                    <input name="endereco" type="text" class="form-control" id="endereco" value="{{$informacoesempresa->endereco}}">
                 </div>
                 
                 <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input name="telefone" type="text" class="form-control" id="telefone" value="{{$sobre->telefone}}">
+                    <input name="telefone" type="text" class="form-control" id="telefone" value="{{$informacoesempresa->telefone}}">
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control" id="email" value="{{$sobre->email}}">
+                    <input name="email" type="email" class="form-control" id="email" value="{{$informacoesempresa->email}}">
                 </div>
 
                 <div class="form-group">
                     <label for="linkfacebook">Link Facebook</label>
-                    <input name="linkfacebook" type="text" class="form-control" id="linkfacebook" value="{{$links->linkfacebook}}">
+                    <input name="linkfacebook" type="text" class="form-control" id="linkfacebook" value="{{$informacoeslayout->linkfacebook}}">
                 </div>
                 
                 <div class="form-group">
                     <label for="linktwitter">Link Twitter</label>
-                    <input name="linktwitter" type="text" class="form-control" id="linktwitter" value="{{$links->linktwitter}}">
+                    <input name="linktwitter" type="text" class="form-control" id="linktwitter" value="{{$informacoeslayout->linktwitter}}">
                 </div>
 
                 <div class="form-group">
                     <label for="linkyoutube">Link YouTube</label>
-                    <input name="linkyoutube" type="text" class="form-control" id="linkyoutube" value="{{$links->linkyoutube}}">
+                    <input name="linkyoutube" type="text" class="form-control" id="linkyoutube" value="{{$informacoeslayout->linkyoutube}}">
                 </div>
 
                 <div class="form-group">
                     <label for="linkinstagram">Link Instagram</label>
-                    <input name="linkinstagram" type="text" class="form-control" id="linkinstagram" value="{{$links->linkinstagram}}">
+                    <input name="linkinstagram" type="text" class="form-control" id="linkinstagram" value="{{$informacoeslayout->linkinstagram}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea2">Frase Da Pagina Inicial</label>
+                    <textarea name="frasehome" class="form-control" id="exampleFormControlTextarea2" rows="5">{{$informacoeslayout->frasehome}}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Sobre a Empresa</label>
-                    <textarea name="sobre" class="form-control" id="exampleFormControlTextarea1" rows="7">{{$sobre->sobre}}</textarea>
+                    <textarea name="sobre" class="form-control" id="exampleFormControlTextarea1" rows="7">{{$informacoesempresa->sobreaempresa}}</textarea>
                 </div>
-
-
 
                 <div class="form-group">
                     <label for="emailpagseguro">Email no Pagseguro</label>
-                    <input name="emailpagseguro" type="text" class="form-control" id="emailpagseguro" value="{{$importante->email_pagseguro}}">
+                    <input name="emailpagseguro" type="text" class="form-control" id="emailpagseguro" value="{{$pagseguro->email}}">
                 </div>
 
                 <div class="form-group">
                     <label for="token">Token do Pagseguro</label>
-                    <input name="token" type="text" class="form-control" id="token" value="{{$importante->token}}">
+                    <input name="token" type="text" class="form-control" id="token" value="{{decrypt($pagseguro->token)}}">
                 </div>
 
                 <br>
@@ -139,7 +142,7 @@
                 
                 <input type="hidden" value="0" name="pagamentonaentrega">
                 <label class="switch">
-                    @if($pagamentos->pagamentonaentrega>0)
+                    @if($formasdepagamento->pagamentonaentrega>0)
                         <input name="pagamentonaentrega" type="checkbox" value="1" checked>
                     @else
                         <input name="pagamentonaentrega" type="checkbox" value="1">
@@ -152,7 +155,7 @@
                 
                 <input type="hidden" value="0" name="cartaodecredito">
                 <label class="switch">
-                    @if($pagamentos->cartaodecredito>0)
+                    @if($formasdepagamento->cartaodecredito>0)
                         <input name="cartaodecredito" type="checkbox" value="1" checked>
                     @else
                         <input name="cartaodecredito" type="checkbox" value="1">
@@ -164,7 +167,7 @@
 
                 <input type="hidden" value="0" name="boleto">              
                 <label class="switch">
-                    @if($pagamentos->boleto>0)
+                    @if($formasdepagamento->boleto>0)
                         <input name="boleto" type="checkbox" value="1" checked>
                     @else
                         <input name="boleto" type="checkbox" value="1">
@@ -176,7 +179,7 @@
 
                 <input type="hidden" value="0" name="debitoonline">   
                 <label class="switch">
-                    @if($pagamentos->debitoonline>0)
+                    @if($formasdepagamento->debitoonline>0)
                         <input name="debitoonline" type="checkbox" value="1" checked>
                     @else
                         <input name="debitoonline" type="checkbox" value="1">

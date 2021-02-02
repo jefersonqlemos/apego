@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
     <!-- Styles -->
+
+    <script src="//code.jivosite.com/widget/ufWbPE819m" async></script>
 </head>
 <body>
     
@@ -41,7 +43,7 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            <li><a href="{{ url('/carrinho')}}"><span class="icon_heart_alt"></span>
+            <li><a href="{{ url('/carrinho')}}"><span class="icon_cart_alt"></span>
                 <div class="tip">{{$cartcount}}</div>
             </a></li>
         </ul>
@@ -120,7 +122,7 @@
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>
-                            <li><a href="{{ url('/carrinho')}}"><span class="icon_heart_alt"></span>
+                            <li><a href="{{ url('/carrinho')}}"><span class="icon_cart_alt"></span>
                                 <div class="tip">{{$cartcount}}</div>
                             </a></li>
                         </ul>
@@ -147,7 +149,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-1.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -155,7 +157,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-2.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -163,7 +165,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-3.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -171,7 +173,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-4.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -179,7 +181,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-5.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -187,7 +189,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-6.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$links->linkinstagram}}">@ seuapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@ seuapego</a>
                         </div>
                     </div>
                 </div>
@@ -205,7 +207,7 @@
                         <div class="footer__logo">
                             <a href="{{ url('/')}}"><img src="{{ asset('img/logo.png') }}" alt=""></a>
                         </div>
-                        <p>Nosso desapego, seu apego. Vendas em Videira/SC. Preços baratinhos e produtos de qualidade! Fazemos Entregas.</p>
+                        <p>{{$informacoeslayout->frasehome}}</p>
                         <div class="footer__payment">
                             <a href="#"><img src="{{ asset('img/payment/payment-1.png') }}" alt=""></a>
                             <a href="#"><img src="{{ asset('img/payment/payment-2.png') }}" alt=""></a>
@@ -243,10 +245,10 @@
                             <button type="submit" class="site-btn">Enviar</button>
                         </form>
                         <div class="footer__social">
-                            <a href="{{$links->linkfacebook}}"><i class="fa fa-facebook"></i></a>
-                            <a href="{{$links->linktwitter}}"><i class="fa fa-twitter"></i></a>
-                            <a href="{{$links->linkyoutube}}"><i class="fa fa-youtube-play"></i></a>
-                            <a href="{{$links->linkinstagram}}"><i class="fa fa-instagram"></i></a>
+                            <a href="{{$informacoeslayout->linkfacebook}}"><i class="fa fa-facebook"></i></a>
+                            <a href="{{$informacoeslayout->linktwitter}}"><i class="fa fa-twitter"></i></a>
+                            <a href="{{$informacoeslayout->linkyoutube}}"><i class="fa fa-youtube-play"></i></a>
+                            <a href="{{$informacoeslayout->linkinstagram}}"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
