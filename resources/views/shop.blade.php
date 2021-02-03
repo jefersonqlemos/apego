@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ashion Template">
+    <meta name="description" content="Apego Template">
     <meta name="keywords" content="Ashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -246,7 +246,11 @@
                                     <a href="{{ $produtos->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a>
                                 @endif
                                 @for ($i = 1; $i <= $produtos->lastPage(); $i++)
-                                    <a href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                    @if($produtos->currentPage()==$i)
+                                        <a style="background: #0d0d0d; border-color: #0d0d0d; color: #ffffff;" href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                    @else
+                                        <a href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                    @endif
                                 @endfor
 
                                 @if ($produtos->hasMorePages())
