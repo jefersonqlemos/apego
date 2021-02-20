@@ -75,6 +75,9 @@
                             <td>Telefone: {{$dadosusuario->telefone}}</td>
                             <td>CPF: {{$dadosusuario->cpf}}</td>
                         </tr>
+                        <tr>
+                            <td>E-mail: {{$dadosusuario->email}}</td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -112,7 +115,7 @@
                         <td style="vertical-align:middle; color:darkred" >
                             <h4><b>R$ {{ $produto->preco }}</b><h4>
                         </td>
-                </tr>
+                    </tr>
                 @endforeach                
 
             </table>
@@ -123,24 +126,59 @@
             </form>
             <br><br><br>
 
-            @if($status->idstatus == 3 || $status->idstatus == 100)
+            @if($status->idstatus == 3 || $status->idstatus == 100 || $status->idstatus == 8 || $status->idstatus == 102)
 
-                <form action="{{url('cancelamento').'/'.$pedido->idpedidos}}" method="post"> 
+                <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
                     @csrf
-                    <span style="float:left"> : 
-                        <input type="submit" value="Se a venda foi cancelada clique aqui"></input>
+                    @method('put')
+                    <span style="float:left">Se a venda foi cancelada clique:
+                        <input type="submit" value="Pedido Cancelado"></input>
                     </span>
+                    <input type="hidden" name="idstatus" value="104">
                 </form>
 
                 <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
                     @csrf
                     @method('put')
-                    <span style="float:right">Se o pedido ja foi entregue e deseja atualizar status clique: 
-                        <input type="submit" value="Pedido Entregue ao Cliente"></input>
+                    <span style="float:right">Se o pedido saiu para entrega e deseja atualizar status clique: 
+                        <input type="submit" value="Pedido Saiu Para Entrega"></input>
                     </span>
+                    <input type="hidden" name="idstatus" value="101">
                 </form>
-                
+            
+            @elseif($status->idstatus == 101)
+                <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
+                    @csrf
+                    @method('put')
+                    <span style="float:left">Se a venda foi cancelada clique: 
+                        <input type="submit" value="Pedido Cancelado"></input>
+                    </span>
+                    <input type="hidden" name="idstatus" value="104">
+                </form>
+
+                <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
+                    @csrf
+                    @method('put')
+                    <span style="float:right">Se não foi possivel realizar a entrega clique: 
+                        <input type="submit" value="Não foi Possível Concluir a Entrega, Uma Nova Tentativa Será Feita"></input>
+                    </span>
+                    <input type="hidden" name="idstatus" value="102">
+                </form>
+
+                </br>
+                </br>
+
+                <form action="{{url('pedidos').'/'.$pedido->idpedidos}}" method="post"> 
+                    @csrf
+                    @method('put')
+                    <span style="float:right">Se o pedido foi entregue ao cliente clique: 
+                        <input type="submit" value="Pedido Entregue"></input>
+                    </span>
+                    <input type="hidden" name="idstatus" value="103">
+                </form>
             @endif
+
+            
         </div>
     </div>
 

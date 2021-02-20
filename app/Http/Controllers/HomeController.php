@@ -104,6 +104,11 @@ class HomeController extends Controller
             $user->email = $request['email'];
             $user->save();
 
+            $id = Auth::id();
+            $dadosusuario = Dadosusuarios::find($id);
+            $dadosusuario->email = $request['email'];
+            $dadosusuario->save();
+
             return back()->with('message','Email Atualizado com Sucesso');
         }else{
 

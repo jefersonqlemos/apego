@@ -99,11 +99,42 @@ class PedidoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $pedido = Pedido::find($id);
-        $pedido->status_idstatus = 101;
-        $pedido->save();
+        if($request->idstatus==104){
+            
+            $pedido = Pedido::find($id);
+            $pedido->status_idstatus = $request->idstatus;
+            $pedido->save();
 
-        return redirect('pedidos/'.$id)->with('message', 'Status Atualizado Para Produto Entregue');
+            return redirect('pedidos/'.$id)->with('message', 'Status Atualizado para Pedido Cancelado');
+
+        }else if($request->idstatus==101){
+
+            $pedido = Pedido::find($id);
+            $pedido->status_idstatus = $request->idstatus;
+            $pedido->save();
+
+            return redirect('pedidos/'.$id)->with('message', 'Status Atualizado Para Pedido Saiu para Entrega');
+
+        }else if($request->idstatus==102){
+
+            $pedido = Pedido::find($id);
+            $pedido->status_idstatus = $request->idstatus;
+            $pedido->save();
+
+            return redirect('pedidos/'.$id)->with('message', 'Status Atualizado Para Não foi Possível Concluir a Entrega, Uma Nova Tentativa Será Feita');
+
+        }else if($request->idstatus==103){
+
+            $pedido = Pedido::find($id);
+            $pedido->status_idstatus = $request->idstatus;
+            $pedido->save();
+
+            return redirect('pedidos/'.$id)->with('message', 'Status Atualizado Para Produto Entregue');
+
+        }else{
+            return redirect('pedidos/'.$id)->with('message', 'Ocorreu em erro não foi possivel atualizar');
+        }
+
     }
 
     /**

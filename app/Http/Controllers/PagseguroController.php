@@ -149,7 +149,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemDescription'.$i] = $item->brevedescricao;
             $data['itemAmount'.$i] = $preco;
 
         }
@@ -300,7 +300,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemDescription'.$i] = $item->brevedescricao;
             $data['itemAmount'.$i] = $preco;
 
         }
@@ -436,7 +436,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->descricao;
+            $data['itemDescription'.$i] = $item->brevedescricao;
             $data['itemAmount'.$i] = $preco;
 
         }
@@ -526,14 +526,5 @@ class PagseguroController extends Controller
 		}
 
 	}
-
-	public function cancelamento($id)
-    {
-		$pedido = Pedido::find($id);
-        $pedido->status_idstatus = 7;
-        $pedido->save();
-
-        return redirect('pedidos/'.$id)->with('message', 'Pedido Cancelado');
-    }
 
 }

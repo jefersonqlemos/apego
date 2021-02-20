@@ -63,7 +63,8 @@ class ProdutoController extends Controller
         $produto->tamanhos_idtamanhos = $request->tamanho;
         $produto->quantidade = $request->quantidade;
         $produto->preco = $request->preco;
-        $produto->descricao = $request->descricao;
+        $produto->brevedescricao = $request->brevedescricao;
+        $produto->descricaodetalhada = $request->descricaodetalhada;
         $produto->generos_idgeneros = $request->genero;
         $produto->categorias_idcategorias = $request->categoria;
         
@@ -143,7 +144,8 @@ class ProdutoController extends Controller
         $produto->tamanhos_idtamanhos = $request->tamanho;
         $produto->quantidade = $request->quantidade;
         $produto->preco = $request->preco;
-        $produto->descricao = $request->descricao;
+        $produto->brevedescricao = $request->brevedescricao;
+        $produto->descricaodetalhada = $request->descricaodetalhada;
         $produto->generos_idgeneros = $request->genero;
         $produto->categorias_idcategorias = $request->categoria;
         $produto->save();

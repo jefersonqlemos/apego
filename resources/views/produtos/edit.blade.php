@@ -148,8 +148,11 @@
                 <label for="preco">Preço:</label><br>
                 <input class="preco" required type="text" name="preco" value="{{$produto->preco}}"><br><br> 
 
-                <label for="descricao">Descrição:</label><br>
-                <textarea name="descricao" required rows="10" cols="80">{{$produto->descricao}}</textarea>
+                <label for="brevedescricao">Breve Descrição:</label><br>
+                <textarea name="brevedescricao" required rows="5" cols="80">{{$produto->brevedescricao}}</textarea><br><br>
+
+                <label for="descricaodetalhada">Descrição Detalhada:</label><br>
+                <textarea name="descricaodetalhada" required rows="10" cols="80">{{$produto->descricaodetalhada}}</textarea>
 
                 <br><br>
                 

@@ -87,7 +87,7 @@
                             @endif
                         </div>
                         <div class="product__details__price">R$ {{$produto->preco}} <span></span></div>
-                        <p>{{$produto->descricao}}</p>
+                        <p>{{$produto->brevedescricao}}</p>
                         <div class="product__details__button">
                             <form action="{{url('adicionaraocarrinho/'.$produto->idprodutos)}}" method="post">
                                 @csrf
@@ -139,7 +139,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <p>{{$produto->descricao}}</p>
+                                <p>{{$produto->descricaodetalhada}}</p>
                             </div>
                         </div>
                     </div>

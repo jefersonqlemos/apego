@@ -71,13 +71,13 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" role="tab">Descrição</a>
+                                <a class="nav-link active" data-toggle="tab" role="tab">Breve Descrição</a>
                             </li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <h6>Descrição</h6>
-                                <p>{{$produto->descricao}}</p>
+                                <p>{{$produto->brevedescricao}}</p>
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ referente a seguinte mensagem:
 <!--@component('mail::button', ['url' => ''])
 Button Text
 @endcomponent-->
-Resposta do suporte ao Usuário:
+Resposta do suporte:
 
 @component('mail::panel')
 {{$resposta}}

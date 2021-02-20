@@ -19,3 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::post('/notificacaopagseguro', 'NotificacaoPagSeguroController@notificacao');
+
+Route::get('/listapedidos', 'Api\PedidoController@index');
+
+Route::get('/searchpedidos', 'Api\PedidoController@searchPedidos');

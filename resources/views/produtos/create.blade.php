@@ -107,8 +107,11 @@
         <label for="preco">Preço:</label><br>
         <input class="preco" required type="text" name="preco" ><br><br> 
 
-        <label for="descricao">Descrição:</label><br>
-        <textarea name="descricao" required rows="10" cols="80"></textarea>
+        <label for="brevedescricao">Breve Descrição:</label><br>
+        <textarea name="brevedescricao" required rows="5" cols="80"></textarea><br><br>
+
+        <label for="descricaodetalhada">Descrição detalhada:</label><br>
+        <textarea name="descricaodetalhada" required rows="10" cols="80"></textarea>
 
         <br><br>
         

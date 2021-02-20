@@ -39,8 +39,6 @@ Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 Route::resource('fotos', 'FotoController');
 
-Route::post('cancelamento/{id}', 'PagseguroController@cancelamento');
-
 Route::get('produtosvendidos', 'FiltragemProdutoController@filtragemProdutoVendido');
 Route::get('produtosemestoque', 'FiltragemProdutoController@filtragemProdutoEmEstoque');
 
