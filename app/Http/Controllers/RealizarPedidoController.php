@@ -126,6 +126,37 @@ class RealizarPedidoController extends Controller
             
             $status = Statu::find($pedido->status_idstatus);
 
+            $url = 'https://fcm.googleapis.com/fcm/send';
+
+            $fields = array(
+                    'to' => 'ecDnbDIqT8uo8Jqj3cQG6X:APA91bEsnAMiyAMSL5VX6nu8peIalC6ud35gZUgFtYJyqSf2_ij44q5m-kuLzlen2i1y5FQi3lZK3as4c0Q7jY2u7BV7zK8VPu17KcItTtqoEfz31GGLafUPp4O3flfSrt0-kjQk0vAt',
+                    /*'data' => array(
+                            "message" => 'ola mundo',
+                            'title' => 'title'
+                    )*/
+                    "notification" => array(
+                        "title" => "Apego",
+                        "sound" => "default",
+                        "body"=> "Foi realizado um novo pedido pelo Site..."
+                    )
+            );
+            $fields = json_encode($fields);
+
+            $headers = array(
+                    'Authorization:key='."AAAAAe618xw:APA91bFMEVKyD0qin9sstApnBQ8v20sFeGgeDSjMwlnso1uHmMiw-0OaKc00DTn-b6JC1DuWBpCLTS8TKFYkb4i0ImJPDguhz2uTzzFVfXGN9rCkXzc9vB9hubbD5IGTAMV4lY_wI9bT",
+                    'Content-Type:application/json'
+            );
+
+            $ch = curl_init();
+            curl_setopt( $ch, CURLOPT_URL, $url );
+            curl_setopt( $ch, CURLOPT_POST, true );
+            curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
+            curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+            curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields );
+
+            $result = curl_exec($ch);
+            curl_close( $ch );
+
             return view('realizarpedido/conclusaopedido')->with(compact('pedido', 'status'));
         
         }else{

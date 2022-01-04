@@ -89,3 +89,5 @@ Route::get('conferirdados', 'RealizarPedidoController@conferirdados')->middlewar
 Route::post('concluirdados', 'RealizarPedidoController@concluirDados')->middleware('verified');
 Route::get('pagamento', 'RealizarPedidoController@pagamento')->middleware('verified');
 Route::post('pagamentonaentrega', 'RealizarPedidoController@pagamentoNaEntrega')->middleware('verified');
+
+Route::get('teste', 'IndexController@teste');

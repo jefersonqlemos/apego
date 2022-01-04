@@ -244,16 +244,24 @@
                                 @if ($produtos->onFirstPage())
                                 @else
                                     <a href="{{ $produtos->previousPageUrl() }}"><i class="fa fa-angle-left"></i></a>
+                                    @if($produtos->currentPage() > 3)
+                                        <a href="{{ $produtos->url(1) }}">1</a>
+                                        ...
+                                    @endif
                                 @endif
-                                @for ($i = 1; $i <= $produtos->lastPage(); $i++)
-                                    @if($produtos->currentPage()==$i)
-                                        <a style="background: #0d0d0d; border-color: #0d0d0d; color: #ffffff;" href="{{ $produtos->url($i) }}">{{ $i }}</a>
-                                    @else
-                                        <a href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                @for ($i = $produtos->currentPage()-2; $i <= $produtos->currentPage()+2; $i++)
+                                    @if($i > 0 && $i <= $produtos->lastPage())
+                                        @if($produtos->currentPage()==$i)
+                                            <a style="background: #0d0d0d; border-color: #0d0d0d; color: #ffffff;" href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                        @else
+                                            <a href="{{ $produtos->url($i) }}">{{ $i }}</a>
+                                        @endif
                                     @endif
                                 @endfor
 
                                 @if ($produtos->hasMorePages())
+                                    ...
+                                    <a href="{{ $produtos->url($produtos->lastPage()) }}">{{ $produtos->lastPage() }}</a>
                                     <a href="{{ $produtos->nextPageUrl() }}"><i class="fa fa-angle-right"></i></a>
                                 @endif
                             </div>

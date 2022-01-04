@@ -12,6 +12,8 @@ use App\Categoria;
 
 use App\Tamanho;
 
+use App\Informacoesempresa;
+
 class AppController extends Controller
 {
     //
@@ -47,12 +49,14 @@ class AppController extends Controller
     public function sobre()
     {
 
-        $sobre = Storage::disk('public')->get('sobre.json');
+        /*$sobre = Storage::disk('public')->get('sobre.json');
         $sobre = json_decode($sobre);
         $sobre = decrypt($sobre->data);
-        $sobre = json_decode($sobre);
+        $sobre = json_decode($sobre);*/
+        
+        $informacoesempresa = Informacoesempresa::find(1);
 
-        return view('sobre')->with('sobre', $sobre);
+        return view('sobre')->with('informacoesempresa', $informacoesempresa);
     }
 
     public function search(Request $request)

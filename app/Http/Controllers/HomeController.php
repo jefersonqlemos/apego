@@ -105,7 +105,7 @@ class HomeController extends Controller
             $user->save();
 
             $id = Auth::id();
-            $dadosusuario = Dadosusuarios::find($id);
+            $dadosusuario = Dadosusuario::find($id);
             $dadosusuario->email = $request['email'];
             $dadosusuario->save();
 

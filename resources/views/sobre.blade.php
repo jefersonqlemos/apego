@@ -58,19 +58,19 @@
                             <ul>
                                 <li>
                                     <h6> Sobre a Empresa</h6>
-                                    <p>{{$sobre->sobre}}</p>
+                                    <p>{{$informacoesempresa->sobreaempresa}}</p>
                                 </li>
                                 <li>
                                     <h6><i class="fa fa-map-marker"></i> Endereço</h6>
-                                    <p>{{$sobre->endereco}}</p>
+                                    <p>{{$informacoesempresa->endereco}}</p>
                                 </li>
                                 <li>
                                     <h6><i class="fa fa-phone"></i> Telefone</h6>
-                                    <p><span>{{$sobre->telefone}}</span></p>
+                                    <p><span>{{$informacoesempresa->telefone}}</span></p>
                                 </li>
                                 <li>
                                     <h6><i class="fa fa-headphones"></i> Suporte</h6>
-                                    <p>{{$sobre->email}}</p>
+                                    <p>{{$informacoesempresa->email}}</p>
                                 </li>
                             </ul>
                         </div>
