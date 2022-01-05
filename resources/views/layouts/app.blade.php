@@ -45,7 +45,9 @@
     </script>
 </head>
 <body>
-    
+    <div class="consent">
+        @include('cookieConsent::index')
+    </div>
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>

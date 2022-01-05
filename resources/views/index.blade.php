@@ -27,8 +27,6 @@
         <div class="loader"></div>
     </div>
 
-    @include('cookieConsent::index')
-
     @if(session()->has('message'))
         <script>
             alert("{{ session()->get('message') }}");

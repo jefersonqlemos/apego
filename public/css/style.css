@@ -24,6 +24,7 @@
 8.  Instagram
 9.  Contact
 10.  Footer Style
+11.  consent
 -------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -3683,4 +3684,30 @@ ol {
 		width: 100%;
 		font-size: 24px;
 	}
+}
+
+.consent{
+	position:fixed;
+	background-color:#ca1515;
+	color:#FFF;
+	box-shadow: 2px 2px 3px #9999;
+	z-index:999;
+	border-radius:50px;
+	left:40px;
+	bottom:60px;
+	padding: 12px 30px;
+	font-weight: 600;
+}
+
+.consent button{
+	font-size: 14px;
+	margin-left:15px;
+	color: #ca1515;
+	background: #ffffff;
+	font-weight: 600;
+	border: none;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 12px 30px;
+	border-radius: 50px;
 }
