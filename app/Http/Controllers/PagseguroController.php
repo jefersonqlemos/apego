@@ -140,7 +140,7 @@ class PagseguroController extends Controller
 			$item = Produto::find($produto->id);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
@@ -322,7 +322,7 @@ class PagseguroController extends Controller
 			$item = Produto::find($produto->id);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
@@ -489,7 +489,7 @@ class PagseguroController extends Controller
 			$item = Produto::find($produto->id);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
