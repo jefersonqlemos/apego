@@ -49,6 +49,7 @@ Route::post('updatesobre', 'SobreController@updateSobre');
 
 Route::get('feminino', 'AppController@feminino');
 Route::get('masculino', 'AppController@masculino');
+Route::get('infantil', 'AppController@infantil');
 Route::get('shopping', 'AppController@shopping');
 Route::get('sobre', 'AppController@sobre');
 Route::get('conta', 'AppController@conta');
@@ -56,6 +57,7 @@ Route::get('conta', 'AppController@conta');
 
 Route::get('categoriafeminino/{id}', 'CategoriaController@categoriaFeminino')->name('categoriafeminino');
 Route::get('categoriamasculino/{id}', 'CategoriaController@categoriaMasculino');
+Route::get('categoriainfantil/{id}', 'CategoriaController@categoriaInfantil');
 Route::get('todascategorias/{id}', 'CategoriaController@todasCategorias');
 
 Route::get('buscaportamanho/{id}', 'BuscaController@buscaPorTamanho');

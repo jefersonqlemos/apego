@@ -33,6 +33,14 @@ class AppController extends Controller
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
     }
 
+    public function infantil()
+    {
+        $produtos = Produto::orderBy('idprodutos', 'desc')->where('generos_idgeneros', 4)->where('quantidade', '>', 0)->paginate(9);
+        $categorias = Categoria::all();
+        $tamanhos = Tamanho::all();
+        return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
+    }
+
     public function shopping()
     {
         $produtos = Produto::orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->paginate(9);

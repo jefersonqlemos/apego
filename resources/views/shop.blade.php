@@ -133,12 +133,14 @@
                                     </div>
                                     <div class="card">
                                         <div class="card-heading">
-                                            <a data-toggle="collapse" data-target="#collapseFour">Acessórios</a>
+                                            <a data-toggle="collapse" data-target="#collapseFour">Infantil</a>
                                         </div>
                                         <div id="collapseFour" class="collapse" data-parent="#accordionExample">
                                             <div class="card-body">
                                                 <ul>
-                                                    <li><a href="{{ url('todascategorias/19')}}">Acessórios</a></li>
+                                                    @foreach($categorias as $categoria)
+                                                        <li><a href="{{ url('categoriainfantil/'.$categoria->idcategorias)}}">{{$categoria->nome}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>

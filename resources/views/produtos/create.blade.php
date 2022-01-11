@@ -122,7 +122,9 @@
         <input type="radio" id="2" name="genero" value="2">
         <label for="female">Feminino</label><br>
         <input type="radio" id="3" name="genero" value="3">
-        <label for="female">Qualquer Gênero</label><br><br>
+        <label for="female">Qualquer Gênero</label><br>
+        <input type="radio" id="4" name="genero" value="4">
+        <label for="female">Infantil</label><br><br>
         
         <label for="categoria">Categoria</label><br>
         <select id="select1" required aria-required="true" name="categoria" style="width:350px;">

@@ -70,8 +70,8 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg" data-setbg="img/categories/category-4.jpg">
                             <div class="categories__text">
-                                <h4>Colares</h4>
-                                <p>{{$numeroitemscolares}} items</p>
+                                <h4>Acessórios</h4>
+                                <p>{{$numeroitemsacessorios}} items</p>
                                 <a href="{{ url('todascategorias/16')}}">Compre agora</a>
                             </div>
                         </div>
@@ -79,9 +79,9 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
                         <div class="categories__item set-bg" data-setbg="img/categories/category-5.jpg">
                             <div class="categories__text">
-                                <h4>Acessórios</h4>
-                                <p>{{$numeroitemsacessorios}} items</p>
-                                <a href="{{ url('todascategorias/19')}}">Compre agora</a>
+                                <h4>Infantil</h4>
+                                <p>{{$numeroitemsinfantil}} items</p>
+                                <a href="{{ url('/infantil')}}">Compre agora</a>
                             </div>
                         </div>
                     </div>

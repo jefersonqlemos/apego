@@ -30,6 +30,14 @@ class CategoriaController extends Controller
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
     }
 
+    public function categoriaInfantil($id)
+    {
+        $produtos = Produto::where('generos_idgeneros', 4)->where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->paginate(9);
+        $categorias = Categoria::all();
+        $tamanhos = Tamanho::all();
+        return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
+    }
+
     public function todasCategorias($id)
     {
         $produtos = Produto::where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->paginate(9);
