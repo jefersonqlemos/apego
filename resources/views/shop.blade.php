@@ -209,6 +209,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-9 col-md-9">
                     <div class="row">
 
@@ -238,6 +239,12 @@
                         </div>
 
                         @endforeach
+
+                        @if(count($produtos)==0)
+                            <div style="text-align: center;">
+                                <b>Não foi encontrado resultado para sua busca!</b><br><br>
+                            </div>
+                        @endif
                         
                         <div class="col-lg-12 text-center">
                             <div class="pagination__option">
