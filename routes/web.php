@@ -53,6 +53,7 @@ Route::get('infantil', 'AppController@infantil');
 Route::get('shopping', 'AppController@shopping');
 Route::get('sobre', 'AppController@sobre');
 Route::get('conta', 'AppController@conta');
+Route::post('cookiecidade', 'AppController@cookieCidade');
 
 
 Route::get('categoriafeminino/{id}', 'CategoriaController@categoriaFeminino')->name('categoriafeminino');

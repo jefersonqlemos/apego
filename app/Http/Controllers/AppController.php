@@ -14,6 +14,8 @@ use App\Tamanho;
 
 use App\Informacoesempresa;
 
+use Cookie;
+
 class AppController extends Controller
 {
     //
@@ -76,4 +78,10 @@ class AppController extends Controller
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
     }
+
+    public function cookieCidade(Request $request){
+        $minutes = 600;
+        Cookie::queue('cookieCidade', "Videira", 600);
+        return response()->json(['success'=>'Got Simple Ajax Request.']);
+     }
 }

@@ -29,24 +29,42 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    
 
     <!-- Styles -->
-
-    <script src="//code.jivosite.com/widget/ufWbPE819m" async></script>
     
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8F82TYVBQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-K8F82TYVBQ');
-    </script>
 </head>
 <body>
 
     @include('cookieConsent::index')
+
+    @if(Cookie::get('cookieCidade') !== null)
+        <!--cidade: {{Cookie::get('cookieCidade')}}-->
+    @else
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Escolha Sua Cidade</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Videira
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Videira</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-save" type="button" class="btn btn-danger">Pronto</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -306,5 +324,51 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script src="//code.jivosite.com/widget/ufWbPE819m" async></script>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8F82TYVBQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-K8F82TYVBQ');
+
+      $(document).ready(function($){
+        $('#exampleModalCenter').modal('show'); 
+
+            // CREATE
+        $("#btn-save").click(function (e) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var formData = {
+                cidade: "Videira",
+            };
+            var type = "POST";
+            var ajaxurl = 'cookiecidade';
+            $.ajax({
+                type: type,
+                url: ajaxurl,
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    //data.cidade
+                    //console.log(data);
+                    $('#exampleModalCenter').modal('hide');
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+      });
+
+    </script>
 </body>
 </html>
