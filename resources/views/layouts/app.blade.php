@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Videira
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-save" type="button" class="btn btn-danger">Pronto</button>
+                    <button id="btn-save" type="button" class="site-btn">Pronto</button>
                 </div>
                 </div>
             </div>
@@ -337,7 +337,7 @@
       gtag('config', 'G-K8F82TYVBQ');
 
       $(document).ready(function($){
-        $('#exampleModalCenter').modal('show'); 
+        $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
             // CREATE
         $("#btn-save").click(function (e) {
