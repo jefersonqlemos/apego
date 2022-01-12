@@ -46,11 +46,11 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Escolha Sua Cidade</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Qual Sua Cidade?</h5>
                 </div>
                 <div class="modal-body">
                     <div class="dropdown">
-                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Videira
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
