@@ -291,7 +291,7 @@
                 <div class="col-lg-12">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     <div class="footer__copyright__text">
-                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved, CNPJ: 44.851.290/0001-52 - Rua Arlindo de Mattos nº 239 - 3º Andar CEP: 89560-376 - Santa Tereza, Videira - SC - Telefone: (49)99968-0648 - O preço válido para os pedidos é o exibido na tela de pagamento.</p>
                     </div>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </div>
