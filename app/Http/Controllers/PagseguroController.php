@@ -373,6 +373,8 @@ class PagseguroController extends Controller
 
 		$xml= simplexml_load_string($xml);
 
+		dd($xml);
+
 		$code = $xml->code;
 
 		if($code!=null){
