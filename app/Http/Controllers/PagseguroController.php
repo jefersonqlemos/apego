@@ -378,8 +378,6 @@ class PagseguroController extends Controller
 
 		$code = $xml->code;
 
-		dd($xml);
-
 		if($code!=null){
 			
 			$pedido = new Pedido;
