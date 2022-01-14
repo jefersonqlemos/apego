@@ -328,7 +328,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="checkout__form__input">
-                                    <p><b>Obs: Para geração do boleto é fixada uma taxa de R$ 1,00</b></p>
+                                    <p><b>Obs: O boleto é gerado pelo pagseguro, o valor do boleto será acrecido com uma taxa cobrado pelo mesmo.</b></p>
                                     </div>
                                 </div>
                             </div>
