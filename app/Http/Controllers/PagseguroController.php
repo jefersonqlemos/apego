@@ -348,7 +348,6 @@ class PagseguroController extends Controller
 		$data['senderEmail'] = $email;//'c52604891380076987330@sandbox.pagseguro.com.br';
 		$data['senderCPF'] = $cpf;
 		$data['currency'] = 'BRL';
-		//dd($cpf);
 		
 		$data['reference'] = "".Auth::id();
 		$data['shippingAddressRequired'] = 'false';
@@ -373,8 +372,6 @@ class PagseguroController extends Controller
 		curl_close($curl);
 
 		$xml= simplexml_load_string($xml);
-
-		//dd($xml);
 
 		$code = $xml->code;
 
