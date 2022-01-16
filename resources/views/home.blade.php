@@ -191,6 +191,7 @@
                     $("#dadosconta").hide();
                     $("#meuspedidos").show();
                     $("#comprados").hide();
+
                     $.ajax({
                         url: "{{URL::to('meuspedidos')}}",
                         type: 'GET',
@@ -204,6 +205,13 @@
                             }
                         }
                     });
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#meuspedidos";
+                    }
+
                 });
 
                 $('#buscapedidosmobile').click(function(){
@@ -211,6 +219,7 @@
                     $("#dadosconta").hide();
                     $("#meuspedidos").show();
                     $("#comprados").hide();
+
                     $.ajax({
                         url: "{{URL::to('meuspedidos')}}",
                         type: 'GET',
@@ -224,6 +233,12 @@
                             }
                         }
                     });
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#meuspedidos";
+                    }
                 });
 
                 $('#meusdadosdesktop').click(function(){
@@ -251,6 +266,12 @@
                             //console.log(data.iddadosusuarios);
                         }
                     });
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#dadosconta";
+                    }
 
                 });
 
@@ -280,6 +301,12 @@
                         }
                     });
 
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#dadosconta";
+                    }
+
                 });
 
                 $('#iniciodesktop').click(function(){
@@ -288,6 +315,12 @@
                     $("#meuspedidos").hide();
                     $("#comprados").hide();
                     
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#inicio";
+                    }
+
                 });
 
                 $('#iniciomobile').click(function(){
@@ -295,6 +328,12 @@
                     $("#dadosconta").hide();
                     $("#meuspedidos").hide();
                     $("#comprados").hide();
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+                    } else {
+                        location.href = "#inicio";
+                    }
                     
                 });
 
