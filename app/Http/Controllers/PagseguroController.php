@@ -339,7 +339,7 @@ class PagseguroController extends Controller
 		$data['email'] = $emailPagseguro;
 		$data['token'] = $tokenPagseguro; //token sandbox test
 		$data['paymentMode'] = 'default';
-		$data['senderhash'] = $request->hashPagSeguro;;
+		$data['senderHash'] = $request->hashPagSeguro;
 		$data['paymentMethod'] = 'boleto';
 		$data['receiverEmail'] = $emailPagseguro;
 		$data['senderName'] = $dadosusuario->nome." ".$dadosusuario->sobrenome;
@@ -506,7 +506,7 @@ class PagseguroController extends Controller
 		$data['token'] = $tokenPagseguro;
 
 		$data['paymentMode'] = 'default';
-		$data['senderhash'] = $request->hashPagSeguro;
+		$data['senderHash'] = $request->hashPagSeguro;
 		$data['paymentMethod'] = 'eft';
 		$data['bankName'] = $request->banco;
 		$data['receiverEmail'] = $emailPagseguro;

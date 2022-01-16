@@ -80,8 +80,7 @@ class AppController extends Controller
     }
 
     public function cookieCidade(Request $request){
-        $minutes = 600;
-        Cookie::queue('cookieCidade', "Videira", 600);
+        Cookie::queue('cookieCidade', "Videira", 6000);
         return response()->json(['success'=>'Got Simple Ajax Request.']);
      }
 }
