@@ -66,7 +66,7 @@
         }
         
          /* Mobile Styles */
-         @media only screen and (max-width: 1000px) {
+         @media only screen and (max-width: 750px) {
 
             .btn {
                 background-color: #ca1515;
@@ -87,7 +87,7 @@
         }
 
         /* Desktop Styles */
-        @media only screen and (min-width: 1001px) {
+        @media only screen and (min-width: 751px) {
 
             .btn {
                 background-color: #ca1515;
@@ -381,15 +381,15 @@
                 </div>
                 <div class="desktop-container">
                     <button id="iniciodesktop" class="btn">
-                        <i class="fas fa-desktop"></i> <span> Inicio/Login</span>
+                        <i class="fas fa-desktop"></i> <span> Conta</span>
                     </button>
                     <br>
                     <button id="meusdadosdesktop" class="btn">
-                        <i class="fas fa-user-edit"></i> <span> Meus Dados</span>
+                        <i class="fas fa-user-edit"></i> <span> Dados</span>
                     </button>
                     <br>
                     <button id="buscapedidosdesktop" class="btn">
-                        <i class="fas fa-clipboard-check"></i> <span> Meus Pedidos</span>
+                        <i class="fas fa-clipboard-check"></i> <span> Pedidos</span>
                     </button>
                     <br>
                     <button onclick="window.location.href='/sobre'" class="btn">
