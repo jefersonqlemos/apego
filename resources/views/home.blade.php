@@ -352,7 +352,7 @@
             <div class="col-6 col-md-4">
                 <div class="mobile-container">
                     <button id="iniciomobile" class="btn">
-                        <i class="fas fa-desktop"></i> <span>Conta</span>
+                        <i class="fas fa-desktop"></i>&nbsp &nbsp <span>Conta</span>
                     </button>
                     <br>
                     <button id="meusdadosmobile" class="btn">
