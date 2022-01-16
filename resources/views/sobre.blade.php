@@ -61,7 +61,7 @@
                                     <p>{{$informacoesempresa->sobreaempresa}}</p>
                                 </li>
                                 <li>
-                                    <h6><i class="fa fa-map-marker"></i> Endereço</h6>
+                                    <h6><i class="fa fa-map-marker"></i> Endereço (Matriz)</h6>
                                     <p>{{$informacoesempresa->endereco}}</p>
                                 </li>
                                 <li>

@@ -59,9 +59,7 @@
                                 <p>Se você comprou e recebeu um produto que não te serviu, ou não era da cor ou modelo que você queria, 
                                     você tem até <b>30 dias</b> corridos a partir do recebimento para realizar a troca</p>
                                 <p>Nosso prazo de garantia contra defeito de fabricação é de <b>90 dias</b> corridos após o recebimento do produto.</p>
-                                <p>Para realizar a troca, é necessario comparecer ao depósito Apego da sua cidade, abaixo esta 
-                                    a listagem do endereço dos depósitos de cada cidade.</p>
-                                <p><span class="icon_circle-slelected"></span> <b>Videira-SC</b> - Bairro Santa Tereza, Rua Arlindo de Mattos 239, APT 303.</p>
+                                <p>Para realizar a troca, é necessario comparecer ao depósito Apego da sua cidade, para saber o endereço busque na lista clicando <a href="{{url('/depositos')}}">aqui</a>.</p>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <h6>Politica de Privacidade</h6>

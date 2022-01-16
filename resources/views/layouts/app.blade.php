@@ -130,6 +130,7 @@
                                     <li><a href="{{ url('/sobre')}}">Contato</a></li>
                                     <li><a href="{{ url('/sobre')}}">Suporte</a></li>
                                     <li><a href="{{ url('/politica')}}">Politicas</a></li>
+                                    <li><a href="{{ url('/depositos')}}">Depósitos</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -258,6 +259,7 @@
                         <ul>
                             <li><a href="{{ url('/sobre') }}">Sobre/Suporte</a></li>
                             <li><a href="{{ url('/sobre')}}">Contato</a></li>
+                            <li><a href="{{ url('/sobre')}}">Depósitos</a></li>
                             <li><a href="{{ url('/politica')}}">Politicas de Troca</a></li>
                             <li><a href="{{ url('/politica')}}">Privacidade e Cookies</a></li>
                         </ul>

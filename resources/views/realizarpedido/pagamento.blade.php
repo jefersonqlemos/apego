@@ -37,6 +37,7 @@
                     $("#boleto").hide();
                     $("#cartaocredito").hide();
                     $("#cartaodebito").hide(); 
+                    
             });
 
             $('#bo').click(function(){
@@ -268,20 +269,20 @@
                     <div class="blog__sidebar">
                         <div class="blog__sidebar__item">
                             <div class="section-title">
-                                <h4>Forma de Pagamento</h4>
+                                <h4>Formas de Pagamento</h4>
                             </div>
                             <ul>
                                 @if($formasdepagamento->pagamentonaentrega > 0)
-                                    <li><a id="pe" href="#">Pagar na Entrega </a></li>
+                                    <li><a style="border-bottom: 2px groove red" id="pe" href="#"><b>Pagar e Retirar no Depósito </b></a></li>
                                 @endif
                                 @if($formasdepagamento->boleto > 0)
-                                    <li><a id="bo" href="#">Boleto Bancário </a></li>
+                                    <li><a style="border-bottom: 2px groove red" id="bo" href="#"><b>Boleto Bancário </b></a></li>
                                 @endif
                                 @if($formasdepagamento->cartaodecredito > 0)
-                                    <li><a id="cc" href="#">Cartão de Credito </a></li>
+                                    <li><a style="border-bottom: 2px groove red" id="cc" href="#"><b>Cartão de Credito </b></a></li>
                                 @endif
                                 @if($formasdepagamento->debitoonline > 0)
-                                    <li><a id="cd" href="#">Debito Online </a></li>
+                                    <li><a style="border-bottom: 2px groove red" id="cd" href="#"><b>Debito Online </b></a></li>
                                 @endif
                             </ul>
                             <form action="#" class="checkout__form">
@@ -307,9 +308,9 @@
                     <div class="blog__details__content">
                         <div class="blog__details__desc">
                             <br>
-                            <h5><b>PAGAR NA ENTREGA</b></h5>
+                            <h5><b>PAGAR E RETIRAR NO DEPÓSITO</b></h5>
                             <hr>
-                            <p><b>Pague na entrega no dinheiro, deposito ou transferencia Bancaria</b></p>
+                            <p><b>Busque o endereço do depósito da sua cidade clicando <a href="{{url('/depositos')}}" target="_blank">aqui</a>, retire no mesmo e pague no ato da entrega</b></p>
                         </div>
                         <form action="{{url('pagamentonaentrega')}}" method="post">
                             @csrf

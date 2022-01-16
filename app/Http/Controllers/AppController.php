@@ -87,5 +87,9 @@ class AppController extends Controller
      public function politica(){
         return view('politica');
      }
+
+     public function depositos(){
+        return view('depositos');
+     }
     
 }
