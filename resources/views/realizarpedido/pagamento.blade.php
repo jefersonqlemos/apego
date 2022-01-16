@@ -55,7 +55,7 @@
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#bo').attr('href', "#");
                     } else {
-                        $('#bo').attr('href', "#pagarentrega");
+                        $('#bo').attr('href', "#boleto");
                     }
             });
 
@@ -68,7 +68,7 @@
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#cc').attr('href', "#");
                     } else {
-                        $('#cc').attr('href', "#pagarentrega");
+                        $('#cc').attr('href', "#cartaocredito");
                     }
             });
 
@@ -81,7 +81,7 @@
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#cd').attr('href', "#");
                     } else {
-                        $('#cd').attr('href', "#pagarentrega");
+                        $('#cd').attr('href', "#cartaodebito");
                     }
             });
             
