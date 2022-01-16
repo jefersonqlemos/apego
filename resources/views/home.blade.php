@@ -12,16 +12,6 @@
 
     <style>
 
-        .btn {
-            background-color: #ca1515;
-            border: none;
-            width: 100%;
-            color: white;
-            padding: 20px 30px;
-            cursor: pointer;
-            display: block;
-        }
-
         .listaproduto{
             background-color: darkred; /* red background */
             border: 1px solid #ca1515; /* red border */
@@ -77,6 +67,17 @@
         
          /* Mobile Styles */
          @media only screen and (max-width: 1000px) {
+
+            .btn {
+                background-color: #ca1515;
+                border: none;
+                width: 200%;
+                color: white;
+                padding: 20px 30px;
+                cursor: pointer;
+                display: block;
+            }
+
             .mobile-container{
                 display: block;
             }
@@ -87,6 +88,17 @@
 
         /* Desktop Styles */
         @media only screen and (min-width: 1001px) {
+
+            .btn {
+                background-color: #ca1515;
+                border: none;
+                width: 100%;
+                color: white;
+                padding: 20px 30px;
+                cursor: pointer;
+                display: block;
+            }
+
             .mobile-container{
                 display: none;
             }
@@ -352,7 +364,7 @@
             <div class="col-6 col-md-4">
                 <div class="mobile-container">
                     <button id="iniciomobile" class="btn">
-                        <i class="fas fa-desktop"></i>&nbsp &nbsp <span>Conta</span>
+                        <i class="fas fa-desktop"></i> <span>Conta</span>
                     </button>
                     <br>
                     <button id="meusdadosmobile" class="btn">
