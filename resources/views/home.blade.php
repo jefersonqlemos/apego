@@ -188,7 +188,7 @@
                             $("#meuspedidos").html("<br><div class=\"checkout__form\"><h5>Lista de Pedidos</h5></div>");
                             for(var i=0;i<Object.keys(data).length;i++){
                                 //console.log(data[i].idpedidos);
-                                $("#meuspedidos").append("<br><form action=\"{{url('comprados')}}/"+data[i].idpedidos+"\" method=\"get\"><button class=\"listaproduto\" type=\"submit\">Pedido ID: <b>"+data[i].idpedidos+"</b>&nbsp &nbsp Data: "+data[i].created_at+"</button></form>");
+                                $("#meuspedidos").append("<br><form action=\"{{url('comprados')}}/"+data[i].idpedidos+"\" method=\"get\"><button class=\"listaproduto\" type=\"submit\">Pedido ID: <b>"+data[i].idpedidos+"</b>&nbsp &nbsp Data: "+data[i].created_at.substring(0, 10)+"&nbsp &nbsp <i class=\"far fa-hand-pointer\"></i></button></form>");
                             }
                         }
                     });
@@ -208,7 +208,7 @@
                             $("#meuspedidos").html("<br><div class=\"checkout__form\"><h5>Lista de Pedidos</h5></div>");
                             for(var i=0;i<Object.keys(data).length;i++){
                                 //console.log(data[i].idpedidos);
-                                $("#meuspedidos").append("<br><form action=\"{{url('comprados')}}/"+data[i].idpedidos+"\" method=\"get\"><button class=\"listaproduto\" type=\"submit\">Pedido ID: <b>"+data[i].idpedidos+"</b>&nbsp &nbsp Data: "+data[i].created_at+"</button></form>");
+                                $("#meuspedidos").append("<br><form action=\"{{url('comprados')}}/"+data[i].idpedidos+"\" method=\"get\"><button class=\"listaproduto\" type=\"submit\">Pedido ID: <b>"+data[i].idpedidos+"</b>&nbsp &nbsp Data: "+data[i].created_at.substring(0, 10)+"&nbsp &nbsp <i class=\"far fa-hand-pointer\"></i></button></form>");
                             }
                         }
                     });
@@ -352,19 +352,19 @@
             <div class="col-6 col-md-4">
                 <div class="mobile-container">
                     <button id="iniciomobile" class="btn">
-                        <i class="fas fa-desktop"></i> <span></span>
+                        <i class="fas fa-desktop"></i> <span>Conta</span>
                     </button>
                     <br>
                     <button id="meusdadosmobile" class="btn">
-                        <i class="fas fa-user-edit"></i> <span></span>
+                        <i class="fas fa-user-edit"></i> <span>Dados</span>
                     </button>
                     <br>
                     <button id="buscapedidosmobile" class="btn">
-                        <i class="fas fa-clipboard-check"></i> <span></span>
+                        <i class="fas fa-clipboard-check"></i> <span>Pedidos</span>
                     </button>
                     <br>
                     <button onclick="window.location.href='/sobre'" class="btn">
-                        <i class="fas fa-headset"></i> <span></span>
+                        <i class="fas fa-headset"></i> <span>Suporte</span>
                     </button>
                 </div>
                 <div class="desktop-container">

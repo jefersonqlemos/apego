@@ -129,7 +129,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Produto Comprado</th>
+                                    <th>Produtos Comprados</th>
                                     <th>Valor</th>
                                     <th>Qty</th>
                                 </tr>
