@@ -83,4 +83,9 @@ class AppController extends Controller
         Cookie::queue('cookieCidade', "Videira", 6000);
         return response()->json(['success'=>'Got Simple Ajax Request.']);
      }
+
+     public function politica(){
+        return view('politica');
+     }
+    
 }

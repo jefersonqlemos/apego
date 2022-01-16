@@ -376,7 +376,7 @@
                     </button>
                     <br>
                     <button onclick="window.location.href='/sobre'" class="btn">
-                        <i class="fas fa-headset"></i> <span>Suporte</span>
+                        <i class="fas fa-headset"></i> <span>Trocas</span>
                     </button>
                 </div>
                 <div class="desktop-container">
@@ -392,8 +392,8 @@
                         <i class="fas fa-clipboard-check"></i> <span> Pedidos</span>
                     </button>
                     <br>
-                    <button onclick="window.location.href='/sobre'" class="btn">
-                        <i class="fas fa-headset"></i> <span> Suporte</span>
+                    <button onclick="window.location.href='/politica'" class="btn">
+                        <i class="fas fa-headset"></i> <span>Trocas</span>
                     </button>
                 </div>  
             </div>
