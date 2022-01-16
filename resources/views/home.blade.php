@@ -176,7 +176,7 @@
 
         html {
             scroll-behavior: smooth;
-        }l
+        }
 
     </style>
 
