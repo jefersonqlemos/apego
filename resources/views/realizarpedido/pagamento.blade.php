@@ -37,6 +37,12 @@
                     $("#boleto").hide();
                     $("#cartaocredito").hide();
                     $("#cartaodebito").hide(); 
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        $('#pe').attr('href', "#");
+                    } else {
+                        $('#pe').attr('href', "#pagarentrega");
+                    }
                     
             });
 
@@ -45,6 +51,12 @@
                     $("#boleto").show();
                     $("#cartaocredito").hide();
                     $("#cartaodebito").hide(); 
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        $('#bo').attr('href', "#");
+                    } else {
+                        $('#bo').attr('href', "#pagarentrega");
+                    }
             });
 
             $('#cc').click(function(){
@@ -52,6 +64,12 @@
                     $("#boleto").hide();
                     $("#cartaocredito").show();
                     $("#cartaodebito").hide(); 
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        $('#cc').attr('href', "#");
+                    } else {
+                        $('#cc').attr('href', "#pagarentrega");
+                    }
             });
 
             $('#cd').click(function(){
@@ -59,6 +77,12 @@
                     $("#boleto").hide();
                     $("#cartaocredito").hide();
                     $("#cartaodebito").show(); 
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        $('#cd').attr('href', "#");
+                    } else {
+                        $('#cd').attr('href', "#pagarentrega");
+                    }
             });
             
             if({{$formasdepagamento->cartaodecredito}}==0 && {{$formasdepagamento->boleto}}==0 && {{$formasdepagamento->debitoonline}}==0 && {{$formasdepagamento->pagamentonaentrega}}==0){
@@ -224,6 +248,10 @@
 
         .bank{
             margin: 20px; 
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
     </style>
