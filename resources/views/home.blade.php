@@ -174,6 +174,9 @@
 
         .modal-body {padding: 2px 16px;}
 
+        html {
+            scroll-behavior: smooth;
+        }
 
     </style>
 
