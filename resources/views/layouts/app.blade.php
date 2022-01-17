@@ -259,7 +259,7 @@
                         <ul>
                             <li><a href="{{ url('/sobre') }}">Sobre/Suporte</a></li>
                             <li><a href="{{ url('/sobre')}}">Contato</a></li>
-                            <li><a href="{{ url('/sobre')}}">Depósitos</a></li>
+                            <li><a href="{{ url('/depositos')}}">Depósitos</a></li>
                             <li><a href="{{ url('/politica')}}">Politicas de Troca</a></li>
                             <li><a href="{{ url('/politica')}}">Privacidade e Cookies</a></li>
                         </ul>
@@ -310,7 +310,7 @@
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
                 <form action="{{ url('search')}}" class="search-model-form">
-                    <input type="text" name="search" id="search-input" placeholder="Pesquisar....."><button type="submit"><i class="fa fa-search"></i></button>
+                    <input type="text" name="search" id="search-input" placeholder="Pesquisar....."><button type="submit" style="border: none; background-color: #ffffff;"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </div>
