@@ -38,6 +38,7 @@ Route::post('resposta/{id}', 'SuporteController@resposta');
 Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 Route::resource('fotos', 'FotoController');
+Route::get('cadastrarvariantetamanho/{variante}', 'VariantesController@cadastrarVarianteTamanho');
 
 Route::get('produtosvendidos', 'FiltragemProdutoController@filtragemProdutoVendido');
 Route::get('produtosemestoque', 'FiltragemProdutoController@filtragemProdutoEmEstoque');

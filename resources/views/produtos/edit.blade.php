@@ -125,6 +125,9 @@
 
             <form id="formproduto" action="/produtos/{{$produto->idprodutos}}" method="post">
 
+                <label for="variante_tamanho">Variante de Tamanho:</label><br>
+                <input disabled="disabled" class="variante_tamanho" name="variante_tamanho" required type="text" value="{{$produto->variante_tamanho}}"><br><br>
+
                 <label for="nome">Nome:</label><br>
                 <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
 

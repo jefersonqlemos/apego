@@ -83,6 +83,8 @@ class ProdutoController extends Controller
                 if($isFirst){
                     $produto->foto = $fototemp;
                     $produto->save();
+                    $produto->variante_tamanho = $produto->idprodutos;
+                    $produto->save();
                     $isFirst = false;
                 }
                 

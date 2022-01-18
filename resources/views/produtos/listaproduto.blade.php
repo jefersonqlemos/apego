@@ -111,6 +111,8 @@
       <th scope="col">Nome</th>
       <th scope="col">Preço</th>
       <th scope="col">Quantidade</th>
+      <th scope="col">Tamanho ID</th>
+      <th scope="col">Cadastrar Variante</th>
       <th scope="col">Visualizar</th>
       <th scope="col">Editar</th>
     </tr>
@@ -126,6 +128,15 @@
             @else
                 <td><b>Sem Estoque</b></td>    
             @endif
+            <td>{{$produto->tamanhos_idtamanhos}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/cadastrarvariantetamanho/{{$produto->variante_tamanho}}'">
+                    Cadastrar Variante
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
+                    </svg>
+                </button>
+            </td>
             <td>
                 <a href="/produtos/{{$produto->idprodutos}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
