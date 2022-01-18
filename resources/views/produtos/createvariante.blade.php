@@ -95,7 +95,7 @@
     <form id="formsubmit" action="/storevariantetamanho" method="post" enctype="multipart/form-data">
 
         <label for="variante_tamanho">Variante de Tamanho:</label><br>
-        <input disabled="disabled" class="variante_tamanho" name="variante_tamanho" required type="text" value="{{$produto->variante_tamanho}}"><br><br>
+        <input disabled="readonly" class="variante_tamanho" name="variante_tamanho" required type="text" value="{{$produto->variante_tamanho}}"><br><br>
 
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
