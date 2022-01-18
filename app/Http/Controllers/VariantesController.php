@@ -30,7 +30,7 @@ class VariantesController extends Controller
         return view('produtos/createvariante')->with(compact('categorias', 'fotos', 'tamanhos', 'produto'));
     }
 
-    public function storeVarianteTamanho($request)
+    public function storeVarianteTamanho(Request $request)
     {
         $produto = new Produto;
         $produto->nome = $request->nome;
