@@ -148,7 +148,7 @@
                 </select>
         <br><br>
         
-        <input type="hidden" name="fotoproduto" value="{{$produto->fotos}}">
+        <input type="text" name="fotoproduto" value="{{$produto->foto}}">
         @csrf
     </form>
 
