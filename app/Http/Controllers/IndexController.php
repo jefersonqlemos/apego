@@ -29,7 +29,7 @@ class IndexController extends Controller
         //
         $query = "CAST(preco AS DECIMAL(10,2)) ASC";
 
-        $produtos = Produto::where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->distinct('variante_tamanho')->take(8)->get();
+        $produtos = Produto::where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
         $ultimosavaliados = Produto::where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->take(3)->get();
         $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->take(3)->get();
         $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->take(3)->get();
