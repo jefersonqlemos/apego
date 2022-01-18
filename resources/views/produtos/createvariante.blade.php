@@ -92,7 +92,7 @@
 
             <br><br><br>
 
-    <form id="formsubmit" action="/produtos" method="post" enctype="multipart/form-data">
+    <form id="formsubmit" action="/storevariantetamanho" method="post" enctype="multipart/form-data">
 
         <label for="variante_tamanho">Variante de Tamanho:</label><br>
         <input disabled="disabled" class="variante_tamanho" name="variante_tamanho" required type="text" value="{{$produto->variante_tamanho}}"><br><br>
@@ -100,7 +100,7 @@
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
 
-        <label for="tamanho">Tamanho</label><br>
+        <label style="color:red" for="tamanho">Tamanho:</label><br>
         <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
             @foreach($tamanhos as $tamanho)
                 <option value="{{$tamanho->idtamanhos}}">{{$tamanho->tamanho}}</option>
@@ -108,7 +108,7 @@
         </select>
         <br><br>
 
-        <label for="quantidade">Quantidade:</label><br>
+        <label style="color:red" for="quantidade">Quantidade:</label><br>
         <input class="quantidade" name="quantidade" required type="text" ><br><br>
 
         <label for="preco">Preço:</label><br>
@@ -148,17 +148,22 @@
                 </select>
         <br><br>
         
-        <input id="files" type="file" name="files[]">
+        <input type="hidden" name="fotoproduto" value="{{$produto->fotos}}">
         @csrf
     </form>
 
     <div id="output"></div>
 
-    <button id="open_btn" class="btn btn-primary">Adicionar Fotos</button>
+    @foreach($fotos as $foto)
+
+        <img src="{{$foto->fotos}}"  alt="Preview">
+
+        <br>
+    @endforeach
 
     <br><hr>
         
-            <input form="formsubmit" id="salvar" type="submit" value="Salvar">
+        <input form="formsubmit" id="salvar" type="submit" value="Salvar">
         
     </div>
 

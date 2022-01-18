@@ -39,6 +39,7 @@ Route::resource('produtos', 'ProdutoController');
 Route::resource('pedidos', 'PedidoController');
 Route::resource('fotos', 'FotoController');
 Route::get('cadastrarvariantetamanho/{variante}', 'VariantesController@cadastrarVarianteTamanho');
+Route::post('storevariantetamanho', 'VariantesController@storeVarianteTamanho');
 
 Route::get('produtosvendidos', 'FiltragemProdutoController@filtragemProdutoVendido');
 Route::get('produtosemestoque', 'FiltragemProdutoController@filtragemProdutoEmEstoque');
