@@ -44,6 +44,7 @@ class VariantesController extends Controller
         $produto->foto = $request->fotoproduto;
         $produto->variante_tamanho = $request->variante_tamanho;
         $produto->save();
+        //
 
         return redirect('produtos');
     }
