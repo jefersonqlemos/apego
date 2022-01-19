@@ -70,6 +70,10 @@ class AppController extends Controller
             'distinct' => true
         ])->paginate(9);
         
+        $produtos = Produto::search($request->search, [
+            'distinct' => true
+        ])->paginate(9);  
+
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));
