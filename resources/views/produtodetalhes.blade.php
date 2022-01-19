@@ -112,10 +112,19 @@
                                 <li>
                                     <span>Tamanho:</span>
                                     <div class="size__btn">
-                                        <label for="xs-btn" class="active">
-                                            <input type="radio" id="xs-btn">
-                                            {{$tamanho->tamanho}}
-                                        </label>
+                                        @foreach($variantes as $variante)
+                                            @if($tamanho->idtamanhos == $variante->tamanhos_idtamanhos)
+                                                <label for="$tamanho->idtamanhos" class="active">
+                                                    <input type="radio" id="$tamanho->idtamanhos">
+                                                    {{$tamanho->tamanho}}
+                                                </label>
+                                            @else
+                                                <label for="{{$variante->idprodutos}}">
+                                                    <input type="radio" id="{{$variante->idprodutos}}">
+                                                    <a style="color: inherit;text-decoration: inherit;" href="{{url('verproduto/'.$variante->idprodutos)}}" target="_blank">{{$variante->tamanhos_idtamanhos}}</a>
+                                                </label>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </li>
                                 <li>

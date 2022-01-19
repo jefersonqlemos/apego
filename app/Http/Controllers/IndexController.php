@@ -48,10 +48,12 @@ class IndexController extends Controller
     public function verProduto($id){
 
         $produto = Produto::find($id);
+        $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->get();
         $genero = Genero::find($produto->generos_idgeneros);
         $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
         $fotos = Foto::where('produtos_idprodutos', $id)->get();
-        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho'));
+        //dd($variantes);
+        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes'));
     }
 
     public function emailNotificacao(Request $request){
