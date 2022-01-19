@@ -46,9 +46,8 @@ class IndexController extends Controller
     }
 
     public function verProduto($id){
-
         $produto = Produto::find($id);
-        $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->get();
+        $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
         $genero = Genero::find($produto->generos_idgeneros);
         $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
         $fotos = Foto::where('produtos_idprodutos', $produto->variante_tamanho)->get();

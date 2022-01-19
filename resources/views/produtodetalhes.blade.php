@@ -121,7 +121,7 @@
                                             @else
                                                 <label for="{{$variante->idprodutos}}">
                                                     <input type="radio" id="{{$variante->idprodutos}}">
-                                                    <a style="color: inherit;text-decoration: inherit;" href="{{url('verproduto/'.$variante->idprodutos)}}">{{$variante->tamanhos_idtamanhos}}</a>
+                                                    <a style="color: inherit;text-decoration: inherit;" href="{{url('verproduto/'.$variante->idprodutos)}}">{{$variante->tamanho}}</a>
                                                 </label>
                                             @endif
                                         @endforeach
