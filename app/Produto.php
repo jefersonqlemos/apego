@@ -20,7 +20,8 @@ class Produto extends Model
         $array = $this->toArray();
 
         $array =  [
-            'nome' => $this->nome
+            'nome' => $this->nome,
+            'variante_tamanho' => $this->variante_tamanho,
         ];
 
         return $array;
