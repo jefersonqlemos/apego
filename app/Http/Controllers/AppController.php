@@ -67,6 +67,7 @@ class AppController extends Controller
     public function search(Request $request)
     {
         $produtos = Produto::search($request->search)->paginate(9);
+        //
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias'));

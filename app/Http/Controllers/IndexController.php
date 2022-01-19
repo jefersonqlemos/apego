@@ -39,7 +39,6 @@ class IndexController extends Controller
         $numeroitemsacessorios = Produto::where("categorias_idcategorias", 19)->count();
         $informacoeslayout = Informacoeslayout::find(1);
 
-        //dd($numeroitemsmasculino);
         return view('index')->with(compact('produtos', 'ultimosavaliados', 'numeroitemsmasculino', 
         'numeroitemscalcados', 'numeroitemsinfantil', 'numeroitemsacessorios', 'ultimosvendidos', 'maisbaratos', 'informacoeslayout'));
 

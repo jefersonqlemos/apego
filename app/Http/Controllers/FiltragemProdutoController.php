@@ -19,7 +19,6 @@ class FiltragemProdutoController extends Controller
     {
         //
         $produtos = Produto::where('quantidade', '<', 1)->orderBy('idprodutos', 'desc')->simplePaginate(15);
-        //dd($produtos);
         return view('produtos/listaproduto')->with('produtos', $produtos);
 
     }
@@ -28,7 +27,6 @@ class FiltragemProdutoController extends Controller
     {
         //
         $produtos = Produto::where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->simplePaginate(15);
-        //dd($produtos);
         return view('produtos/listaproduto')->with('produtos', $produtos);
     }
 
