@@ -72,7 +72,7 @@
                             @if($produto->quantidade != 0)
                                 Produto em Estoque ({{$produto->quantidade}})
                             @else
-                                Produto Fora do Estoque
+                                Produto Fora do Estoquekmokoiokokokokokjjihbjhbjhbnm
                             @endif
                             </span></h3>
                         
