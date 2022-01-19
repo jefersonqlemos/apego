@@ -51,7 +51,7 @@ class IndexController extends Controller
         $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->get();
         $genero = Genero::find($produto->generos_idgeneros);
         $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
-        $fotos = Foto::where('produtos_idprodutos', $id)->get();
+        $fotos = Foto::where('produtos_idprodutos', $produto->variante_tamanho)->get();
         //dd($variantes);
         return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes'));
     }
