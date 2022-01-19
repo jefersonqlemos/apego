@@ -67,6 +67,7 @@ class AppController extends Controller
     public function search(Request $request)
     {
         $produtos = Produto::search($request->search, [
+            'attributeForDistinct' => 'variante_tamanho',
             'distinct' => true
         ])->paginate(9);
         
