@@ -4,17 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Laravel\Scout\Searchable;
+//use Laravel\Scout\Searchable;
 
 class Pedido extends Model
 {
     //
 
-    use Searchable;
+    //use Searchable;
 
     protected $primaryKey = 'idpedidos';
 
-    public function toSearchableArray()
+    /*public function toSearchableArray()
     {
         $array = $this->toArray();
 
@@ -23,5 +23,5 @@ class Pedido extends Model
         ];
 
         return $array;
-    }
+    }*/
 }
