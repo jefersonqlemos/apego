@@ -58,11 +58,6 @@ class AppController extends Controller
 
     public function sobre()
     {
-
-        /*$sobre = Storage::disk('public')->get('sobre.json');
-        $sobre = json_decode($sobre);
-        $sobre = decrypt($sobre->data);
-        $sobre = json_decode($sobre);*/
         
         $informacoesempresa = Informacoesempresa::find(1);
 
