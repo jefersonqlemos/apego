@@ -61,7 +61,7 @@
                                     <th>Tamanho</th>
                                     <th>Quantidade</th>
                                     <th>Valor</th>
-                                    <th></th>
+                                    <th></th>adasfasfsafsafsafasfasfsafasfasfasfasfasfsafsafasf
                                 </tr>
                             </thead>
                             <tbody>
