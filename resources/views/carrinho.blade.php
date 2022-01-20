@@ -60,7 +60,7 @@
                                     <th>Produto</th>
                                     <th>Tamanho</th>
                                     <th>Quantidade</th>
-                                    <th>Valor</th>
+                                    <th>Valor/Un.</th>
                                     <th></th>
                                 </tr>
                             </thead>
