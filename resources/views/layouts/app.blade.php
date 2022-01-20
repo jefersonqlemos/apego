@@ -233,7 +233,7 @@
     </div>
     <!-- Instagram End -->
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
      crossorigin="anonymous"></script>
 
     <!-- anuncio -->
