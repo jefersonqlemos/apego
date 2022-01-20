@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="keywords" content="O seu delivery de vestuário e acessórios" />
+
     <title>Apego</title>
 
     <!-- Scripts -->
