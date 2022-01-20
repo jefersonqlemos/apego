@@ -8,6 +8,8 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 use App\Produto;
 
+use App\Tamanho;
+
 class CarrinhoController extends Controller
 {
     //
@@ -28,8 +30,9 @@ class CarrinhoController extends Controller
         
         if($aa->count() == 0){
             $produto = Produto::find($id);
+            $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
             $preco=str_replace(',','.', $produto->preco);
-            Cart::add($id, $produto->nome, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade]);
+            Cart::add($id, $produto->nome, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
         }else{
             foreach($aa as $a){
                 //Cart::remove($a->rowId);
@@ -52,8 +55,9 @@ class CarrinhoController extends Controller
         
         if($aa->count() == 0){
             $produto = Produto::find($id);
+            $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
             $preco=str_replace(',','.', $produto->preco);
-            Cart::add($id, $produto->nome, 1, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade]);
+            Cart::add($id, $produto->nome, 1, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
         }
         
         return redirect('carrinho');
