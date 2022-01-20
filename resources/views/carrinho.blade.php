@@ -73,7 +73,7 @@
                                             <td class="cart__product__item">
                                                 <img src="{{$produto->options->foto}}" alt="">
                                                 <div class="cart__product__item__title">
-                                                    <h6><a href="{{url('verproduto/'.$produto->id)}}">{{$produto->name}}</a></h6>
+                                                    <h6><a href="{{url('verproduto/'.$produto->id)}}" style="color:#ca1515">{{$produto->name}}</a></h6>
                                                 </div>
                                             </td>
                                             <td class="cart__price">{{$produto->options->tamanho}}</td>
