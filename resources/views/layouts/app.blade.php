@@ -233,6 +233,20 @@
     </div>
     <!-- Instagram End -->
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
+     crossorigin="anonymous"></script>
+
+    <!-- anuncio -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2416299294062049"
+        data-ad-slot="4225332267"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
@@ -329,23 +343,10 @@
     <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
-     crossorigin="anonymous"></script>
-
     <script src="//code.jivosite.com/widget/ufWbPE819m" async></script>
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8F82TYVBQ"></script>
-    <script async src="https://pagead2.googlesyndication.com/
-    pagead/js/adsbygoogle.js"></script>
-    <!-- leaderboard -->
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:728px;height:90px"
-        data-ad-client="ca-pub-2416299294062049"
-        data-ad-slot="1234567890"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
     <script>
       window.dataLayer = window.dataLayer || [];
