@@ -175,10 +175,6 @@
 
     
         @yield('content')
-    
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
-     crossorigin="anonymous"></script>
 
     <!-- Instagram Begin -->
     <div class="instagram">
@@ -332,6 +328,9 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
+     crossorigin="anonymous"></script>
 
     <script src="//code.jivosite.com/widget/ufWbPE819m" async></script>
     
