@@ -176,6 +176,20 @@
     
         @yield('content')
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
+     crossorigin="anonymous"></script>
+
+    <!-- anuncio -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2416299294062049"
+        data-ad-slot="4225332267"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
     <!-- Instagram Begin -->
     <div class="instagram">
         <div class="container-fluid">
@@ -232,20 +246,6 @@
         </div>
     </div>
     <!-- Instagram End -->
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
-     crossorigin="anonymous"></script>
-
-    <!-- anuncio -->
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-2416299294062049"
-        data-ad-slot="4225332267"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer">
