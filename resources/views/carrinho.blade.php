@@ -76,7 +76,7 @@
                                                     <h6><a href="{{url('verproduto/'.$produto->id)}}" style="color:#ca1515">{{$produto->name}}</a></h6>
                                                 </div>
                                             </td>
-                                            <td class="cart__price">{{$produto->options->tamanho}}</td>
+                                            <td class="cart__price">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$produto->options->tamanho}}</td>
                                             <td class="cart__quantity">                                          
                                                 <div class="pro-qty">                                                  
                                                     @if($produto->qty > 0)
