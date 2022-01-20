@@ -177,6 +177,9 @@
         @yield('content')
     
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2416299294062049"
+     crossorigin="anonymous"></script>
+
     <!-- Instagram Begin -->
     <div class="instagram">
         <div class="container-fluid">
