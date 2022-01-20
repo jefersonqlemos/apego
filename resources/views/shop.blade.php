@@ -25,6 +25,12 @@
             document.getElementById("lishopping").className = "active";
         }
 
+        if (window.matchMedia("(min-width: 768px)").matches) {
+                        
+        } else {
+            location.href = "#lista";
+        }
+
         function tamanhoFiltragem() {
             var radios = document.getElementsByName('tamanho');
 
@@ -47,6 +53,12 @@
         }
             
     </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 
 </head>
 
@@ -171,7 +183,7 @@
                                 data-min="0" data-max="300"></div>
                                 <div class="range-slider">
                                     <div class="price-input">
-                                        <p>Price:</p>
+                                        <p>Valor:</p>
                                         <input type="text" id="minamount">
                                         <input type="text" id="maxamount">
                                     </div>
@@ -209,10 +221,57 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="sidebar__sizes">
+                            <div class="section-title">
+                                <h4>Buscar por Marca</h4>
+                            </div>
+                            <div class="size__list">
+                                <label for="apego">
+                                    Apego
+                                    <input type="checkbox" id="apego">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="burberry">
+                                    Burberry
+                                    <input type="checkbox" id="burberry">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="calvinklein">
+                                    Calvin Klein
+                                    <input type="checkbox" id="calvinklein">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="chanel">
+                                    Chanel
+                                    <input type="checkbox" id="chanel">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="docthos">
+                                    Docthos
+                                    <input type="checkbox" id="docthos">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="gucci">
+                                    Gucci
+                                    <input type="checkbox" id="gucci">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="hering">
+                                    Hering
+                                    <input type="checkbox" id="hering">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="valentino">
+                                    Valentino
+                                    <input type="checkbox" id="valentino">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-9 col-md-9">
+                <div id="lista" class="col-lg-9 col-md-9">
                     <div class="row">
 
                     @foreach($produtos as $produto)
