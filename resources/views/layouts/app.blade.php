@@ -341,7 +341,7 @@
     <!-- leaderboard -->
     <ins class="adsbygoogle"
         style="display:inline-block;width:728px;height:90px"
-        data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+        data-ad-client="ca-pub-2416299294062049"
         data-ad-slot="1234567890"></ins>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
