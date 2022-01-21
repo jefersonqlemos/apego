@@ -104,28 +104,28 @@
         </div>
         <div class="row property__gallery">
             @foreach($produtos as $produto)
-            <div class="col-lg-3 col-md-4 col-sm-6 mix">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="{{$produto->foto}}">
-                        <ul class="product__hover">
-                            <li><a href="{{$produto->foto}}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                            <li><a href="{{url('verproduto/'.$produto->idprodutos)}}"><span class="icon_search-2"></span></a></li>
-                            <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_cart_alt"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="{{url('verproduto/'.$produto->idprodutos)}}">{{$produto->nome}}</a></h6>
-                        <div class="rating">
-                        @if($produto->avaliacao != null)
-                            @for ($i = 0; $i <$produto->avaliacao ; $i++)
-                                <i class="fa fa-star"></i>
-                            @endfor
-                        @endif
+                <div class="col-lg-3 col-md-4 col-sm-6 mix">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="{{$produto->foto}}">
+                            <ul class="product__hover">
+                                <li><a href="{{$produto->foto}}" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                <li><a href="{{url('verproduto/'.$produto->idprodutos)}}"><span class="icon_search-2"></span></a></li>
+                                <li><a href="{{url('adicaorapida/'.$produto->idprodutos)}}"><span class="icon_cart_alt"></span></a></li>
+                            </ul>
                         </div>
-                        <div class="product__price">R$ {{$produto->preco}}</div>
+                        <div class="product__item__text">
+                            <h6><a href="{{url('verproduto/'.$produto->idprodutos)}}">{{$produto->nome}} {{$produto->marca}}</a></h6>
+                            <div class="rating">
+                            @if($produto->avaliacao != null)
+                                @for ($i = 0; $i <$produto->avaliacao ; $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+                            @endif
+                            </div>
+                            <div class="product__price">R$ {{$produto->preco}}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -174,7 +174,7 @@
                             <img src="{{$produto->foto}}" alt="">
                         </div>
                         <div class="trend__item__text">
-                            <h6>{{$produto->nome}}</h6>
+                            <h6>{{$produto->nome}} {{$produto->marca}}</h6>
                             <div class="rating">
                                 @if($produto->avaliacao != null)
                                     @for ($i = 0; $i <$produto->avaliacao ; $i++)
@@ -199,7 +199,7 @@
                             <img src="{{$produto->foto}}" alt="">
                         </div>
                         <div class="trend__item__text">
-                            <h6>{{$produto->nome}}</h6>
+                            <h6>{{$produto->nome}} {{$produto->marca}}</h6>
                             <div class="rating">
                                 @if($produto->avaliacao != null)
                                     @for ($i = 0; $i <$produto->avaliacao ; $i++)
@@ -224,7 +224,7 @@
                             <img src="{{$produto->foto}}" alt="">
                         </div>
                         <div class="trend__item__text">
-                            <h6>{{$produto->nome}}</h6>
+                            <h6>{{$produto->nome}} {{$produto->marca}}</h6>
                             <div class="rating">
                                 @if($produto->avaliacao != null)
                                     @for ($i = 0; $i <$produto->avaliacao ; $i++)

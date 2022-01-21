@@ -20,6 +20,10 @@ use App\Comprado;
 
 use App\Statu;
 
+use App\Marca;
+
+use App\Tamanho;
+
 use App\Pagseguro;
 
 class PagseguroController extends Controller
@@ -138,9 +142,11 @@ class PagseguroController extends Controller
             $i++;
             
 			$item = Produto::find($produto->id);
+			$marca = Marca::find($item->marcas_idmarcas);
+			$tamanho = Tamanho::find($item->tamanhos_idtamanhos);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' '.$marca->marca.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
@@ -149,7 +155,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->brevedescricao;
+            $data['itemDescription'.$i] = $item->nome.' '.$marca->marca.' '.$tamanho->tamanho;
             $data['itemAmount'.$i] = $preco;
 
         }
@@ -320,9 +326,11 @@ class PagseguroController extends Controller
 			$i++;
 			
 			$item = Produto::find($produto->id);
+			$marca = Marca::find($item->marcas_idmarcas);
+			$tamanho = Tamanho::find($item->tamanhos_idtamanhos);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' '.$marca->marca.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
@@ -331,7 +339,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->brevedescricao;
+            $data['itemDescription'.$i] = $item->nome.' '.$marca->marca.' '.$tamanho->tamanho;
             $data['itemAmount'.$i] = $preco;
 
         }
@@ -486,9 +494,11 @@ class PagseguroController extends Controller
             $i++;
             
 			$item = Produto::find($produto->id);
+			$marca = Marca::find($item->marcas_idmarcas);
+			$tamanho = Tamanho::find($item->tamanhos_idtamanhos);
 			
 			if($item->quantidade==0){
-				$message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
+				$message = 'Que pena o produto '.$item->nome.' '.$marca->marca.' de R$ '.$item->preco.' foi vendido todos agora mesmo, infelizmente não tem mais em nosso estoque';
 				return redirect('carrinho')->with('message', $message);
 			}
 
@@ -497,7 +507,7 @@ class PagseguroController extends Controller
 
             $data['itemId'.$i] = "".$item->idprodutos;
             $data['itemQuantity'.$i] = $produto->qty.""; //pega do carrinho quantidade
-            $data['itemDescription'.$i] = $item->brevedescricao;
+            $data['itemDescription'.$i] = $item->nome.' '.$marca->marca.' '.$tamanho->tamanho;
             $data['itemAmount'.$i] = $preco;
 
         }

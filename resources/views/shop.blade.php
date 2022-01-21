@@ -25,11 +25,11 @@
             document.getElementById("lishopping").className = "active";
         }
 
-        if (window.matchMedia("(min-width: 768px)").matches) {
-                        
+        /*if (window.matchMedia("(min-width: 768px)").matches) {
+                          
         } else {
             location.href = "#lista";
-        }
+        }*/
 
         function tamanhoFiltragem() {
             var radios = document.getElementsByName('tamanho');
@@ -54,11 +54,35 @@
             
     </script>
 
-    <style>
+    <!--<style>
         html {
             scroll-behavior: smooth;
         }
-    </style>
+
+        @media only screen and (min-width: 768px) {
+            .floate{
+                display:none;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .floate{
+                display:show;
+                position:fixed;
+                width:60px;
+                height:60px;
+                bottom:40px;
+                left:40px;
+                background-color:red;
+                color:#FFF;
+                border-radius:50px;
+                text-align:center;
+                box-shadow: 2px 2px 3px #999;
+            }
+        }
+        
+
+    </style>-->
 
 </head>
 
@@ -82,6 +106,10 @@
         </div>
     </div>
     <!-- Breadcrumb End -->
+
+    <!--<a href="#" class="floate">
+        <i class="fa fa-hand-o-down"></i>
+    </a>-->
 
     <!-- Shop Section Begin -->
     <section class="shop spad">
@@ -226,46 +254,13 @@
                                 <h4>Buscar por Marca</h4>
                             </div>
                             <div class="size__list">
-                                <label for="apego">
-                                    Apego
-                                    <input type="checkbox" id="apego">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="burberry">
-                                    Burberry
-                                    <input type="checkbox" id="burberry">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="calvinklein">
-                                    Calvin Klein
-                                    <input type="checkbox" id="calvinklein">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="chanel">
-                                    Chanel
-                                    <input type="checkbox" id="chanel">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="docthos">
-                                    Docthos
-                                    <input type="checkbox" id="docthos">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="gucci">
-                                    Gucci
-                                    <input type="checkbox" id="gucci">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="hering">
-                                    Hering
-                                    <input type="checkbox" id="hering">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label for="valentino">
-                                    Valentino
-                                    <input type="checkbox" id="valentino">
-                                    <span class="checkmark"></span>
-                                </label>
+                                @foreach($marcas as $marca)
+                                    <label for="{{$marca->idmarcas}}">
+                                        {{$marca->marca}}
+                                        <input type="checkbox" id="{{$marca->idmarcas}}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -286,7 +281,7 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="{{url('verproduto/'.$produto->idprodutos)}}">{{$produto->nome}}</a></h6>
+                                    <h6><a href="{{url('verproduto/'.$produto->idprodutos)}}">{{$produto->nome}} {{$produto->marca}}</a></h6>
                                     <div class="rating">
                                     @if($produto->avaliacao != null)
                                         @for ($i = 0; $i <$produto->avaliacao ; $i++)

@@ -142,7 +142,7 @@
                                             <img src="{{$produto->foto}}" alt="">
                                         </a>
                                         <div class="cart__product__item__title">
-                                            <h4><b>{{$produto->nome}}</b></h4>
+                                            <h4><b><a style="color:#ca1515" href="{{url('/verproduto/'.$produto->idprodutos)}}">{{$produto->nome}} {{$produto->marca}} {{$produto->tamanho}}</a></b></h4>
                                         </div>
                                         @if($produto->avaliacao==null)
                                             <form id="formavaliacao" action="{{url('/avaliacao/'.$produto->idprodutos)}}" method="post">

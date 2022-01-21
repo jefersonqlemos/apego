@@ -18,6 +18,8 @@ use App\Comprado;
 
 use App\Statu;
 
+use App\Marca;
+
 //use Illuminate\Support\Facades\Storage;
 
 use App\Formasdepagamento;
@@ -84,8 +86,9 @@ class RealizarPedidoController extends Controller
             foreach($produtos as $produto){
 
                 $item = Produto::find($produto->id);
+                $marca = Marca::find($item->marcas_idmarcas);
                     if($item->quantidade==0){
-                        $message = 'Que pena o produto '.$item->nome.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
+                        $message = 'Que pena o produto '.$item->nome.' '.$marca->marca.' de R$ '.$item->preco.' foi vendido agora mesmo, infelizmente não esta mais em nosso estoque';
                         return redirect('carrinho')->with('message', $message);
                     }
 

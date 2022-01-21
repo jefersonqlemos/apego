@@ -16,6 +16,8 @@ use App\Email;
 
 use App\Suporte;
 
+use App\Marca;
+
 use App\Informacoeslayout;
 
 use Illuminate\Support\Facades\Http;
@@ -29,10 +31,10 @@ class IndexController extends Controller
         //
         $query = "CAST(preco AS DECIMAL(10,2)) ASC";
 
-        $produtos = Produto::where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
-        $ultimosavaliados = Produto::where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
-        $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
-        $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
+        $produtos = Produto::where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->join('marcas', 'produtos.marcas_idmarcas', '=', 'marcas.idmarcas')->take(8)->get();
+        $ultimosavaliados = Produto::where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->join('marcas', 'produtos.marcas_idmarcas', '=', 'marcas.idmarcas')->take(3)->get();
+        $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->join('marcas', 'produtos.marcas_idmarcas', '=', 'marcas.idmarcas')->take(3)->get();
+        $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->join('marcas', 'produtos.marcas_idmarcas', '=', 'marcas.idmarcas')->take(3)->get();
         $numeroitemsmasculino = Produto::where("generos_idgeneros", 1)->count();
         $numeroitemscalcados = Produto::where("categorias_idcategorias", 9)->count();
         $numeroitemsinfantil = Produto::where("generos_idgeneros", 4)->count();
@@ -47,10 +49,11 @@ class IndexController extends Controller
     public function verProduto($id){
         $produto = Produto::find($id);
         $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
+        $marca = Marca::find($produto->marcas_idmarcas);
         $genero = Genero::find($produto->generos_idgeneros);
         $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
         $fotos = Foto::where('produtos_idprodutos', $produto->variante_tamanho)->get();
-        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes'));
+        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes', 'marca'));
     }
 
     public function emailNotificacao(Request $request){
