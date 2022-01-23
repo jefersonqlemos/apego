@@ -67,6 +67,7 @@ Route::get('todascategorias/{id}', 'CategoriaController@todasCategorias');
 
 Route::get('buscaportamanho/{id}', 'BuscaController@buscaPorTamanho');
 Route::get('buscaporpreco/{vmenor}/{vmaior}', 'BuscaController@buscaPorPreco');
+Route::get('buscapormarca', 'BuscaController@buscaPorMarca');
 
 Route::get('verproduto/{id}', 'IndexController@verProduto');
 

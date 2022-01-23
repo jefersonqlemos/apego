@@ -36,4 +36,15 @@ class BuscaController extends Controller
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias', 'marcas'));
     }
+
+    public function buscaPorMarca(Request $request)
+    {
+
+        $produtos = Produto::whereIn('marcas_idmarcas', $request->checkbox)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        $tamanhos = Tamanho::all();
+        return view('shop')->with(compact('produtos', 'tamanhos', 'categorias', 'marcas'));
+
+    }
 }

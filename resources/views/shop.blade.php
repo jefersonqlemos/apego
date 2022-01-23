@@ -51,6 +51,10 @@
             var vmaior = document.getElementById("maxamount").value;
             document.getElementById("busca_preco").href = "{{ url('buscaporpreco' )}}" +"/"+ vmenor +"/" + vmaior;
         }
+
+        function marcaFiltragem() {
+            document.getElementById("form_marca").submit();
+        }
             
     </script>
 
@@ -254,13 +258,18 @@
                                 <h4>Buscar por Marca</h4>
                             </div>
                             <div class="size__list">
-                                @foreach($marcas as $marca)
-                                    <label for="{{$marca->idmarcas}}">
-                                        {{$marca->marca}}
-                                        <input type="checkbox" id="{{$marca->idmarcas}}">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                @endforeach
+                                <form id="form_marca" type="get" action="buscapormarca">
+                                    @foreach($marcas as $marca)
+                                        <label for="{{$marca->idmarcas}}">
+                                            {{$marca->marca}}
+                                            <input type="checkbox" name="checkbox[]" id="{{$marca->idmarcas}}" value="{{$marca->idmarcas}}">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    @endforeach
+                                    <div class="sidebar__filter">
+                                        <a href="#" onclick="marcaFiltragem()" id="busca_marca">Filtrar</a>
+                                    </div>
+                                </form>  
                             </div>
                         </div>
                     </div>
