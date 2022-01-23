@@ -120,8 +120,8 @@
       <th scope="col">Preço</th>
       <th scope="col">Quantidade</th>
       <th scope="col">Tamanho ID</th>
-      <th scope="col">Cadastrar Variante</th>
       <th scope="col">Visualizar</th>
+      <th scope="col">Cadastrar Variante</th>
       <th scope="col">Editar</th>
     </tr>
   </thead>
@@ -139,14 +139,6 @@
                 @endif
                 <td>{{$produto->tamanho}}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/cadastrarvariantetamanho/{{$produto->variante_tamanho}}'">
-                        Cadastrar Variante
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
-                        </svg>
-                    </button>
-                </td>
-                <td>
                     <a target="_blank" href="/produtos/{{$produto->idprodutos}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"></path>
@@ -156,7 +148,14 @@
                     </a>
                 </td>
                 <td>
-                
+                    <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/cadastrarvariantetamanho/{{$produto->variante_tamanho}}'">
+                        Cadastrar Variante
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
+                        </svg>
+                    </button>
+                </td>
+                <td>
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/produtos/{{$produto->idprodutos}}/edit'">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
@@ -175,9 +174,6 @@
                 @endif
                 <td>{{$produto->tamanho}}</td>
                 <td>
-                    Variante do Produto ID: <b>{{$produto->variante_tamanho}}</b> 
-                </td>
-                <td>
                     <a target="_blank" href="/produtos/{{$produto->idprodutos}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"></path>
@@ -187,7 +183,9 @@
                     </a>
                 </td>
                 <td>
-                
+                    Variante do Produto ID: <b>{{$produto->variante_tamanho}}</b> 
+                </td>
+                <td>
                 <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/produtos/{{$produto->idprodutos}}/edit'">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
