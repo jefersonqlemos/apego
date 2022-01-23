@@ -63,7 +63,7 @@
                         <div class="product__details__price">$ {{$produto->preco}}</div>
                         <div class="product__details__button">
                             <div class="quantity">
-                                <span>Quantidade: <b>{{$produto->quantidade}}</b></span>
+                                <span>Quantidade Em Estoque: <b>{{$produto->quantidade}}</b></span>
                             </div>
                             <a href="/produtos/{{$produto->idprodutos}}/edit" class="cart-btn">Editar Produto</a>
                         </div>
