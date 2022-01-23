@@ -104,7 +104,7 @@
                             <img src="{{$produto->foto}}" height="100" width="100"/><br>          
                         </td>
                         <td style="vertical-align:middle;" >
-                            <h3><a href="{{url('produtos').'/'.$produto->idprodutos}}">{{ $produto->nome }}</a><h3>
+                            <h3><a target="_blank" href="{{url('produtos').'/'.$produto->idprodutos}}">{{ $produto->nome }} {{ $produto->marca }}</a><h3>
                         </td>
                         <td style="vertical-align:middle;" >
                             <h4>{{ $produto->quantidade }}<h4>

@@ -58,7 +58,7 @@
     <hr>
     <button class="btn" onclick="window.location.href='/listasuporte'"><i style="font-size:24px" class="fa fa-headset"></i><span id='lblCartCount'>{{$count}}</span> Atender Suporte</button>
     <hr>
-    <button class="btn" onclick="window.location.href='/'"><i class="fa fa-home"></i> Ir ao Site</button>
+    <button class="btn" onclick="window.open('/', '_blank')"><i class="fa fa-home"></i> Ir ao Site</button>
         
 
 <body>

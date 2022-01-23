@@ -116,9 +116,10 @@ class ProdutoController extends Controller
     {
         //
         $produto = Produto::find($id);
+        $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
         $fotos = Foto::where('produtos_idprodutos', $id)->get();
         //dd($fotos);
-        return view('produtos/show')->with(compact('produto', 'fotos'));
+        return view('produtos/show')->with(compact('produto', 'fotos', 'tamanho'));
     }
 
     /**

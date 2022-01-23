@@ -58,6 +58,8 @@
                 <div class="col-lg-6">
                     <div class="product__details__text">
                         <h3>{{$produto->nome}}</h3>
+                        <h4>Marca: <b>{{$produto->marca}}</b></h4><br>
+                        <h5>Tamanho: <b>{{$tamanho->tamanho}}</b></h5><br>
                         <div class="product__details__price">$ {{$produto->preco}}</div>
                         <div class="product__details__button">
                             <div class="quantity">
