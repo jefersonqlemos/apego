@@ -111,7 +111,7 @@
                         @if($pedido->tipotransacao==2)
                         <tr>
                             <td colspan="2">
-                            <a href="{{$pedido->link}}">imprimir boleto aqui</a></td>
+                            <a href="{{$pedido->link}}">imprimir boleto aqui</a><p>Obs: Fique atento a data de vencimento, após o mesmo será necessário realizar um novo pedido</p></td>
                         </tr>
                         @elseif($pedido->tipotransacao==3)
                         <tr>
