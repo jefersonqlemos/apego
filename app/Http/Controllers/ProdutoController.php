@@ -14,6 +14,8 @@ use App\Categoria;
 
 use App\Tamanho;
 
+use App\Marca;
+
 class ProdutoController extends Controller
 {
 
@@ -30,7 +32,7 @@ class ProdutoController extends Controller
     public function index()
     {
         //
-        $produtos = Produto::orderBy('idprodutos', 'desc')->simplePaginate(15);
+        $produtos = Produto::orderBy('idprodutos', 'desc')->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->simplePaginate(15);
         //dd($produtos);
         return view('produtos/listaproduto')->with('produtos', $produtos);
 
@@ -46,7 +48,8 @@ class ProdutoController extends Controller
         //
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
-        return view('produtos/create')->with(compact('categorias', 'tamanhos'));
+        $marcas = Marca::all();
+        return view('produtos/create')->with(compact('categorias', 'tamanhos', 'marcas'));
     }
 
     /**
@@ -58,8 +61,12 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         
+        $marca = Marca::find($request->marca);
+
         $produto = new Produto;
         $produto->nome = $request->nome;
+        $produto->marca = $marca->marca;
+        $produto->marcas_idmarcas = $marca->idmarcas;
         $produto->tamanhos_idtamanhos = $request->tamanho;
         $produto->quantidade = $request->quantidade;
         $produto->preco = $request->preco;
@@ -127,8 +134,9 @@ class ProdutoController extends Controller
         $fotos = Foto::where('produtos_idprodutos', $id)->get();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
+        $marcas = Marca::all();
         //dd($fotos);
-        return view('produtos/edit')->with(compact('produto', 'fotos', 'categorias', 'tamanhos'));
+        return view('produtos/edit')->with(compact('produto', 'fotos', 'categorias', 'tamanhos', 'marcas'));
     }
 
     /**
@@ -141,8 +149,12 @@ class ProdutoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $marca = Marca::find($request->marca);
+
         $produto = Produto::find($id);
         $produto->nome = $request->nome;
+        $produto->marca = $marca->marca;
+        $produto->marcas_idmarcas = $marca->idmarcas;
         $produto->tamanhos_idtamanhos = $request->tamanho;
         $produto->quantidade = $request->quantidade;
         $produto->preco = $request->preco;

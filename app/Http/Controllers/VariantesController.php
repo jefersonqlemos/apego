@@ -12,6 +12,8 @@ use App\Produto;
 
 use App\Foto;
 
+use App\Marca;
+
 class VariantesController extends Controller
 {
     //
@@ -27,13 +29,18 @@ class VariantesController extends Controller
         $fotos = Foto::where('produtos_idprodutos', $variante)->get();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
-        return view('produtos/createvariante')->with(compact('categorias', 'fotos', 'tamanhos', 'produto'));
+        $marcas = Marca::all();
+        return view('produtos/createvariante')->with(compact('categorias', 'fotos', 'tamanhos', 'produto', 'marcas'));
     }
 
     public function storeVarianteTamanho(Request $request)
     {
+        $marca = Marca::find($request->marca);
+
         $produto = new Produto;
         $produto->nome = $request->nome;
+        $produto->marca = $marca->marca;
+        $produto->marcas_idmarcas = $marca->idmarcas;
         $produto->tamanhos_idtamanhos = $request->tamanho;
         $produto->quantidade = $request->quantidade;
         $produto->preco = $request->preco;

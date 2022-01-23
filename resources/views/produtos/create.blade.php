@@ -93,6 +93,14 @@
         <label for="nome">Nome do Produto:</label><br>
         <input type="text" required name="nome" ><br><br>
 
+        <label for="marca">Marca</label><br>
+        <select id="select3" required aria-required="true" name="marca" style="width:350px;">
+            @foreach($marcas as $marca)
+                <option value="{{$marca->idmarcas}}">{{$marca->marca}}</option>
+            @endforeach 
+        </select>
+        <br><br>
+
         <label for="tamanho">Tamanho</label><br>
         <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
             @foreach($tamanhos as $tamanho)

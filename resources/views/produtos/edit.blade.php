@@ -131,6 +131,20 @@
                 <label for="nome">Nome:</label><br>
                 <input type="text" required name="nome" value="{{$produto->nome}}"><br><br>
 
+                <label for="marca">Marca</label><br>
+                <select id="select3" required aria-required="true" name="marca" style="width:350px;">
+                    @foreach($marcas as $marca)
+                        @if($produto->marcas_idmarcas == $marca->idmarcas)
+                            <option value="{{ $produto->marcas_idmarcas }}">{{ $marca->marca }}</option>
+                        @endif
+                    @endforeach 
+                        <optgroup label="Marca">
+                    @foreach($marcas as $marca)
+                        <option value="{{$marca->idmarcas}}">{{$marca->marca}}</option>
+                    @endforeach 
+                    </optgroup>
+                </select><br><br>
+
                 <label for="tamanho">Tamanho</label><br>
                 <select id="select2" required aria-required="true" name="tamanho" style="width:350px;">
                     @foreach($tamanhos as $tamanho)
@@ -189,38 +203,43 @@
                 
             </form>
 
-            <h1>Fotos do Produto</h1>
+            @if($produto->idprodutos == $produto->variante_tamanho)
 
-            <form id="addfoto" action="/fotos/{{$produto->idprodutos}}" method="post" enctype="multipart/form-data">
-                <b>Adicionar Fotos</b><br>
-                <input id="foto" type="file" name="foto" accept="image/jpeg" /><br/>
-                @method('put')
-                @csrf
-            </form>
+                <h1>Fotos do Produto</h1>
 
-        <br><h4><b>Para Excluir Clique No "X"</b></h4><br>
+                <form id="addfoto" action="/fotos/{{$produto->idprodutos}}" method="post" enctype="multipart/form-data">
+                    <b>Adicionar Fotos</b><br>
+                    <input id="foto" type="file" name="foto" accept="image/jpeg" /><br/>
+                    @method('put')
+                    @csrf
+                </form>
+
+                <br><h4><b>Para Excluir Clique No "X"</b></h4><br>
 
 
 
-        @foreach($fotos as $foto)
+                @foreach($fotos as $foto)
 
-            @if ($loop->first) 
-                <input form="addfoto" type="hidden" name="fotoproduto" value="{{$foto->fotos}}">
+                    @if ($loop->first) 
+                        <input form="addfoto" type="hidden" name="fotoproduto" value="{{$foto->fotos}}">
+                    @endif
+                    <form action="/fotos/{{$foto->idfotos}}" method="post">
+                        <div class="image-area">
+                        <img src="{{$foto->fotos}}"  alt="Preview">
+                        <button class="remove-image" type="submit" style="display: inline;">&#215;</button>
+                        @method('delete')
+                        @csrf
+                        </div>
+                    </form>
+                    <br>
+                
+
+                @endforeach 
+
+            @else
+                <h1>Fotos de variantes, não é possivel cadastrar/modificar</h1>
             @endif
-            <form action="/fotos/{{$foto->idfotos}}" method="post">
-                <div class="image-area">
-                <img src="{{$foto->fotos}}"  alt="Preview">
-                <button class="remove-image" type="submit" style="display: inline;">&#215;</button>
-                @method('delete')
-                @csrf
-                </div>
-            </form>
-            <br>
-        
 
-        @endforeach 
-
-    
         <hr>
         <div class="buttonHolder">
             <input form="formproduto" type="submit" value="Salvar">

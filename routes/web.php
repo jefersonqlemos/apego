@@ -43,7 +43,7 @@ Route::post('storevariantetamanho', 'VariantesController@storeVarianteTamanho');
 
 Route::get('produtosvendidos', 'FiltragemProdutoController@filtragemProdutoVendido');
 Route::get('produtosemestoque', 'FiltragemProdutoController@filtragemProdutoEmEstoque');
-
+Route::get('filtragemvariantetamanho', 'FiltragemProdutoController@filtragemVarianteTamanho');
 
 Route::get('editarsobre', 'SobreController@editarSobre');
 Route::post('updatesobre', 'SobreController@updateSobre');

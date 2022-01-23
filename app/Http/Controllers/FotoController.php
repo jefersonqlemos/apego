@@ -131,6 +131,14 @@ class FotoController extends Controller
         
         if($request->fotoproduto == null){
             $produto->foto = $fototemp;
+
+            $produtos = Produto::where('variante_tamanho', '=', $id)->get();
+
+            foreach($produtos as $prod){
+                $prod->foto = $fototemp;
+                $prod->save();
+            }
+
         }else{
             $produto->foto = $request->fotoproduto;
         }
