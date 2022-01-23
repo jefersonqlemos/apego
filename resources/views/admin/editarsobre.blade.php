@@ -127,6 +127,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="exampleFormControlTextarea3">Frase Rodapé</label>
+                    <textarea name="fraserodape" class="form-control" id="exampleFormControlTextarea1" rows="7">{{$informacoesempresa->fraserodape}}</textarea>
+                </div>
+
+                <div class="form-group">
                     <label for="emailpagseguro">Email no Pagseguro</label>
                     <input name="emailpagseguro" type="text" class="form-control" id="emailpagseguro" value="{{$pagseguro->email}}">
                 </div>
