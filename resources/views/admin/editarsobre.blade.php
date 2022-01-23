@@ -128,7 +128,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlTextarea3">Frase Rodapé</label>
-                    <textarea name="fraserodape" class="form-control" id="exampleFormControlTextarea1" rows="7">{{$informacoesempresa->fraserodape}}</textarea>
+                    <textarea name="fraserodape" class="form-control" id="exampleFormControlTextarea1" rows="7">{{$informacoeslayout->fraserodape}}</textarea>
                 </div>
 
                 <div class="form-group">
