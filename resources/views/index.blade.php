@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/calcados.jpg">
+                        <div class="categories__item set-bg" data-setbg="img/categories/category-3.jpg">
                             <div class="categories__text">
                                 <h4>Calçados</h4>
                                 <p>{{$numeroitemscalcados}} items</p>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 p-0">
-                        <div class="categories__item set-bg" data-setbg="img/categories/category-4.jpg">
+                        <div class="categories__item set-bg" data-setbg="img/categories/gopro.jpg">
                             <div class="categories__text">
                                 <h4>Acessórios</h4>
                                 <p>{{$numeroitemsacessorios}} items</p>
