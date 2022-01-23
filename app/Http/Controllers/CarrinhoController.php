@@ -32,10 +32,9 @@ class CarrinhoController extends Controller
         
         if($aa->count() == 0){
             $produto = Produto::find($id);
-            $marca = Marca::find($produto->marcas_idmarcas);
             $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
             $preco=str_replace(',','.', $produto->preco);
-            Cart::add($id, $produto->nome." ".$marca->marca, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
+            Cart::add($id, $produto->nome." ".$produto->marca, $request->qty, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
         }else{
             foreach($aa as $a){
                 //Cart::remove($a->rowId);
@@ -58,10 +57,9 @@ class CarrinhoController extends Controller
         
         if($aa->count() == 0){
             $produto = Produto::find($id);
-            $marca = Marca::find($produto->marcas_idmarcas);
             $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
             $preco=str_replace(',','.', $produto->preco);
-            Cart::add($id, $produto->nome." ".$marca->marca, 1, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
+            Cart::add($id, $produto->nome." ".$produto->marca, 1, $preco, ['foto' => $produto->foto, 'max' => $produto->quantidade, 'tamanho' => $tamanho->tamanho]);
         }
         
         return redirect('carrinho');

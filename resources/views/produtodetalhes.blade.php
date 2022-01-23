@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="product__details__text">
-                        <h3>{{$produto->nome}} {{$marca->marca}}
+                        <h3>{{$produto->nome}} {{$produto->marca}}
                             <span>
                             @if($produto->quantidade != 0)
                                 Produto em Estoque ({{$produto->quantidade}})

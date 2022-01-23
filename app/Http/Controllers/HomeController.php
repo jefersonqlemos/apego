@@ -52,7 +52,7 @@ class HomeController extends Controller
     public function comprados($id)
     {
         $produtos = Produto::join('comprados', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')
-    ->where('comprados.pedidos_idpedidos', $id)->join('marcas', 'produtos.marcas_idmarcas', '=', 'marcas.idmarcas')->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
+    ->where('comprados.pedidos_idpedidos', $id)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
         $pedido = Pedido::find($id);
         $status = Statu::find($pedido->status_idstatus);
         

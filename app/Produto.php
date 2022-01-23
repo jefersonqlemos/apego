@@ -21,6 +21,7 @@ class Produto extends Model
 
         $array =  [
             'nome' => $this->nome,
+            'marca' => $this->marca,
             'variante_tamanho' => $this->variante_tamanho,
         ];
 
