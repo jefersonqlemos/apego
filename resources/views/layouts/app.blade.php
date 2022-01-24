@@ -372,6 +372,9 @@
                     $("#cidade").append("<option value='" + 
                     data[i].cidade + "'></option>");
                 }
+            },
+            error = function (data) {
+                    console.log(data);
             };
             $.ajax(options);
             document.getElementById("btn-save").disabled = false;
