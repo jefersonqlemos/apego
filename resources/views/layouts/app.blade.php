@@ -53,16 +53,13 @@
                     <div class="dropdown">
                         
                         <input list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade">
-                        <datalist id="cidades">
-                        <option value="Edge">
-  <option value="Firefox">
-                        </datalist>
+                        <datalist id="cidades"></datalist>
                         <i class="fa fa-search" aria-hidden="true"></i>
     
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-save" type="button" class="site-btn" disabled>Pronto</button>
+                    <button id="btn-save" type="button" class="site-btn">Pronto</button>
                 </div>
                 </div>
             </div>
@@ -373,13 +370,17 @@
                     for(var i=0;i<data.length;i++)
                     {
                         console.log(data[i].cidade);
-                        $("#cidade").append("<option value='" + 
+                        $("#cidades").append("<option value='" + 
                         data[i].cidade + "'></option>");
                     }
                 },
                 error: function (data) {
                     console.log(data);
                 }
+            });
+
+            $("#cidade").on('change', function() {
+                alert( this.value );
             });
 
             document.getElementById("btn-save").disabled = false;
