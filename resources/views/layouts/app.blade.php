@@ -359,7 +359,7 @@
       $(document).ready(function($){
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
-        $("#cidade").keydown(function(){  
+        $("#cidade").on("input", function () {  
             var options = {};
             options.url = "/buscacidade";
             options.type = "GET";
