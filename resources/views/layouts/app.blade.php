@@ -380,8 +380,8 @@
             });
         });
 
-        $("#cidade").on('change', function() {
-            /*$.ajaxSetup({
+        $("#cidade").on('change', function(e) {
+            $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
@@ -398,14 +398,12 @@
                 data: formData,
                 dataType: 'json',
                 success: function (data) {
-                    //data.cidade
-                    //console.log(data);
                     $('#exampleModalCenter').modal('hide');
                 },
                 error: function (data) {
                     console.log(data);
                 }
-            });*/
+            });
         });
 
             // CREATE
