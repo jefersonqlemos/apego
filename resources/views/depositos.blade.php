@@ -33,7 +33,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <span>Depósitos</span>
+                        <span>Depósito</span>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="contact__content">
                         <div class="contact__address">
                             <br><br><br>
-                            <h5>Cidade e Endereço dos Depósitos</h5>   
+                            <h5>Localização Depósito da Sua Cidade</h5>   
                             <br><br>
                             <ul>
                                 <li>

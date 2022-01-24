@@ -75,7 +75,7 @@
             <li><a href="{{ url('/carrinho')}}"><span class="icon_cart_alt"></span>
                 <div class="tip">{{$cartcount}}</div>
             </a></li>
-            <li><a href="#"><span class="icon_pin_alt"></span>
+            <li><a href="{{url('/depositos')}}"><span class="icon_pin_alt"></span>
             </a></li>
         </ul>
         <div class="offcanvas__logo">
@@ -163,7 +163,7 @@
                             <li><a href="{{ url('/carrinho')}}"><span class="icon_cart_alt"></span>
                                 <div class="tip">{{$cartcount}}</div>
                             </a></li>
-                            <li><a href="#"><span class="icon_pin_alt"></span>
+                            <li><a href="{{url('/depositos')}}"><span class="icon_pin_alt"></span>
                             </a></li>
                         </ul>
                     </div>
