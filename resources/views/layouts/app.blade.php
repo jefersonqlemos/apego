@@ -402,7 +402,7 @@
                 data: formData,
                 dataType: 'json',
                 success: function (data) {
-                    alert(data);
+                    console.log(data);
                     $('#exampleModalCenter').modal('hide');
                 },
                 error: function (data) {
