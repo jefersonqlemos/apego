@@ -381,7 +381,7 @@
         });
 
         $("#cidade").on('change', function() {
-            $.ajaxSetup({
+            /*$.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                 }
@@ -405,7 +405,7 @@
                 error: function (data) {
                     console.log(data);
                 }
-            });
+            });*/
         });
 
             // CREATE
