@@ -372,6 +372,7 @@
                     $("#cidades").empty();
                     for(var i=0;i<data.length;i++)
                     {
+                        console.log(data[i].cidade);
                         $("#cidade").append("<option value='" + 
                         data[i].cidade + "'></option>");
                     }
