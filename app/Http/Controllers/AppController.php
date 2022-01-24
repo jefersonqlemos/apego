@@ -83,7 +83,7 @@ class AppController extends Controller
 
     public function buscaCidade(Request $request){
 
-        $cidades = Cidade::search($request->cidade);
+        $cidades = Cidade::search($request->cidade)->get();
 
         return response()->json(['cidade'=>$cidades]);
     }
