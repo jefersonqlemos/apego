@@ -258,7 +258,7 @@
                                 <h4>Buscar por Marca</h4>
                             </div>
                             <div class="size__list">
-                                <form id="form_marca" type="get" action="buscapormarca">
+                                <form id="form_marca" type="get" action="{{ url('buscapormarca' )}}">
                                     @foreach($marcas as $marca)
                                         <label for="{{$marca->idmarcas}}">
                                             {{$marca->marca}}
