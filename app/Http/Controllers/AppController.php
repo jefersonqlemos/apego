@@ -20,6 +20,8 @@ use App\Informacoesempresa;
 
 use Cookie;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
+
 class AppController extends Controller
 {
     //
@@ -101,6 +103,12 @@ class AppController extends Controller
         $idcidade = Cookie::get('cookieCidade');
         $cidade = Cidade::find($idcidade);
         return view('depositos')->with('cidade', $cidade);
+     }
+
+     public function updateDeposito(){
+        Cookie::forget('cookieCidade');
+        Cart::destroy();
+        return redirect('/');
      }
     
 }

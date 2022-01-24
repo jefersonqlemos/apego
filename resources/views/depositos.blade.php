@@ -46,7 +46,7 @@
                     <div class="contact__content">
                         <div class="contact__address">
                             <br><br><br>
-                            <h5>Localização Depósito da Sua Cidade</h5>   
+                            <h5>Localização do Depósito da Sua Cidade</h5>   
                             <br><br>
                             <ul>
                                 <li>
@@ -54,7 +54,7 @@
                                 </li>
                             </ul>
                             <br>
-                            <button id="btn-save" type="button" class="site-btn">Trocar Cidade</button><br><br><br>
+                            <button id="btn-save" onClick="window.location.href='{{url('/updatedeposito')}}'" type="button" class="site-btn">Trocar Cidade</button><br><br><br>
                         </div>
                     </div>
                 </div>
