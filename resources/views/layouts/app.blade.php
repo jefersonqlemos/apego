@@ -162,7 +162,6 @@
                                 <div class="tip">{{$cartcount}}</div>
                             </a></li>
                             <li><a href="#"><span class="icon_pin_alt"></span>
-                                <div class="tip">Trocar</div>
                             </a></li>
                         </ul>
                     </div>
