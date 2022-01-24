@@ -52,9 +52,8 @@
                 <div class="modal-body">
                     <div class="dropdown">
                         
-                        <input list="browsers" style="outline: 0; border-width: 0 0 2px;" id="cidade">
-                        <datalist id="browsers">
-                            
+                        <input list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade">
+                        <datalist id="cidades">
                         </datalist>
                         <i class="fa fa-search" aria-hidden="true"></i>
     
@@ -367,7 +366,7 @@
             options.data = { "cidade": $("#cidade").val() };
             options.dataType = "json";
             options.success = function (data) {
-                $("#companyList").empty();
+                $("#cidades").empty();
                 for(var i=0;i<data.length;i++)
                 {
                     $("#cidade").append("<option value='" + 
