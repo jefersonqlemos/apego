@@ -32,7 +32,6 @@ class IndexController extends Controller
     {
         //
         $idcidade = Cookie::get('cookieCidade');
-        dd($idcidade);
 
         $query = "CAST(preco AS DECIMAL(10,2)) ASC";
 
