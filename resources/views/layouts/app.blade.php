@@ -58,9 +58,9 @@
     
                     </div>
                 </div>
-                <div class="modal-footer">
+                <!--<div class="modal-footer">
                     <button disabled id="btn-save" type="button" class="site-btn">Pronto</button>
-                </div>
+                </div>-->
                 </div>
             </div>
         </div>
@@ -371,7 +371,7 @@
                     {
                         console.log(data[i].cidade);
                         $("#cidades").append("<option value='" + 
-                        data[i].cidade + "'></option>");
+                        data[i].idcidades + "'>"+data[i].cidade+"</option>");
                     }
                 },
                 error: function (data) {
@@ -381,7 +381,32 @@
         });
 
         $("#cidade").on('change', function() {
-            document.getElementById("btn-save").disabled = false;
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var formData = {
+                cidade: $("#cidade").val(),
+                idcidade: 
+            };
+            var type = "POST";
+            var ajaxurl = 'cookiecidade';
+            $.ajax({
+                type: type,
+                url: ajaxurl,
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    //data.cidade
+                    //console.log(data);
+                    $('#exampleModalCenter').modal('hide');
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
         });
 
             // CREATE
