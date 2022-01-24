@@ -359,7 +359,7 @@
       $(document).ready(function($){
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
-        $("#cidade").on("input", function () {  
+        $("#cidade").keydown(function(){  
             var options = {};
             options.url = "/buscacidade";
             options.type = "GET";
@@ -372,8 +372,8 @@
                     $("#cidade").append("<option value='" + 
                     data[i].cidade + "'></option>");
                 }
-            },
-            error = function (data) {
+            };
+            options.error = function (data) {
                     console.log(data);
             };
             $.ajax(options);
