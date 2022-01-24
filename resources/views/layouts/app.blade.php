@@ -54,6 +54,8 @@
                         
                         <input list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade">
                         <datalist id="cidades">
+                        <option value="Edge">
+  <option value="Firefox">
                         </datalist>
                         <i class="fa fa-search" aria-hidden="true"></i>
     
