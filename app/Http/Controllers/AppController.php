@@ -14,6 +14,8 @@ use App\Tamanho;
 
 use App\Marca;
 
+use App\Cidade;
+
 use App\Informacoesempresa;
 
 use Cookie;
@@ -77,6 +79,13 @@ class AppController extends Controller
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias', 'marcas'));
+    }
+
+    public function buscaCidade(Request $request){
+
+        $cidades = Cidade::search($request->cidade)->take(10);
+
+        return response()->json(['cidade'=>$cidades]);
     }
 
     public function cookieCidade(Request $request){

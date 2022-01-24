@@ -40,28 +40,28 @@
 
     @include('cookieConsent::index')
 
-    @if(Cookie::get('cookieCidade') !== null)
+    @if(Cookie::get('cookieCidade') == null)
         <!--cidade: {{Cookie::get('cookieCidade')}}-->
-    @else
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Qual Sua Cidade?</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Qual sua cidade?</h5>
                 </div>
                 <div class="modal-body">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Videira
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Videira</a>
-                        </div>
+                        
+                        <input list="browsers" style="outline: 0; border-width: 0 0 2px;" id="cidade">
+                        <datalist id="browsers">
+                            
+                        </datalist>
+                        <i class="fa fa-search" aria-hidden="true"></i>
+    
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-save" type="button" class="site-btn">Pronto</button>
+                    <button id="btn-save" type="button" class="site-btn" disabled>Pronto</button>
                 </div>
                 </div>
             </div>
@@ -359,6 +359,24 @@
 
       $(document).ready(function($){
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
+
+        $("#cidade").keydown(function(){  
+            var options = {};
+            options.url = "/buscacidade";
+            options.type = "GET";
+            options.data = { "cidade": $("#cidade").val() };
+            options.dataType = "json";
+            options.success = function (data) {
+                $("#companyList").empty();
+                for(var i=0;i<data.length;i++)
+                {
+                    $("#cidade").append("<option value='" + 
+                    data[i].cidade + "'></option>");
+                }
+            };
+            $.ajax(options);
+            document.getElementById("btn-save").disabled = false;
+        });
 
             // CREATE
         $("#btn-save").click(function (e) {
