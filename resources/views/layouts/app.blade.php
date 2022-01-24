@@ -383,7 +383,7 @@
         $("#cidade").on('change', function(e) {
 
             var g = $('#cidade').val();
-            var idtamanhos = $('#cidades option[value=' + g +']').attr('data-id');
+            var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
 
             $.ajaxSetup({
                 headers: {
@@ -392,7 +392,7 @@
             });
             e.preventDefault();
             var formData = {
-                cidade: idtamanhos,
+                cidade: idcidades,
             };
             var type = "POST";
             var ajaxurl = 'cookiecidade';

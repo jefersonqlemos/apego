@@ -89,7 +89,7 @@ class AppController extends Controller
     }
 
     public function cookieCidade(Request $request){
-        Cookie::queue('cookieCidade', $request->idcidades, 6000);
+        Cookie::queue('cookieCidade', $request->idcidades, 8000);
         return response()->json($request->idcidades);
      }
 
