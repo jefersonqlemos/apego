@@ -36,9 +36,9 @@ class IndexController extends Controller
         $query = "CAST(preco AS DECIMAL(10,2)) ASC";
 
         $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
-        $ultimosavaliados = Produto::where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
-        $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
-        $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
+        $ultimosavaliados = Produto::where("cidades_idcidades", "=", $idcidade)->where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
+        $ultimosvendidos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
+        $maisbaratos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
         $numeroitemsmasculino = Produto::where("generos_idgeneros", 1)->orWhere('generos_idgeneros', 3)->where("cidades_idcidades", "=", $idcidade)->count();
         $numeroitemscalcados = Produto::where("cidades_idcidades", "=", $idcidade)->where("categorias_idcategorias", 9)->count();
         $numeroitemsinfantil = Produto::where("cidades_idcidades", "=", $idcidade)->where("generos_idgeneros", 4)->count();
