@@ -75,6 +75,8 @@
             <li><a href="{{ url('/carrinho')}}"><span class="icon_cart_alt"></span>
                 <div class="tip">{{$cartcount}}</div>
             </a></li>
+            <li><a href="#"><span class="icon_pin_alt"></span>
+            </a></li>
         </ul>
         <div class="offcanvas__logo">
             <a href="{{ url('/')}}"><img src="{{ asset('img/logo.png')}}" alt=""></a>
@@ -406,6 +408,7 @@
                 success: function (data) {
                     console.log(data);
                     $('#exampleModalCenter').modal('hide');
+                    window.location.href='/';
                 },
                 error: function (data) {
                     console.log(data);
