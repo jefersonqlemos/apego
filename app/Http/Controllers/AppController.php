@@ -98,7 +98,9 @@ class AppController extends Controller
      }
 
      public function depositos(){
-        return view('depositos');
+        $idcidade = Cookie::get('cookieCidade');
+        $cidade = Cidade::find($idcidade);
+        return view('depositos')->with('cidade', $cidade);
      }
     
 }

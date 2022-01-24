@@ -50,10 +50,10 @@
                             <br><br>
                             <ul>
                                 <li>
-                                    <h6><i class="fa fa-map-marker"></i> <b>Videira-SC</b> - Bairro Santa Tereza, Rua Arlindo de Mattos 239, APT 303.</h6>
+                                    <h6><i class="fa fa-map-marker"></i> <b>{{$cidade->cidade}}</b> - {$cidade->endereco}}.</h6>
                                 </li>
                             </ul>
-                            <br><br><br>
+                            <button id="btn-save" type="button" class="site-btn">Trocar Cidade</button><br><br><br>
                         </div>
                     </div>
                 </div>

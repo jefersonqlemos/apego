@@ -408,7 +408,7 @@
                 success: function (data) {
                     console.log(data);
                     $('#exampleModalCenter').modal('hide');
-                    window.location.href='{{url('/carrinho')}}';
+                    window.location.href='{{url('/')}}';
                 },
                 error: function (data) {
                     console.log(data);
