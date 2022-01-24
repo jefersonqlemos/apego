@@ -89,8 +89,8 @@ class AppController extends Controller
     }
 
     public function cookieCidade(Request $request){
-        Cookie::queue('cookieCidade', "Videira", 6000);
-        return response()->json(['success'=>'Got Simple Ajax Request.']);
+        Cookie::queue('cookieCidade', $request->idcidades, 6000);
+        return response()->json(['success'=>$request->idcidades]);
      }
 
      public function politica(){

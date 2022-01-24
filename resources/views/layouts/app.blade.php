@@ -370,7 +370,7 @@
                     for(var i=0;i<data.length;i++)
                     {
                         console.log(data[i].cidade);
-                        $("#cidades").append("<option value='" + 
+                        $("#cidades").append("<option data-id='"+data[i].idcidades+"' value='" + 
                         data[i].cidade + "'></option>");
                     }
                 },
@@ -381,6 +381,10 @@
         });
 
         $("#cidade").on('change', function(e) {
+
+            var g = $('#cidade').val();
+            var idtamanhos = $('#cidades option[value=' + g +']').attr('data-id');
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -388,7 +392,7 @@
             });
             e.preventDefault();
             var formData = {
-                cidade: $("#cidade").val(),
+                cidade: idtamanhos,
             };
             var type = "POST";
             var ajaxurl = 'cookiecidade';
@@ -427,6 +431,7 @@
                 success: function (data) {
                     //data.cidade
                     //console.log(data);
+                    alert(data);
                     $('#exampleModalCenter').modal('hide');
                 },
                 error: function (data) {
