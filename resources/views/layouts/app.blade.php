@@ -371,7 +371,7 @@
                     {
                         console.log(data[i].cidade);
                         $("#cidades").append("<option value='" + 
-                        data[i].idcidades + "'>"+data[i].cidade+"</option>");
+                        data[i].cidade + "'></option>");
                     }
                 },
                 error: function (data) {
@@ -389,7 +389,6 @@
             e.preventDefault();
             var formData = {
                 cidade: $("#cidade").val(),
-                idcidade: 
             };
             var type = "POST";
             var ajaxurl = 'cookiecidade';
