@@ -106,7 +106,7 @@ class AppController extends Controller
      }
 
      public function updateDeposito(){
-        Cookie::forget('cookieCidade');
+        Cookie::queue(Cookie::forget('cookieCidade'));
         Cart::destroy();
         return redirect('/');
      }
