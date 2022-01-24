@@ -12,13 +12,16 @@ use App\Tamanho;
 
 use App\Marca;
 
+use Cookie;
+
 class BuscaController extends Controller
 {
     //
 
     public function buscaPorTamanho($id)
     {
-        $produtos = Produto::where('tamanhos_idtamanhos', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('tamanhos_idtamanhos', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -30,7 +33,8 @@ class BuscaController extends Controller
         $vmenor = substr($vmenor, 1);
         $vmaior = substr($vmaior, 1);
 
-        $produtos = Produto::whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) >  ?", $vmenor)->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) <  ?", $vmaior)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) >  ?", $vmenor)->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) <  ?", $vmaior)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -39,8 +43,8 @@ class BuscaController extends Controller
 
     public function buscaPorMarca(Request $request)
     {
-
-        $produtos = Produto::whereIn('marcas_idmarcas', $request->checkbox)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->whereIn('marcas_idmarcas', $request->checkbox)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();

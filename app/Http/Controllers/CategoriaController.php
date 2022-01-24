@@ -12,13 +12,16 @@ use App\Tamanho;
 
 use App\Marca;
 
+use Cookie;
+
 class CategoriaController extends Controller
 {
     //
 
     public function categoriaFeminino($id)
     {
-        $produtos = Produto::where('generos_idgeneros', 2)->orWhere('generos_idgeneros', 3)->where('categorias_idcategorias', $id)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('generos_idgeneros', 2)->orWhere('generos_idgeneros', 3)->where('categorias_idcategorias', $id)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -27,7 +30,8 @@ class CategoriaController extends Controller
 
     public function categoriaMasculino($id)
     {
-        $produtos = Produto::where('generos_idgeneros', 1)->orWhere('generos_idgeneros', 3)->where('categorias_idcategorias', $id)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('generos_idgeneros', 1)->orWhere('generos_idgeneros', 3)->where('categorias_idcategorias', $id)->where('quantidade', '>', 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -36,7 +40,8 @@ class CategoriaController extends Controller
 
     public function categoriaInfantil($id)
     {
-        $produtos = Produto::where('generos_idgeneros', 4)->where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('generos_idgeneros', 4)->where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -45,7 +50,8 @@ class CategoriaController extends Controller
 
     public function todasCategorias($id)
     {
-        $produtos = Produto::where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('categorias_idcategorias', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();

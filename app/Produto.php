@@ -23,7 +23,6 @@ class Produto extends Model
             'nome' => $this->nome,
             'marca' => $this->marca,
             'variante_tamanho' => $this->variante_tamanho,
-            'cidades_idcidades' => $this->cidade_idcidades,
         ];
 
         return $array;
