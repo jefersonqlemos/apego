@@ -368,6 +368,7 @@
                 data: { "cidade": $("#cidade").val() },
                 dataType: 'json',
                 success: function (data) {
+                    console.log('data');
                     $("#cidades").empty();
                     for(var i=0;i<data.length;i++)
                     {
