@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="btn-save" type="button" class="site-btn">Pronto</button>
+                    <button disabled id="btn-save" type="button" class="site-btn">Pronto</button>
                 </div>
                 </div>
             </div>
