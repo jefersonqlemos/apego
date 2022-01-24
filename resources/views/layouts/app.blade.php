@@ -402,6 +402,7 @@
                 data: formData,
                 dataType: 'json',
                 success: function (data) {
+                    alert(data);
                     $('#exampleModalCenter').modal('hide');
                 },
                 error: function (data) {
@@ -430,7 +431,7 @@
                 dataType: 'json',
                 success: function (data) {
                     //data.cidade
-                    console.log(data);
+                    //console.log(data);
                     $('#exampleModalCenter').modal('hide');
                 },
                 error: function (data) {
