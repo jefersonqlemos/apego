@@ -20,6 +20,8 @@ use App\Marca;
 
 use App\Informacoeslayout;
 
+use Cookie;
+
 use Illuminate\Support\Facades\Http;
 
 class IndexController extends Controller
@@ -29,9 +31,11 @@ class IndexController extends Controller
     public function index()
     {
         //
+        $idcidade = Cookie::get('cookieCidade');
+
         $query = "CAST(preco AS DECIMAL(10,2)) ASC";
 
-        $produtos = Produto::where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
         $ultimosavaliados = Produto::where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
         $ultimosvendidos = Produto::where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
         $maisbaratos = Produto::where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
