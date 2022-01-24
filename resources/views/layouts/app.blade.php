@@ -360,23 +360,24 @@
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
         $("#cidade").keydown(function(){  
-            var options = {};
-            options.url = "/buscacidade";
-            options.type = "GET";
-            options.data = { "cidade": $("#cidade").val() };
-            options.dataType = "json";
-            options.success = function (data) {
-                $("#cidades").empty();
-                for(var i=0;i<data.length;i++)
-                {
-                    $("#cidade").append("<option value='" + 
-                    data[i].cidade + "'></option>");
-                }
-            };
-            options.error = function (data) {
+            $.ajax({
+                type: "GET",
+                url: "/buscacidade",
+                data: { "cidade": $("#cidade").val() },
+                dataType: 'json',
+                success: function (data) {
+                    $("#cidades").empty();
+                    for(var i=0;i<data.length;i++)
+                    {
+                        $("#cidade").append("<option value='" + 
+                        data[i].cidade + "'></option>");
+                    }
+                },
+                error: function (data) {
                     console.log(data);
-            };
-            $.ajax(options);
+                }
+            });
+
             document.getElementById("btn-save").disabled = false;
         });
 
