@@ -362,7 +362,7 @@
         $("#cidade").keydown(function(){  
             $.ajax({
                 type: "GET",
-                url: "/buscacidade",
+                url: "buscacidade",
                 data: { "cidade": $("#cidade").val() },
                 dataType: 'json',
                 success: function (data) {
