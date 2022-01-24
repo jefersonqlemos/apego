@@ -378,11 +378,9 @@
                     console.log(data);
                 }
             });
+        });
 
-            $("#cidade").on('change', function() {
-                alert( this.value );
-            });
-
+        $("#cidade").on('change', function() {
             document.getElementById("btn-save").disabled = false;
         });
 
