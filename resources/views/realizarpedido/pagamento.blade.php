@@ -338,7 +338,7 @@
                             <br>
                             <h5><b>PAGAR E RETIRAR NO DEPÓSITO</b></h5>
                             <hr>
-                            <p><b>Busque o endereço do depósito da sua cidade clicando <a href="{{url('/depositos')}}" target="_blank">aqui</a>, retire no mesmo e pague no ato da entrega</b></p>
+                            <p><b>Veja o endereço do depósito da sua cidade clicando <a href="{{url('/depositos')}}" target="_blank">aqui</a>, retire-os e pague no ato da entrega</b></p>
                         </div>
                         <form action="{{url('pagamentonaentrega')}}" method="post">
                             @csrf
