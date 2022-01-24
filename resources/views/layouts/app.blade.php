@@ -392,7 +392,7 @@
             });
             e.preventDefault();
             var formData = {
-                cidade: idcidades,
+                idcidades: idcidades,
             };
             var type = "POST";
             var ajaxurl = 'cookiecidade';
