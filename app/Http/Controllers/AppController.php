@@ -85,7 +85,7 @@ class AppController extends Controller
 
         $cidades = Cidade::search($request->cidade)->get();
 
-        return response()->json(['cidade'=>$cidades]);
+        return response()->json($cidades);
     }
 
     public function cookieCidade(Request $request){
