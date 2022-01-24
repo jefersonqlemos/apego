@@ -50,9 +50,10 @@
                             <br><br>
                             <ul>
                                 <li>
-                                    <h6><i class="fa fa-map-marker"></i> <b>{{$cidade->cidade}}</b> - {$cidade->endereco}}.</h6>
+                                    <h6><i class="fa fa-map-marker"></i> <b>{{$cidade->cidade}}</b> - {{$cidade->endereco}}.</h6>
                                 </li>
                             </ul>
+                            <br>
                             <button id="btn-save" type="button" class="site-btn">Trocar Cidade</button><br><br><br>
                         </div>
                     </div>
