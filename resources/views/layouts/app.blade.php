@@ -408,36 +408,7 @@
                 success: function (data) {
                     console.log(data);
                     $('#exampleModalCenter').modal('hide');
-                    window.location.href='/';
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        });
-
-            // CREATE
-        $("#btn-save").click(function (e) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            e.preventDefault();
-            var formData = {
-                cidade: "Videira",
-            };
-            var type = "POST";
-            var ajaxurl = 'cookiecidade';
-            $.ajax({
-                type: type,
-                url: ajaxurl,
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    //data.cidade
-                    //console.log(data);
-                    $('#exampleModalCenter').modal('hide');
+                    window.location.href='{{url('/carrinho')}}';
                 },
                 error: function (data) {
                     console.log(data);
