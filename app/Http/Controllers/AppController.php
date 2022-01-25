@@ -80,8 +80,9 @@ class AppController extends Controller
 
     public function search(Request $request)
     {
-        //$idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::search($request->search)->paginate(9);
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::search($request->search)->where('cidades_idcidades', $idcidade)->paginate(9);
+        dd($produtos);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
