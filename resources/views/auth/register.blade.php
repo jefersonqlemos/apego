@@ -29,7 +29,7 @@
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
-                    document.getElementById("cidade").value = "data.cidade";
+                    document.getElementById("cidade").value = data.cidade;
                 },
                 error: function (data) {
                     console.log(data);
