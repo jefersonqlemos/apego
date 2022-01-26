@@ -7,8 +7,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Redefinir Senha') }}</div>
+            <div class="card border-light">
+                <div class="card-header bg-danger text-white">{{ __('Redefinir Senha') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))

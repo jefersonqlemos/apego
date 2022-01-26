@@ -359,7 +359,7 @@
     
       gtag('config', 'G-K8F82TYVBQ');
 
-      $(document).ready(function($){
+      /*$(document).ready(function($){
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
         $("#cidade").keydown(function(){  
@@ -415,7 +415,7 @@
                 }
             });
         });
-      });
+      });*/
 
     </script>
 </body>
