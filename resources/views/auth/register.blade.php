@@ -30,6 +30,7 @@
                 success: function (data) {
                     console.log(data);
                     document.getElementById("cidade").value = data.cidade;
+                    document.getElementById("idcidade").value = data.idcidade;
                 },
                 error: function (data) {
                     console.log(data);
@@ -99,6 +100,8 @@
                             <div class="col-md-6">
 
                             <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="" autocomplete="cidade" autofocus readonly>
+
+                            <input id="idcidade" name="idcidade" type="hidden" value="">
 
                             Obs: Para modificar a cidade troque sua <a class="text-danger" href="{{ url('depositos') }}"><u>localização</u></a>
 
