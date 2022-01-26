@@ -60,6 +60,7 @@ Route::get('conta', 'AppController@conta');
 Route::post('cookiecidade', 'AppController@cookieCidade');
 Route::get('buscacidade', 'AppController@buscaCidade');
 Route::get('updatedeposito', 'AppController@updateDeposito');
+Route::get('getcidade', 'AppController@getCidade');
 
 
 Route::get('categoriafeminino/{id}', 'CategoriaController@categoriaFeminino')->name('categoriafeminino');

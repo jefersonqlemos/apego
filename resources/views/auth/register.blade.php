@@ -21,6 +21,20 @@
         $(document).ready(function($){
             $('#telefone').mask("(99)99999-9999");
             $('#cpf').mask("999.999.999-99");
+
+            $.ajax({
+                type: "GET",
+                url: "getcidade",
+                data: { },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    document.getElementById("cidade").value = "data.cidade";
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
         });
 
     </script>
@@ -84,7 +98,7 @@
 
                             <div class="col-md-6">
 
-                            <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="Videira" autocomplete="cidade" autofocus readonly>
+                            <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="" autocomplete="cidade" autofocus readonly>
 
                             Obs: Para modificar a cidade troque sua <a class="text-danger" href="{{ url('depositos') }}"><u>localização</u></a>
 

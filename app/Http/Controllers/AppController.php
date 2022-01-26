@@ -98,7 +98,7 @@ class AppController extends Controller
     public function cookieCidade(Request $request){
         Cookie::queue('cookieCidade', $request->idcidades, 6000);
         return response()->json($request->idcidades);
-     }
+    }
 
      public function politica(){
         return view('politica');
@@ -116,4 +116,9 @@ class AppController extends Controller
         return redirect('/');
      }
     
+     public function getCidade(Request $request){
+        $idcidade = Cookie::get('cookieCidade');
+        $cidade = Cidade::find($idcidade);
+        return response()->json($cidade);
+    }
 }
