@@ -407,7 +407,7 @@
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
-                    $('#exampleModalCenter').modal('hide');
+                    //$('#exampleModalCenter').modal('hide');
                     window.location.href='{{url('/')}}';
                 },
                 error: function (data) {

@@ -86,7 +86,7 @@
 
                             <input id="cidade" type="text" class="form-control @error('cidade') is-invalid @enderror" name="cidade" value="Videira" autocomplete="cidade" autofocus readonly>
 
-                            Obs: Para modificar a cidade troque sua <a href="{{ url('depositos') }}"><u>localização</u></a>
+                            Obs: Para modificar a cidade troque sua <a class="text-danger" href="{{ url('depositos') }}"><u>localização</u></a>
 
                                 @error('cidade')
                                     <span class="invalid-feedback" role="alert">
