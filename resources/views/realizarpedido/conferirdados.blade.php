@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')   
@@ -15,14 +16,67 @@
 
         });
 
+        $("#cidade").keydown(function(){  
+            $.ajax({
+                type: "GET",
+                url: "buscacidade",
+                data: { "cidade": $("#cidade").val() },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $("#cidades").empty();
+                    for(var i=0;i<data.length;i++)
+                    {
+                        console.log(data[i].cidade);
+                        $("#cidades").append("<option data-id='"+data[i].idcidades+"' value='" + 
+                        data[i].cidade + "'></option>");
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        $("#cidade").on('change', function(e) {
+
+            var g = $('#cidade').val();
+            var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var formData = {
+                idcidades: idcidades,
+            };
+            var type = "POST";
+            var ajaxurl = 'cookiecidade';
+            $.ajax({
+                type: type,
+                url: ajaxurl,
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    //$('#exampleModalCenter').modal('hide');
+                    window.location.href='{{url('/')}}';
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
         function editardados(){
             document.getElementById("telefone").readOnly = false;
             document.getElementById("bairro").readOnly = false;
             document.getElementById("endereco").readOnly = false;
             document.getElementById("numero").readOnly = false;
             document.getElementById("complemento").readOnly = false;
-            document.getElementById("cidades2").readOnly = false;
-            document.getElementById("cidade2").readOnly = false;
+            document.getElementById("cidades").readOnly = false;
         }
     </script>
 
@@ -93,9 +147,9 @@
                                         <!--<input id="cidade" type="text" value="{{$dadosusuario->cidade}}" disabled>-->
                                         <div class="dropdown">
                         
-                                            <input autocomplete="off" list="cidades2" name="cidade" style="outline: 0; border-width: 0 0 2px;" id="cidade2" value="{{$dadosusuario->cidade}}" readonly>
-                                            <datalist id="cidades2"></datalist>
-                                            <!--<i class="fa fa-search" aria-hidden="true"></i>-->
+                                            <input autocomplete="off" list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}">
+                                            <datalist id="cidades"></datalist>
+                                            <i class="fa fa-search" aria-hidden="true"></i>
                         
                                         </div>
                                         
@@ -117,4 +171,4 @@
                 </div>
             </div>
 </body>
-@endsection>
+@endsection
