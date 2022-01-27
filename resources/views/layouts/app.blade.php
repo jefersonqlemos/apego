@@ -416,6 +416,8 @@
             });
         });
 
+        /*
+
         $("#cidade2").keydown(function(){  
             $.ajax({
                 type: "GET",
@@ -468,7 +470,7 @@
                     console.log(data);
                 }
             });
-        });
+        });*/
       });
 
     </script>
