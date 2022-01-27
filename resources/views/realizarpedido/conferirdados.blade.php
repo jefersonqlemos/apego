@@ -150,7 +150,7 @@
                         
                                             <input autocomplete="off" list="cidades2" style="outline: 0; border-width: 0 0 2px;" id="cidade2" value="{{$dadosusuario->cidade}}">
                                             <datalist id="cidades2"></datalist>
-                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                            
                         
                                         </div>
                                         
