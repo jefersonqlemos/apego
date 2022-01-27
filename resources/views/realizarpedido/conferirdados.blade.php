@@ -54,7 +54,7 @@
                 <br><br><br>
                     <form action="/concluirdados" class="checkout__form" method="post" >
                         @csrf
-                        <h5>Dados da Entrega <a style="float: right;" onclick="editardados();" href="#">Editar Dados</a></h5>
+                        <h5>Dados da Entrega <!--<a style="float: right;" onclick="editardados();" href="#">Editar Dados</a>--></h5>
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="checkout__form__input">
