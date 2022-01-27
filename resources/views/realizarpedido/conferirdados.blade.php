@@ -5,8 +5,8 @@
 
 <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>-->
 
     <script>
 
@@ -76,7 +76,7 @@
             document.getElementById("endereco").readOnly = false;
             document.getElementById("numero").readOnly = false;
             document.getElementById("complemento").readOnly = false;
-            document.getElementById("cidades").readOnly = false;
+            document.getElementById("cidade").readOnly = false;
         }
     </script>
 
@@ -147,7 +147,7 @@
                                         <!--<input id="cidade" type="text" value="{{$dadosusuario->cidade}}" disabled>-->
                                         <div class="dropdown">
                         
-                                            <input autocomplete="off" list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}">
+                                            <input autocomplete="off" list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}" readonly>
                                             <datalist id="cidades"></datalist>
                                             <i class="fa fa-search" aria-hidden="true"></i>
                         
