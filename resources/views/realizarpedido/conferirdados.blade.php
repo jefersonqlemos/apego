@@ -16,15 +16,15 @@
 
         });
 
-        $("#cidade").keydown(function(){  
+        $("#cidade2").keydown(function(){  
             $.ajax({
                 type: "GET",
                 url: "buscacidade",
-                data: { "cidade": $("#cidade").val() },
+                data: { "cidade": $("#cidade2").val() },
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
-                    $("#cidades").empty();
+                    $("#cidades2").empty();
                     for(var i=0;i<data.length;i++)
                     {
                         console.log(data[i].cidade);
@@ -38,10 +38,10 @@
             });
         });
 
-        $("#cidade").on('change', function(e) {
+        $("#cidade2").on('change', function(e) {
 
-            var g = $('#cidade').val();
-            var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
+            var g = $('#cidade2').val();
+            var idcidades = $('#cidades2 option[value=' + g +']').attr('data-id');
 
             $.ajaxSetup({
                 headers: {
@@ -76,7 +76,7 @@
             document.getElementById("endereco").readOnly = false;
             document.getElementById("numero").readOnly = false;
             document.getElementById("complemento").readOnly = false;
-            document.getElementById("cidade").readOnly = false;
+            document.getElementById("cidade2").readOnly = false;
         }
     </script>
 
@@ -147,8 +147,8 @@
                                         <!--<input id="cidade" type="text" value="{{$dadosusuario->cidade}}" disabled>-->
                                         <div class="dropdown">
                         
-                                            <input autocomplete="off" list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}" readonly>
-                                            <datalist id="cidades"></datalist>
+                                            <input autocomplete="off" list="cidades2" style="outline: 0; border-width: 0 0 2px;" id="cidade2" value="{{$dadosusuario->cidade}}" readonly>
+                                            <datalist id="cidades2"></datalist>
                                             <i class="fa fa-search" aria-hidden="true"></i>
                         
                                         </div>
