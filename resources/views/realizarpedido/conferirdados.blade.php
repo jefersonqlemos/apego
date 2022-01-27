@@ -5,8 +5,8 @@
 
 <head>
 
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
 
     <script>
 
@@ -14,60 +14,6 @@
 
             $('#telefone').mask("(99)99999-9999");
 
-        });
-
-        $("#cidade").keydown(function(){  
-            $.ajax({
-                type: "GET",
-                url: "buscacidade",
-                data: { "cidade": $("#cidade").val() },
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    $("#cidades").empty();
-                    for(var i=0;i<data.length;i++)
-                    {
-                        console.log(data[i].cidade);
-                        $("#cidades").append("<option data-id='"+data[i].idcidades+"' value='" + 
-                        data[i].cidade + "'></option>");
-                    }
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-        });
-
-        $("#cidade").on('change', function(e) {
-
-            var g = $('#cidade').val();
-            var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            e.preventDefault();
-            var formData = {
-                idcidades: idcidades,
-            };
-            var type = "POST";
-            var ajaxurl = 'cookiecidade';
-            $.ajax({
-                type: type,
-                url: ajaxurl,
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    //$('#exampleModalCenter').modal('hide');
-                    window.location.href='{{url('/')}}';
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
         });
 
         function editardados(){
