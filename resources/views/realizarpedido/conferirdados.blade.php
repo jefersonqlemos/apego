@@ -93,7 +93,7 @@
                                         <div class="dropdown">
                         
                                             <input autocomplete="off" list="cidades" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}" readonly>
-                                            <datalist id="cidades"></datalist>plpllplplp
+                                            <datalist id="cidades"></datalist>
                         
                                         </div>
                                         
