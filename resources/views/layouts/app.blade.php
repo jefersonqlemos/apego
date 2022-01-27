@@ -415,6 +415,60 @@
                 }
             });
         });
+
+        $("#cidade2").keydown(function(){  
+            $.ajax({
+                type: "GET",
+                url: "buscacidade",
+                data: { "cidade": $("#cidade2").val() },
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $("#cidades2").empty();
+                    for(var i=0;i<data.length;i++)
+                    {
+                        console.log(data[i].cidade);
+                        $("#cidades2").append("<option data-id='"+data[i].idcidades+"' value='" + 
+                        data[i].cidade + "'></option>");
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
+
+        $("#cidade2").on('change', function(e) {
+
+            var g = $('#cidade2').val();
+            var idcidades = $('#cidades2 option[value=' + g +']').attr('data-id');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var formData = {
+                idcidades: idcidades,
+            };
+            var type = "POST";
+            var ajaxurl = 'cookiecidade';
+            $.ajax({
+                type: type,
+                url: ajaxurl,
+                data: formData,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    //$('#exampleModalCenter').modal('hide');
+                    //window.location.href='{{url('/')}}';
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        });
       });
 
     </script>
