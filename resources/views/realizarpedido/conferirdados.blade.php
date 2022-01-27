@@ -62,7 +62,8 @@
                 success: function (data) {
                     console.log(data);
                     //$('#exampleModalCenter').modal('hide');
-                    window.location.href='{{url('/')}}';
+                    //window.location.href='{{url('/')}}';
+                    document.getElementById("idcidade").value = data;
                 },
                 error: function (data) {
                     console.log(data);
