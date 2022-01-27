@@ -50,6 +50,7 @@ class RealizarPedidoController extends Controller
         $id = Auth::id();
         $dadosusuario = Dadosusuario::find($id);
         $dadosusuario->telefone = $request->telefone;
+        $dadosusuario->cidade = $request->cidade;
         $dadosusuario->cidades_idcidades = $request->idcidade;
         $dadosusuario->bairro = $request->bairro;
         $dadosusuario->rua = $request->endereco;
