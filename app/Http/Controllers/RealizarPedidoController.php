@@ -18,6 +18,8 @@ use App\Comprado;
 
 use App\Statu;
 
+use Cookie;
+
 //use Illuminate\Support\Facades\Storage;
 
 use App\Formasdepagamento;
@@ -42,21 +44,35 @@ class RealizarPedidoController extends Controller
     }
 
     public function concluirDados(Request $request){
+
+        $idcidade = Cookie::get('cookieCidade');
+
         $id = Auth::id();
         $dadosusuario = Dadosusuario::find($id);
         $dadosusuario->telefone = $request->telefone;
+        $dadosusuario->cidades_idcidades = $request->idcidade;
         $dadosusuario->bairro = $request->bairro;
         $dadosusuario->rua = $request->endereco;
         $dadosusuario->numero = $request->numero;
         $dadosusuario->complemento = $request->complemento;
         $dadosusuario->save();
 
-        return redirect('pagamento');
+        if($request->idcidade == $idcidade){
+            return redirect('pagamento');
+        }else{
+            return redirect()->back();
+        }
+
+        
     }
 
     public function pagamento(){
 
-        if(Cart::content()->count() == 0){
+        $idcidade = Cookie::get('cookieCidade');
+        $id = Auth::id();
+        $dadosusuario = Dadosusuario::find($id);
+
+        if(Cart::content()->count() == 0 || $dadosusuario->cidades_idcidades != $idcidade){
             return redirect()->back();
         }else{
             
