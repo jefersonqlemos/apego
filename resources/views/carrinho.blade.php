@@ -120,7 +120,7 @@
                             <li>Total <span>R$ {{$total}}</span></li>
                         </ul>
                         @if($total!=0)
-                            <a href="/conferirdados" class="site-btn">Continuar Pedido</a>
+                            <a href="/conferirdados" class="primary-btn">Continuar Pedido</a>
                         @endif
                     </div>
                 </div>
