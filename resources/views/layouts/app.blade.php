@@ -58,9 +58,9 @@
     
                     </div>
                 </div>
-                <!--<div class="modal-footer">
-                    <button disabled id="btn-save" type="button" class="site-btn">Pronto</button>
-                </div>-->
+                <div class="modal-footer">
+                    <button id="pronto" type="button" class="site-btn">Pronto</button>
+                </div>
                 </div>
             </div>
         </div>
@@ -202,7 +202,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-1.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-2.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-3.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -226,7 +226,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-4.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-5.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-6.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@lojasapego</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
                         </div>
                     </div>
                 </div>
@@ -384,7 +384,7 @@
             });
         });
 
-        $("#cidade").on('change', function(e) {
+        $("#pronto").click(function(e) {
 
             var g = $('#cidade').val();
             var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
