@@ -43,8 +43,6 @@ class BuscaController extends Controller
 
     public function buscaPorMarca(Request $request)
     {
-
-        dd($request->checkbox);
         $idcidade = Cookie::get('cookieCidade');
         $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->whereIn('marcas_idmarcas', $request->checkbox)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
