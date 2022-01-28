@@ -384,7 +384,9 @@
             });
         });
 
-        $(document).on('click', '#pronto', function(e) {
+        $("#pronto").click(function(e) {
+
+            alert("button is clicked");
 
             var g = $('#cidade').val();
             var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
