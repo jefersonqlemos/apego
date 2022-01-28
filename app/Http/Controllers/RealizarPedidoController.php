@@ -18,6 +18,8 @@ use App\Comprado;
 
 use App\Statu;
 
+use App\Cidade;
+
 use Cookie;
 
 //use Illuminate\Support\Facades\Storage;
@@ -45,9 +47,9 @@ class RealizarPedidoController extends Controller
 
     public function concluirDados(Request $request){
 
+        $cidade = Cidade::where('cidade', $request->cidade);
 
-
-        dd($request->cidade);
+        dd($cidade);
 
         $idcidade = Cookie::get('cookieCidade');
 
