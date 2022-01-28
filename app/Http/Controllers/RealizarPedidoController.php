@@ -47,25 +47,29 @@ class RealizarPedidoController extends Controller
 
     public function concluirDados(Request $request){
 
-        $cidade = Cidade::where('cidade', $request->cidade);
+        $cidade = Cidade::where('cidade', $request->cidade)->first();
 
-        dd($cidade);
+        if($cidade!=null){
 
-        $idcidade = Cookie::get('cookieCidade');
+            $idcidade = Cookie::get('cookieCidade');
 
-        $id = Auth::id();
-        $dadosusuario = Dadosusuario::find($id);
-        $dadosusuario->telefone = $request->telefone;
-        $dadosusuario->cidade = $request->cidade;
-        $dadosusuario->cidades_idcidades = $request->idcidade;
-        $dadosusuario->bairro = $request->bairro;
-        $dadosusuario->rua = $request->endereco;
-        $dadosusuario->numero = $request->numero;
-        $dadosusuario->complemento = $request->complemento;
-        $dadosusuario->save();
+            $id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
+            $dadosusuario->telefone = $request->telefone;
+            $dadosusuario->cidade = $request->cidade;
+            $dadosusuario->cidades_idcidades = $cidade->idcidades;
+            $dadosusuario->bairro = $request->bairro;
+            $dadosusuario->rua = $request->endereco;
+            $dadosusuario->numero = $request->numero;
+            $dadosusuario->complemento = $request->complemento;
+            $dadosusuario->save();
 
-        if($request->idcidade == $idcidade){
-            return redirect('pagamento');
+            if($request->idcidade == $idcidade){
+                return redirect('pagamento');
+            }else{
+                return redirect()->back();
+            }
+
         }else{
             return redirect()->back();
         }
