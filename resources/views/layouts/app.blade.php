@@ -384,36 +384,40 @@
             });
         });
 
-        $("#pronto").click(function(e) {
+        $(document).on('click', '#pronto', function(e) {
 
             var g = $('#cidade').val();
             var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
+            
+            if(idcidades!=null){
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            e.preventDefault();
-            var formData = {
-                idcidades: idcidades,
-            };
-            var type = "POST";
-            var ajaxurl = 'cookiecidade';
-            $.ajax({
-                type: type,
-                url: ajaxurl,
-                data: formData,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    //$('#exampleModalCenter').modal('hide');
-                    window.location.href='{{url('/')}}';
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                e.preventDefault();
+                var formData = {
+                    idcidades: idcidades,
+                };
+                var type = "POST";
+                var ajaxurl = 'cookiecidade';
+                $.ajax({
+                    type: type,
+                    url: ajaxurl,
+                    data: formData,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        //$('#exampleModalCenter').modal('hide');
+                        window.location.href='{{url('/')}}';
+                    },
+                    error: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            }
         });
       });
 
