@@ -388,8 +388,6 @@
 
             var g = $('#cidade').val();
             var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
-
-            alert(g." ".idcidades);
             
             if(idcidades!=null){
 
