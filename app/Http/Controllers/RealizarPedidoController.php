@@ -45,6 +45,10 @@ class RealizarPedidoController extends Controller
 
     public function concluirDados(Request $request){
 
+
+
+        dd($request->cidade);
+
         $idcidade = Cookie::get('cookieCidade');
 
         $id = Auth::id();
