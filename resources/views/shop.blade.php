@@ -53,7 +53,11 @@
         }
 
         function marcaFiltragem() {
-            document.getElementById("form_marca").submit();
+            var checkbox = document.getElementsByName('checkbox');
+
+            if(checkbox != null){
+                document.getElementById("form_marca").submit();
+            }
         }
             
     </script>
