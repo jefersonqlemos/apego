@@ -267,7 +267,7 @@
                                         </label>
                                     @endforeach
                                     <div class="sidebar__filter">
-                                        <a href="#" onclick="marcaFiltragem()" id="busca_marca">Filtrar</a>
+                                        <button href="#" onclick="marcaFiltragem()" id="busca_marca">Filtrar</button>
                                     </div>
                                 </form>  
                             </div>
