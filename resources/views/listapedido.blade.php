@@ -115,7 +115,7 @@
                             <tr>
                                     <td>Complemento: {{$pedido->complemento}}</td>
                             </tr>
-                        endif
+                        @endif
                         <tr>
                                 <td colspan="2">Status: <b>{{$status->status}}</b></td>
                                 <td></td>

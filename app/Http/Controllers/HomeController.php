@@ -76,20 +76,30 @@ class HomeController extends Controller
 
     public function updateUsuario(Request $request)
     {
-        $id = Auth::id();
-        $dadosusuario = Dadosusuario::find($id);
-        $dadosusuario->nome = $request->nome;
-        $dadosusuario->sobrenome = $request->sobrenome;
-        $dadosusuario->cpf = $request->cpf;
-        $dadosusuario->datadenascimento = $request->datadenascimento;
-        $dadosusuario->telefone = $request->telefone;
-        $dadosusuario->bairro = $request->bairro;
-        $dadosusuario->rua = $request->endereco;
-        $dadosusuario->numero = $request->numero;
-        $dadosusuario->complemento = $request->complemento;
-        $dadosusuario->save();
+        $cidade = Cidade::where('cidade', $request->cidade)->first();
 
-        return redirect()->back()->with('message', 'Os Dados foram Atualizados');
+        if($cidade!=null){
+            $id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
+            $dadosusuario->nome = $request->nome;
+            $dadosusuario->sobrenome = $request->sobrenome;
+            $dadosusuario->cpf = $request->cpf;
+            $dadosusuario->datadenascimento = $request->datadenascimento;
+            $dadosusuario->telefone = $request->telefone;
+            $dadosusuario->bairro = $request->bairro;
+            $dadosusuario->rua = $request->endereco;
+            $dadosusuario->numero = $request->numero;
+            $dadosusuario->complemento = $request->complemento;
+            $dadosusuario->cidade = $cidade->cidade;
+            $dadosusuario->cidades_idcidades = $cidade->idcidades;
+            $dadosusuario->save();
+
+            return redirect()->back()->with('message', 'Os dados foram atualizados com sucesso');
+        }else{
+            return redirect()->back()->with('message', 'A cidade digitada esta incorreta ou não está contida em nossos registros');
+        }
+
+        
     }
 
     public function trocarEmail(Request $request){
