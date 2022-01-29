@@ -507,7 +507,7 @@
                                         <!--<input id="cidade" type="text" value="{{$dadosusuario->cidade}}" disabled>-->
                                         <div class="dropdown">
                         
-                                            <input autocomplete="off" list="cidades" name="cidade" style="outline: 0; border-width: 0 0 2px;" id="cidade" value="{{$dadosusuario->cidade}}" readonly>
+                                            <input autocomplete="off" list="cidades" name="cidade" style="outline: 0; border-width: 0 0 2px;" id="cidade">
                                             <datalist id="cidades"></datalist>
                         
                                         </div>
