@@ -36,7 +36,8 @@
                     $("#pagarentrega").show();
                     $("#boleto").hide();
                     $("#cartaocredito").hide();
-                    $("#cartaodebito").hide(); 
+                    $("#cartaodebito").hide();
+                    $("#pix").hide(); 
 
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#pe').attr('href', "#");
@@ -50,7 +51,8 @@
                     $("#pagarentrega").hide();
                     $("#boleto").show();
                     $("#cartaocredito").hide();
-                    $("#cartaodebito").hide(); 
+                    $("#cartaodebito").hide();
+                    $("#pix").hide();
 
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#bo').attr('href', "#");
@@ -63,7 +65,8 @@
                     $("#pagarentrega").hide();
                     $("#boleto").hide();
                     $("#cartaocredito").show();
-                    $("#cartaodebito").hide(); 
+                    $("#cartaodebito").hide();
+                    $("#pix").hide();
 
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#cc').attr('href', "#");
@@ -76,7 +79,8 @@
                     $("#pagarentrega").hide();
                     $("#boleto").hide();
                     $("#cartaocredito").hide();
-                    $("#cartaodebito").show(); 
+                    $("#cartaodebito").show();
+                    $("#pix").hide();
 
                     if (window.matchMedia("(min-width: 768px)").matches) {
                         $('#cd').attr('href', "#");
@@ -84,8 +88,22 @@
                         $('#cd').attr('href', "#cartaodebito");
                     }
             });
+
+            $('#pi').click(function(){
+                    $("#pagarentrega").hide();
+                    $("#boleto").hide();
+                    $("#cartaocredito").hide();
+                    $("#cartaodebito").hide(); 
+                    $("#pix").show();
+
+                    if (window.matchMedia("(min-width: 768px)").matches) {
+                        $('#pi').attr('href', "#");
+                    } else {
+                        $('#pi').attr('href', "#pix");
+                    }
+            });
             
-            if({{$formasdepagamento->cartaodecredito}}==0 && {{$formasdepagamento->boleto}}==0 && {{$formasdepagamento->debitoonline}}==0 && {{$formasdepagamento->pagamentonaentrega}}==0){
+            if({{$formasdepagamento->cartaodecredito}}==0 && {{$formasdepagamento->boleto}}==0 && {{$formasdepagamento->debitoonline}}==0 && {{$formasdepagamento->pagamentonaentrega}}==0 && {{$formasdepagamento->pix}}==0){
                 alert("Nenhum método de pagamento esta ativado no momento, entre em contato com o suporte para saber mais");
                 window.location.href = "{{url('/carrinho')}}"
             }
@@ -312,6 +330,9 @@
                                 @if($formasdepagamento->debitoonline > 0)
                                     <li><a style="border-bottom: 2px groove red" id="cd" href="#"><b>Debito Online </b></a></li>
                                 @endif
+                                @if($formasdepagamento->pix > 0)
+                                    <li><a style="border-bottom: 2px groove red" id="pi" href="#"><b>Pix </b></a></li>
+                                @endif
                             </ul>
                             <form action="#" class="checkout__form">
                                 <br><br>
@@ -363,7 +384,7 @@
                             </div>
                             <button style="display:none" class="site-btn">Finalizar Pedido</button>
                         </form>
-                        <button id="btnboleto" style="float: right;margin-top: 40px" class="site-btn">Finalizar Pedido Com Boleto</button>
+                        <button id="btnboleto" style="float: right;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
                     </div>
 
                     
@@ -483,7 +504,22 @@
                                 <button style="display:none" class="site-btn">Finalizar Pedido</button>
                         </form>
                         <button id="btncartaodebito" style="float: right;;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
-                    </div> 
+                    </div>
+                    
+                    <div id="pix" class="col-lg-8 col-md-8">
+                        <div class="blog__details__content">
+                            <div class="blog__details__desc">
+                                <br>
+                                <h5><b>PAGAR NO PIX</b></h5>
+                                <hr>
+                                <p><b>PIX em desenvolvimento</b></p>
+                            </div>
+                            <!--<form action="{{url('efetuapagamentopix')}}" method="post">
+                                @csrf
+                                <button style="float: right;" class="site-btn">Finalizar Pedido</button>
+                            </form>-->
+                        </div>
+                    </div>
                 </div>
             </div>    
         </div>
