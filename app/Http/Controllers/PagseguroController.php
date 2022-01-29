@@ -216,6 +216,9 @@ class PagseguroController extends Controller
 		//dd($xml);
 		
 		if($code!=null){
+
+			$id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
 			
 			$pedido = new Pedido;
 			$pedido->numeroitens = intval($xml->itemCount);
@@ -227,7 +230,13 @@ class PagseguroController extends Controller
 			$pedido->status_idstatus = intval($xml->status);
 			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
-			$pedido->users_id = Auth::id();
+			$pedido->users_id = $id;
+            $pedido->cidades_idcidades = $dadosusuario->cidades_idcidades;
+            $pedido->cidade = $dadosusuario->cidade;
+            $pedido->bairro = $dadosusuario->bairro;
+            $pedido->rua = $dadosusuario->rua;
+            $pedido->complemento = $dadosusuario->complemento;
+            $pedido->numero = $dadosusuario->numero;
 			$pedido->save();
 
 			foreach($produtos as $produto){
@@ -382,6 +391,9 @@ class PagseguroController extends Controller
 		$code = $xml->code;
 
 		if($code!=null){
+
+			$id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
 			
 			$pedido = new Pedido;
 			$pedido->numeroitens = intval($xml->itemCount);
@@ -394,7 +406,13 @@ class PagseguroController extends Controller
 			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
 			$pedido->link = $xml->paymentLink;
-			$pedido->users_id = Auth::id();
+			$pedido->users_id = $id;
+            $pedido->cidades_idcidades = $dadosusuario->cidades_idcidades;
+            $pedido->cidade = $dadosusuario->cidade;
+            $pedido->bairro = $dadosusuario->bairro;
+            $pedido->rua = $dadosusuario->rua;
+            $pedido->complemento = $dadosusuario->complemento;
+            $pedido->numero = $dadosusuario->numero;
 			$pedido->save();
 
 			foreach($produtos as $produto){
@@ -549,6 +567,9 @@ class PagseguroController extends Controller
 		$code = $xml->code;
 
 		if($code!=null){
+
+			$id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
 			
 			$pedido = new Pedido;
 			$pedido->numeroitens = intval($xml->itemCount);
@@ -561,7 +582,13 @@ class PagseguroController extends Controller
 			$pedido->numeroparcelas = intval($xml->installmentCount);
 			$pedido->code = $code;
 			$pedido->link = $xml->paymentLink;
-			$pedido->users_id = Auth::id();
+			$pedido->users_id = $id;
+            $pedido->cidades_idcidades = $dadosusuario->cidades_idcidades;
+            $pedido->cidade = $dadosusuario->cidade;
+            $pedido->bairro = $dadosusuario->bairro;
+            $pedido->rua = $dadosusuario->rua;
+            $pedido->complemento = $dadosusuario->complemento;
+            $pedido->numero = $dadosusuario->numero;
 			$pedido->save();
 
 			foreach($produtos as $produto){

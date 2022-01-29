@@ -104,10 +104,22 @@
                                 <td>Valor Total do Pedido: <b>R$ {{$pedido->valortotal}}</b></td>
                         </tr>
                         <tr>
+                                <td>Cidade: {{$pedido->cidade}}</td>
+                                <td>Bairro: {{$pedido->bairro}}</td>
+                        </tr>
+                        <tr>
+                                <td>Rua: {{$pedido->rua}}</td>
+                                <td>numero: {{$pedido->numero}}</td>
+                        </tr>
+                        @if($pedido->complemento != null)
+                            <tr>
+                                    <td>Complemento: {{$pedido->complemento}}</td>
+                            </tr>
+                        endif
+                        <tr>
                                 <td colspan="2">Status: <b>{{$status->status}}</b></td>
                                 <td></td>
                         </tr>
-
                         @if($pedido->tipotransacao==2)
                         <tr>
                             <td colspan="2">

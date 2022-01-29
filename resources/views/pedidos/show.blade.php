@@ -63,15 +63,15 @@
                         <tr>
                             <td>Nome do cliente: {{$dadosusuario->nome}}</td>
                             <td>Sobrenome do cliente: {{$dadosusuario->sobrenome}}</td>
-                            <td>Cidade: {{$dadosusuario->cidade}}</td>
+                            <td>Cidade: {{$pedido->cidade}}</td>
                         </tr>
                         <tr>
-                            <td>Bairro: {{$dadosusuario->bairro}}</td>
-                            <td>Rua: {{$dadosusuario->rua}}</td>
-                            <td>Numero: {{$dadosusuario->numero}}</td>
+                            <td>Bairro: {{$pedido->bairro}}</td>
+                            <td>Rua: {{$pedido->rua}}</td>
+                            <td>Numero: {{$pedido->numero}}</td>
                         </tr>
                         <tr>
-                            <td>Complemento: {{$dadosusuario->complemento}}</td>
+                            <td>Complemento: {{$pedido->complemento}}</td>
                             <td>Telefone: {{$dadosusuario->telefone}}</td>
                             <td>CPF: {{$dadosusuario->cpf}}</td>
                         </tr>

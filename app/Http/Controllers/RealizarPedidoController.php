@@ -118,6 +118,9 @@ class RealizarPedidoController extends Controller
 
             }
 
+            $id = Auth::id();
+            $dadosusuario = Dadosusuario::find($id);
+
             $pedido = new Pedido;
             $pedido->numeroitens = Cart::content()->count();
             $pedido->tipotransacao = 100;
@@ -128,7 +131,13 @@ class RealizarPedidoController extends Controller
             $pedido->status_idstatus = 100;
             $pedido->numeroparcelas = 1;
             $pedido->code = 0;
-            $pedido->users_id = Auth::id();
+            $pedido->users_id = $id;
+            $pedido->cidades_idcidades = $dadosusuario->cidades_idcidades;
+            $pedido->cidade = $dadosusuario->cidade;
+            $pedido->bairro = $dadosusuario->bairro;
+            $pedido->rua = $dadosusuario->rua;
+            $pedido->complemento = $dadosusuario->complemento;
+            $pedido->numero = $dadosusuario->numero;
             $pedido->save();
 
             foreach($produtos as $produto){
