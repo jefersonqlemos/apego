@@ -110,12 +110,12 @@
                         <tr>
                                 <td>Rua: {{$pedido->rua}}</td>
                                 <td>numero: {{$pedido->numero}}</td>
-                        </tr>
-                        @if($pedido->complemento != null)
-                            <tr>
+                                @if($pedido->complemento != null)
+                            
                                     <td>Complemento: {{$pedido->complemento}}</td>
-                            </tr>
-                        @endif
+                            
+                                @endif
+                        </tr>
                         <tr>
                                 <td colspan="2">Status: <b>{{$status->status}}</b></td>
                                 <td></td>
