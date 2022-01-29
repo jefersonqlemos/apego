@@ -111,9 +111,7 @@
                                 <td>Rua: {{$pedido->rua}}</td>
                                 <td>numero: {{$pedido->numero}}</td>
                                 @if($pedido->complemento != null)
-                            
                                     <td>Complemento: {{$pedido->complemento}}</td>
-                            
                                 @endif
                         </tr>
                         <tr>
