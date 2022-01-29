@@ -67,7 +67,7 @@ class RealizarPedidoController extends Controller
             if($request->idcidade == $idcidade){
                 return redirect('pagamento');
             }else{
-                return redirect()->back()->with('message', 'A compra não pode ser concluida pois a cidade de entrega não é a mesma que a cidade da compra');
+                return redirect('conferirdados')->with('message', 'A compra não pode ser concluida pois a cidade de entrega não é a mesma que a cidade da compra');
             }
 
         }else{
