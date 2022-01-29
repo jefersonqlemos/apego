@@ -106,6 +106,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <input id="idcidade" name="idcidade" type="hidden" value="{{$dadosusuario->cidades_idcidades}}">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
                                     <button style="float: right;" class="site-btn">Continuar Pedido</button>
                                 </div>
                             </div>
