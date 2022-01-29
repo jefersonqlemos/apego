@@ -16,6 +16,8 @@ use App\Comprado;
 
 use App\Produto;
 
+use App\Cidade;
+
 use App\Statu;
 
 class HomeController extends Controller
