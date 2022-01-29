@@ -67,11 +67,11 @@ class RealizarPedidoController extends Controller
             if($request->idcidade == $idcidade){
                 return redirect('pagamento');
             }else{
-                return redirect()->back();
+                return redirect()->back()->with('message', 'A compra não pode ser concluida pois a cidade de entrega não é a mesma que a cidade da compra');
             }
 
         }else{
-            return redirect()->back();
+            return redirect()->back()->with('message', 'A cidade digitada esta incorreta ou não está contida em nossos registros');
         }
 
         
