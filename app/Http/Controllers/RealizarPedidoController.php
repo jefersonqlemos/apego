@@ -49,9 +49,9 @@ class RealizarPedidoController extends Controller
 
         $cidade = Cidade::where('cidade', $request->cidade)->first();
 
-        if($cidade!=null){
+        $idcidade = Cookie::get('cookieCidade');
 
-            $idcidade = Cookie::get('cookieCidade');
+        if($cidade!=null){
 
             $id = Auth::id();
             $dadosusuario = Dadosusuario::find($id);
