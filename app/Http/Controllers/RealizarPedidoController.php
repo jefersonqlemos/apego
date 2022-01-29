@@ -64,10 +64,10 @@ class RealizarPedidoController extends Controller
             $dadosusuario->complemento = $request->complemento;
             $dadosusuario->save();
 
-            if($request->idcidade == $idcidade){
+            if($cidade->idcidade == $idcidade){
                 return redirect('pagamento');
             }else{
-                return redirect('conferirdados')->with('message', 'A compra não pode ser concluida pois a cidade de entrega não é a mesma que a cidade da compra');
+                return redirect()->back()->with('message', 'A compra não pode ser concluida pois a cidade de entrega não é a mesma que a cidade da compra');
             }
 
         }else{
