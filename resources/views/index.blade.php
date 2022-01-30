@@ -248,8 +248,10 @@
 <section class="ftco-section">
 			<div class="container">
 				<div class="row">
-                    <div class="section-title">
-                        <h4>Sua Marca</h4>
+                    <div class="col-lg-4 col-md-4">
+                        <div class="section-title">
+                            <h4>Sua Marca</h4>
+                        </div>
                     </div>
 					<div class="col-md-12">
 						<div class="featured-carousel owl-carousel">
