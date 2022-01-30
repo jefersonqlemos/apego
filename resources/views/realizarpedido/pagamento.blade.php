@@ -506,7 +506,7 @@
                         <button id="btncartaodebito" style="float: right;;margin-top: 40px" class="site-btn">Finalizar Pedido</button>
                     </div>
                     
-                    <div id="pix" class="col-lg-8 col-md-8">
+                    <div id="pix" style="display:none" class="col-lg-8 col-md-8">
                         <div class="blog__details__content">
                             <div class="blog__details__desc">
                                 <br>

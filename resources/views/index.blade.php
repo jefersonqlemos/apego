@@ -92,6 +92,8 @@
 </section>
 <!-- Categories Section End -->
 
+
+
 <!-- Product Section Begin -->
 <section class="product spad">
     <div class="container">
@@ -242,6 +244,98 @@
     </div>
 </section>
 <!-- Trend Section End -->
+
+<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+                    <div class="section-title">
+                        <h4>Sua Marca</h4>
+                    </div>
+					<div class="col-md-12">
+						<div class="featured-carousel owl-carousel">
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-3.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Gucci</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-1.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Dochtos</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-9.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Nike</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-2.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Hering</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-7.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Zara</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-center justify-content-center rounded" style="background-image: url(img/slider/slider-8.jpg);">
+										<a href="#" class="icon d-flex align-items-center justify-content-center">
+                                            <span class="fa fa-search"></span>
+										</a>
+									</div>
+									<div class="text pt-3 w-100 text-center">
+										<h3><a href="#">Puma</a></h3>
+										<span>Compre Agora</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 <!-- Discount Section Begin -->
 <section class="discount">
