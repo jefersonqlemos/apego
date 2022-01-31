@@ -83,7 +83,7 @@ class IndexController extends Controller
     public function escolherMarca($id){
 
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('marcas_idmarcas', $request->$id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('marcas_idmarcas', $id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
