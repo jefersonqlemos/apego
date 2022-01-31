@@ -148,7 +148,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                                <p>{{$produto->descricaodetalhada}}</p>
+                                <p style="white-space: pre-line">{{$produto->descricaodetalhada}}</p>
                             </div>
                         </div>
                     </div>
