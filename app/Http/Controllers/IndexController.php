@@ -80,6 +80,16 @@ class IndexController extends Controller
         return redirect()->back()->with('message', 'Sua Mensagem foi Enviada ao Suporte, Responderemos em Seu E-mail');
     }
 
+    public function escolherMarca($id){
+
+        $idcidade = Cookie::get('cookieCidade');
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('marcas_idmarcas', $request->$id)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        $tamanhos = Tamanho::all();
+        return view('shop')->with(compact('produtos', 'tamanhos', 'categorias', 'marcas'));
+    }
+
     public function teste(){
         
         //$response = Http::timeout(4)->get('http://apego.store/api/listapedidos')['idpedidos'];

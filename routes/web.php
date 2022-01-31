@@ -62,6 +62,7 @@ Route::get('buscacidade', 'AppController@buscaCidade');
 Route::get('updatedeposito', 'AppController@updateDeposito');
 Route::get('getcidade', 'AppController@getCidade');
 
+Route::get('search', 'AppController@search');
 
 Route::get('categoriafeminino/{id}', 'CategoriaController@categoriaFeminino')->name('categoriafeminino');
 Route::get('categoriamasculino/{id}', 'CategoriaController@categoriaMasculino');
@@ -74,7 +75,7 @@ Route::get('buscapormarca', 'BuscaController@buscaPorMarca');
 
 Route::get('verproduto/{id}', 'IndexController@verProduto');
 
-Route::get('search', 'AppController@search');
+Route::get('escolhermarca/{id}', 'IndexController@escolherMarca');
 
 Route::post('emailnotificacao', 'IndexController@emailNotificacao');
 Route::post('mensagemsuporte', 'IndexController@mensagemSuporte');
