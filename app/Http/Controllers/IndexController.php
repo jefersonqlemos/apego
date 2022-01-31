@@ -20,6 +20,8 @@ use App\Marca;
 
 use App\Informacoeslayout;
 
+use App\Categoria;
+
 use Cookie;
 
 use Illuminate\Support\Facades\Http;
