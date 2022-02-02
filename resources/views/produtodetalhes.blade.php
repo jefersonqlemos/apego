@@ -82,6 +82,7 @@
                                 @for ($i = 0; $i <$produto->avaliacao ; $i++)
                                     <i class="fa fa-star"></i>
                                 @endfor
+                                ({{$avaliacao}})
                             @else
                                 <span>produto ainda não avaliado</span>
                             @endif

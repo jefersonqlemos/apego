@@ -22,6 +22,8 @@ use App\Informacoeslayout;
 
 use App\Categoria;
 
+use App\Avaliacao;
+
 use Cookie;
 
 use Illuminate\Support\Facades\Http;
@@ -54,11 +56,12 @@ class IndexController extends Controller
 
     public function verProduto($id){
         $produto = Produto::find($id);
+        $avaliacao = Avaliacao::where("produtos_idprodutos", $id)->count();
         $variantes = Produto::where("variante_tamanho", $produto->variante_tamanho)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
         $genero = Genero::find($produto->generos_idgeneros);
         $tamanho = Tamanho::find($produto->tamanhos_idtamanhos);
         $fotos = Foto::where('produtos_idprodutos', $produto->variante_tamanho)->get();
-        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes'));
+        return view('produtodetalhes')->with(compact('produto', 'genero', 'fotos', 'tamanho', 'variantes', 'avaliacao'));
     }
 
     public function emailNotificacao(Request $request){

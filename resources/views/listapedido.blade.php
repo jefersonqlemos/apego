@@ -154,7 +154,7 @@
                                         <div class="cart__product__item__title">
                                             <h4><b><a style="color:#ca1515" href="{{url('/verproduto/'.$produto->idprodutos)}}">{{$produto->nome}} {{$produto->marca}} {{$produto->tamanho}}</a></b></h4>
                                         </div>
-                                        @if($produto->avaliacao==null)
+                                        @if($produto->avaliacao_cliente==null)
                                             <form id="formavaliacao" action="{{url('/avaliacao/'.$produto->idprodutos)}}" method="post">
                                                 @csrf
                                                 <div class="rating">
@@ -166,10 +166,11 @@
                                                     <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>                                            
                                                 </div>
                                                 <input type="hidden" name="idpedidos" value="{{$pedido->idpedidos}}">
+                                                <input type="hidden" name="idcomprados" value="{{$produto->idcomprados}}">
                                             </form>
                                         @else
                                             <div class="rating">
-                                                @for ($i = 0; $i <$produto->avaliacao ; $i++)
+                                                @for ($i = 0; $i <$produto->avaliacao_cliente ; $i++)
                                                     <i class="fa fa-star"></i>
                                                 @endfor
                                             </div>

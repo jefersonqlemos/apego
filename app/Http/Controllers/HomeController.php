@@ -20,6 +20,8 @@ use App\Cidade;
 
 use App\Statu;
 
+use App\Avaliacao;
+
 class HomeController extends Controller
 {
     /**
@@ -55,6 +57,8 @@ class HomeController extends Controller
     {
         $produtos = Produto::join('comprados', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')
     ->where('comprados.pedidos_idpedidos', $id)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->get();
+        
+        $idusers = Auth::id();
         $pedido = Pedido::find($id);
         $status = Statu::find($pedido->status_idstatus);
         
@@ -63,9 +67,33 @@ class HomeController extends Controller
 
     public function avaliacao(Request $request, $id)
     {
+        $iduser = Auth::id();
+
+        $avaliacao = new Avaliacao;
+        $avaliacao->users_idusers = $iduser;
+        $avaliacao->produtos_idprodutos = $id;
+        $avaliacao->avaliacao = $request->rating;
+        $avaliacao->save();
+
+        $comprado = Comprado::find($request->idcomprados);
+        $comprado->avaliacao_cliente = $request->rating;
+        $comprado->save(); 
+
         $produto = Produto::find($id);
-        $produto->avaliacao = $request->rating;
+
+        if($produto->avaliacao != null){
+            $produto->avaliacao_total = $produto->avaliacao_total + $request->rating;
+            $numeros_avaliacao = Avaliacao::where("produtos_idprodutos", $id)->count();
+            $avaliacao = $produto->avaliacao_total/$numeros_avaliacao;
+            $avaliacao = round($avaliacao);
+            $produto->avaliacao = $avaliacao;
+        }else{
+            $produto->avaliacao = $request->rating;
+            $produto->avaliacao_total = $request->rating;
+        }
+
         $produto->save();
+
         return redirect('comprados/'.$request->idpedidos);
     }
 
