@@ -9,7 +9,11 @@
 
     <meta name="keywords" content="O seu delivery de vestuário e acessórios" />
 
-    <link rel="icon" href="{{ asset('/img/favicon.png') }}" type="image/x-icon"/>
+    <link rel="icon" sizes="16x16" type="image/png" href="{{ asset('img/favicon16x16.png') }}">
+
+    <link rel="icon" sizes="32x32" type="image/png" href="{{ asset('img/favicon32x32.png') }}">
+
+    <link rel="icon" sizes="64x64" type="image/png" href="{{ asset('img/favicon64x64.png') }}">
 
     <title>Apego</title>
 
