@@ -9,6 +9,8 @@
 
     <meta name="keywords" content="O seu delivery de vestuário e acessórios" />
 
+    <link rel="icon" href="{{ asset('/img/favicon.png') }}" type="image/x-icon"/>
+
     <title>Apego</title>
 
     <!-- Scripts -->
