@@ -43,7 +43,7 @@ class IndexController extends Controller
 
         $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(8)->get();
         $ultimosavaliados = Produto::where("cidades_idcidades", "=", $idcidade)->where("avaliacao", "!=", null)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
-        $ultimosvendidos = $comprados = Comprado::join('produtos', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')->where("cidades_idcidades", "=", $idcidade)->get();
+        $ultimosvendidos = $comprados = Comprado::join('produtos', 'produtos.idprodutos', '=', 'comprados.produtos_idprodutos')->where("cidades_idcidades", "=", $idcidade)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
         //dd($comprados);
         //$ultimosvendidos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
         $maisbaratos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
