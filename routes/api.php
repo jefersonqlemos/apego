@@ -23,13 +23,15 @@ Route::group([
     ], function() {
         Route::get('logout', 'Admin\Auth\AuthController@logout');
         Route::get('user', 'Admin\Auth\AuthController@user');
-        Route::get('/listapedidos', 'Api\PedidoController@index');
-        Route::get('/searchpedidos', 'Api\PedidoController@searchPedidos');
     });
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//esse colocar dentro do group dentro da function junto com logout e user
+Route::get('/listapedidos', 'Api\PedidoController@index');
+Route::get('/searchpedidos', 'Api\PedidoController@searchPedidos');
 
 Route::post('/notificacaopagseguro', 'NotificacaoPagSeguroController@notificacao');
