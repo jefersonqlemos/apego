@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Produto;
 
 use App\Foto;
@@ -15,6 +17,8 @@ use App\Categoria;
 use App\Tamanho;
 
 use App\Marca;
+
+use App\Cidade;
 
 class ProdutoController extends Controller
 {
@@ -32,7 +36,13 @@ class ProdutoController extends Controller
     public function index()
     {
         //
-        $produtos = Produto::orderBy('idprodutos', 'desc')->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->simplePaginate(15);
+        $idadmin = Auth::user()->id;
+
+        if($idadmin == 1){
+            $produtos = Produto::orderBy('idprodutos', 'desc')->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->simplePaginate(15);
+        }else{
+            $produtos = Produto::orderBy('idprodutos', 'desc')->where('cidades_idcidades', $idadmin)->join('tamanhos', 'produtos.tamanhos_idtamanhos', '=', 'tamanhos.idtamanhos')->simplePaginate(15);
+        }
         //dd($produtos);
         return view('produtos/listaproduto')->with('produtos', $produtos);
 
@@ -46,10 +56,23 @@ class ProdutoController extends Controller
     public function create()
     {
         //
+        $idadmin = Auth::user()->id;
+
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         $marcas = Marca::all();
-        return view('produtos/create')->with(compact('categorias', 'tamanhos', 'marcas'));
+
+        if($idadmin == 1){
+
+            $cidades = Cidade::all();
+            $cidade = $idadmin;
+            return view('produtos/create')->with(compact('categorias', 'tamanhos', 'marcas', 'cidade', 'cidades'));
+
+        }else{
+            $cidade = $idadmin;
+            return view('produtos/create')->with(compact('categorias', 'tamanhos', 'marcas', 'cidade'));
+        }
+            
     }
 
     /**
@@ -60,6 +83,8 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $idadmin = Auth::user()->id;
         
         $marca = Marca::find($request->marca);
 
@@ -74,7 +99,8 @@ class ProdutoController extends Controller
         $produto->descricaodetalhada = $request->descricaodetalhada;
         $produto->generos_idgeneros = $request->genero;
         $produto->categorias_idcategorias = $request->categoria;
-        
+        $produto->cidades_idcidades = $idadmin;
+
         //dd($produto->idprodutos);
         
         $files = $request->file('files');

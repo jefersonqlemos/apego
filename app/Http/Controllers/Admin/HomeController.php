@@ -1,7 +1,11 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+
 use App\Suporte;
+
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -20,8 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $idadmin = Auth::user()->id;
         $count = Suporte::where('status', 0)->count();
-        return view('admin.home')->with('count', $count);
+        return view('admin.home')->with(compact('count', 'idadmin'));
     }
 
 }

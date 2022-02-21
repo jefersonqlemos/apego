@@ -91,7 +91,7 @@
     <div class="mynavbar">
     <a href="{{ route('admin.home') }}">Home</a>
     <div class="mydropdown">
-        <button class="mydropbtn">Administrador 
+        <button class="mydropbtn">Admin
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="mydropdown-content">

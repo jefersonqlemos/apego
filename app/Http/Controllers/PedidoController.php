@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Pedido;
 
 use App\Produto;
@@ -31,7 +33,13 @@ class PedidoController extends Controller
     public function index()
     {
         //
-        $pedidos = Pedido::join('status', 'pedidos.status_idstatus', '=', 'status.idstatus')->orderBy('idpedidos', 'desc')->simplePaginate(15);
+        $idadmin = Auth::user()->id;
+
+        if($idadmin == 1){
+            $pedidos = Pedido::join('status', 'pedidos.status_idstatus', '=', 'status.idstatus')->orderBy('idpedidos', 'desc')->simplePaginate(15);
+        }else{
+            $pedidos = Pedido::join('status', 'pedidos.status_idstatus', '=', 'status.idstatus')->orderBy('idpedidos', 'desc')->where('cidades_idcidades', $idadmin)->simplePaginate(15);
+        }
         //dd($produtos);
         return view('pedidos/listapedido')->with('pedidos', $pedidos);
     }

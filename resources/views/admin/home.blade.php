@@ -54,11 +54,17 @@
     <hr>
     <button class="btn" onclick="window.location.href='/pedidos'"><i class="fa fa-clipboard-list"></i> Pedidos</button>
     <hr>
-    <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar Dados da Loja</button>
-    <hr>
-    <button class="btn" onclick="window.location.href='/listasuporte'"><i style="font-size:24px" class="fa fa-headset"></i><span id='lblCartCount'>{{$count}}</span> Atender Suporte</button>
-    <hr>
-    <button class="btn" onclick="window.open('/', '_blank')"><i class="fa fa-home"></i> Ir ao Site</button>
+    
+    @if($idadmin == 1)
+        <button class="btn" onclick="window.location.href='/editarsobre'"><i class="fa fa-user-edit"></i> Editar Dados da Loja</button>
+        <hr>
+        <button class="btn" onclick="window.location.href='/listasuporte'"><i style="font-size:24px" class="fa fa-headset"></i><span id='lblCartCount'>{{$count}}</span> Atender Suporte</button>
+        <hr>
+        <button class="btn" onclick="window.location.href='https://webmail1.hostinger.com.br/'"><i style="font-size:24px" class="fa fa-envelope"></i> Ir ao E-mail da Empresa</button>
+        <hr>
+    @endif
+
+    <button class="btn" onclick="window.open('/', '_blank')"><i class="fa fa-home"></i> Ir ao Site de Vendas</button>
         
 
 <body>
