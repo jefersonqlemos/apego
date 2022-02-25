@@ -176,7 +176,8 @@
                     </span>
                     <input type="hidden" name="idstatus" value="103">
                 </form>
-
+            @elseif($status->idstatus == 103)
+            
             @else
 
                 <form action="{{url('consultapedidopagseguro').'/'.$pedido->idpedidos}}" method="post"> 

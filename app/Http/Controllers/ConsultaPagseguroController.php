@@ -47,9 +47,15 @@ class ConsultaPagseguroController extends Controller
 
 		curl_close($curl);
 
-		$xml= simplexml_load_string($xml);
+		$xml = simplexml_load_string($xml);
 
-        dd($xml);
+        $pedido->status_idstatus = (string)$xml->transactions->transaction->status;
+
+        $pedido->save();
+
+        return redirect()->back();
+        
+        //dd((string)$xml->transactions->transaction->status);
         
 
         //https://ws.pagseguro.uol.com.br/v2/transactions?email=suporte@lojasapego.store&token=d2970a29-d0c3-4e9b-89ad-0d6865b1cb40fac99ced4db99db93f482fcb7308331b8ede-9698-4f2c-aa40-7712a24a6fe7&reference=31
