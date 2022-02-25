@@ -182,9 +182,9 @@ class PagseguroController extends Controller
 		$data['billingAddressCountry'] = 'BRA';
         $data['currency'] = 'BRL';
         
-        
+        $referencia = "".Auth::id().date("YmdHis");
 
-        $data['reference'] = "".Auth::id(); //referencia qualquer do produto
+        $data['reference'] = $referencia; //referencia qualquer do produto
 		$data['shippingAddressRequired'] = 'false';
 
         //dd($data); //para visualização xml
@@ -237,6 +237,7 @@ class PagseguroController extends Controller
             $pedido->rua = $dadosusuario->rua;
             $pedido->complemento = $dadosusuario->complemento;
             $pedido->numero = $dadosusuario->numero;
+			$pedido->referencia = $referencia;
 			$pedido->save();
 
 			foreach($produtos as $produto){
@@ -262,7 +263,7 @@ class PagseguroController extends Controller
 			$url = 'https://fcm.googleapis.com/fcm/send';
 
 			$fields = array(
-					'to' => 'ecDnbDIqT8uo8Jqj3cQG6X:APA91bEsnAMiyAMSL5VX6nu8peIalC6ud35gZUgFtYJyqSf2_ij44q5m-kuLzlen2i1y5FQi3lZK3as4c0Q7jY2u7BV7zK8VPu17KcItTtqoEfz31GGLafUPp4O3flfSrt0-kjQk0vAt',
+					'to' => 'fGv7q9ZoQfmwBLz-7vmxHq:APA91bEVQpYv9pi_ba2ZFWCuzZPlyeOdldo301BnFvCsl5I5ZGH8pVjHUA6kXlPlQHaXuMQscVNM0HFRAFlOook3t5CcBXNJXISw9qybsVtp5NayMomXuTaCvJ3T4nrMK8ZoIl1kxPAR',
 					/*'data' => array(
 							"message" => 'ola mundo',
 							'title' => 'title'
@@ -362,7 +363,9 @@ class PagseguroController extends Controller
 		$data['senderCPF'] = $cpf;
 		$data['currency'] = 'BRL';
 		
-		$data['reference'] = "".Auth::id();
+		$referencia = "".Auth::id().date("YmdHis");
+
+        $data['reference'] = $referencia; //referencia qualquer do produto
 		$data['shippingAddressRequired'] = 'false';
 
 		$data = http_build_query($data);
@@ -413,6 +416,7 @@ class PagseguroController extends Controller
             $pedido->rua = $dadosusuario->rua;
             $pedido->complemento = $dadosusuario->complemento;
             $pedido->numero = $dadosusuario->numero;
+			$pedido->referencia = $referencia;
 			$pedido->save();
 
 			foreach($produtos as $produto){
@@ -438,7 +442,7 @@ class PagseguroController extends Controller
 			$url = 'https://fcm.googleapis.com/fcm/send';
 
 			$fields = array(
-					'to' => 'ecDnbDIqT8uo8Jqj3cQG6X:APA91bEsnAMiyAMSL5VX6nu8peIalC6ud35gZUgFtYJyqSf2_ij44q5m-kuLzlen2i1y5FQi3lZK3as4c0Q7jY2u7BV7zK8VPu17KcItTtqoEfz31GGLafUPp4O3flfSrt0-kjQk0vAt',
+					'to' => 'fGv7q9ZoQfmwBLz-7vmxHq:APA91bEVQpYv9pi_ba2ZFWCuzZPlyeOdldo301BnFvCsl5I5ZGH8pVjHUA6kXlPlQHaXuMQscVNM0HFRAFlOook3t5CcBXNJXISw9qybsVtp5NayMomXuTaCvJ3T4nrMK8ZoIl1kxPAR',
 					/*'data' => array(
 							"message" => 'ola mundo',
 							'title' => 'title'
@@ -540,7 +544,11 @@ class PagseguroController extends Controller
 		$data['senderCPF'] = $cpf;
 		$data['currency'] = 'BRL';
 
-		$data['reference'] = "".Auth::id();
+		//$referencia = "".Auth::id().;
+
+		$referencia = "".Auth::id().date("YmdHis");
+
+        $data['reference'] = $referencia; //referencia qualquer do produto
 		$data['shippingAddressRequired'] = 'false';
 
 		$data = http_build_query($data);
@@ -589,6 +597,7 @@ class PagseguroController extends Controller
             $pedido->rua = $dadosusuario->rua;
             $pedido->complemento = $dadosusuario->complemento;
             $pedido->numero = $dadosusuario->numero;
+			$pedido->referencia = $referencia;
 			$pedido->save();
 
 			foreach($produtos as $produto){
@@ -614,7 +623,7 @@ class PagseguroController extends Controller
 			$url = 'https://fcm.googleapis.com/fcm/send';
 
 			$fields = array(
-					'to' => 'ecDnbDIqT8uo8Jqj3cQG6X:APA91bEsnAMiyAMSL5VX6nu8peIalC6ud35gZUgFtYJyqSf2_ij44q5m-kuLzlen2i1y5FQi3lZK3as4c0Q7jY2u7BV7zK8VPu17KcItTtqoEfz31GGLafUPp4O3flfSrt0-kjQk0vAt',
+					'to' => 'fGv7q9ZoQfmwBLz-7vmxHq:APA91bEVQpYv9pi_ba2ZFWCuzZPlyeOdldo301BnFvCsl5I5ZGH8pVjHUA6kXlPlQHaXuMQscVNM0HFRAFlOook3t5CcBXNJXISw9qybsVtp5NayMomXuTaCvJ3T4nrMK8ZoIl1kxPAR',
 					/*'data' => array(
 							"message" => 'ola mundo',
 							'title' => 'title'

@@ -33,6 +33,7 @@ Route::get('remover/{id}', 'CarrinhoController@remover');
 Route::get('listasuporte', 'SuporteController@listaSuporte');
 Route::get('mensagemsuporte/{id}', 'SuporteController@mensagemSuporte');
 Route::post('resposta/{id}', 'SuporteController@resposta');
+Route::post('consultapedidopagseguro/{id}', 'ConsultaPagseguroController@consultaPedidoPagseguro');
 
 //Route::resource('produtos', 'ProdutoController');
 Route::resource('produtos', 'ProdutoController');

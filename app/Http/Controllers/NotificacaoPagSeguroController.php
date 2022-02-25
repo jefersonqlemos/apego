@@ -19,7 +19,7 @@ class NotificacaoPagSeguroController extends Controller
 				//$_SERVER['REMOTE_ADDR']
 		$emailPagseguro = $PagSeguro->email; //aqui colocar o email cadastrado no pagseguro
 
-		$data = http_build_query($data);
+		//$data = http_build_query($data);
 		$url = 'https://ws.pagseguro.uol.com.br/v3/transactions/notifications/';
 
 		$curl = curl_init();

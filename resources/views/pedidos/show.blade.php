@@ -176,6 +176,17 @@
                     </span>
                     <input type="hidden" name="idstatus" value="103">
                 </form>
+
+            @else
+
+                <form action="{{url('consultapedidopagseguro').'/'.$pedido->idpedidos}}" method="post"> 
+                    @csrf
+                    <span style="float:left">Consultar/Atualizar Status do Pagseguro: 
+                        <input type="submit" value="Atualizar"></input>
+                    </span>
+                    <input type="hidden" name="idstatus" value="104">
+                </form>
+
             @endif
 
             
