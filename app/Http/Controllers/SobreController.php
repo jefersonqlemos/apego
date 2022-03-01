@@ -55,6 +55,7 @@ class SobreController extends Controller
         $informacoesLayout->linktwitter = $request->linktwitter;
         $informacoesLayout->linkyoutube = $request->linkyoutube;
         $informacoesLayout->linkinstagram = $request->linkinstagram;
+        $informacoesLayout->perfilinstagram = $request->perfilinstagram;
         $informacoesLayout->fraserodape = $request->fraserodape;
         $informacoesLayout->save();
 

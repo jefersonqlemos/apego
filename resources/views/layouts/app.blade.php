@@ -47,6 +47,7 @@
     @include('cookieConsent::index')
 
     @if(Cookie::get('cookieCidade') == null)
+
         <!--cidade: {{Cookie::get('cookieCidade')}}-->
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -64,9 +65,9 @@
     
                     </div>
                 </div>
-                <div class="modal-footer">
+                <!--<div class="modal-footer">
                     <button id="pronto" type="button" class="site-btn">Pronto</button>
-                </div>
+                </div>-->
                 </div>
             </div>
         </div>
@@ -207,7 +208,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-1.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -215,7 +216,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-2.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -223,7 +224,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-3.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -231,7 +232,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-4.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -239,7 +240,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-5.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -247,7 +248,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-6.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@_aapego_</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
                         </div>
                     </div>
                 </div>
@@ -367,6 +368,44 @@
       $(document).ready(function($){
         $('#exampleModalCenter').modal({backdrop: 'static', keyboard: false}); 
 
+        $("#cidade").on('input', function(e){
+            if(window.location.pathname == "/home" || window.location.pathname == "/conferirdados"|| window.location.pathname == "/conferirdados#" || window.location.pathname == "/home#"){
+               
+            }else{
+                var g = $('#cidade').val();
+                var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
+                
+                if(idcidades!=null){
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    e.preventDefault();
+                    var formData = {
+                        idcidades: idcidades,
+                    };
+                    var type = "POST";
+                    var ajaxurl = 'cookiecidade';
+                    $.ajax({
+                        type: type,
+                        url: ajaxurl,
+                        data: formData,
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                            //$('#exampleModalCenter').modal('hide');
+                            window.location.href='{{url('/')}}';
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        }
+                    });
+                }
+            }
+        });
+
         $("#cidade").keydown(function(){  
             $.ajax({
                 type: "GET",
@@ -389,7 +428,8 @@
             });
         });
 
-        $("#pronto").click(function(e) {
+        
+        /*$("#pronto").click(function(e) {
 
             var g = $('#cidade').val();
             var idcidades = $('#cidades option[value=' + g +']').attr('data-id');
@@ -423,7 +463,7 @@
                 });
 
             }
-        });
+        });*/
       });
 
     </script>

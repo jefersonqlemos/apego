@@ -112,6 +112,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="perfilinstagram">Perfil Instagram</label>
+                    <input name="perfilinstagram" type="text" class="form-control" id="perfilinstagram" value="{{$informacoeslayout->perfilinstagram}}">
+                </div>
+
+                <div class="form-group">
                     <label for="linkinstagram">Link Instagram</label>
                     <input name="linkinstagram" type="text" class="form-control" id="linkinstagram" value="{{$informacoeslayout->linkinstagram}}">
                 </div>
