@@ -266,6 +266,7 @@
                                             <span class="checkmark"></span>
                                         </label>
                                     @endforeach
+                                    <br><br>
                                     <div class="sidebar__filter">
                                         <a href="#" onclick="marcaFiltragem()" id="busca_marca">Filtrar</a>
                                     </div>
