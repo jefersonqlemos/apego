@@ -99,7 +99,12 @@ class ProdutoController extends Controller
         $produto->descricaodetalhada = $request->descricaodetalhada;
         $produto->generos_idgeneros = $request->genero;
         $produto->categorias_idcategorias = $request->categoria;
-        $produto->cidades_idcidades = $idadmin;
+
+        if($idadmin==1){
+            $produto->cidades_idcidades = $request->cidade;
+        }else{
+            $produto->cidades_idcidades = $idadmin;
+        }
 
         //dd($produto->idprodutos);
         

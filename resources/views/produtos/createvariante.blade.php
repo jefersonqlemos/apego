@@ -161,6 +161,17 @@
                     </optgroup>
                 </select>
         <br><br>
+
+        @if($cidade == 1)
+            <label for="cidade">Escolha a cidade:</label>
+            <select name="cidade" id="cidade" required>
+                @foreach($cidades as $cidade)
+                    <option value="{{$cidade->idcidades}}">{{$cidade->cidade}}</option>
+                @endforeach
+            </select>
+            <br>
+            <br>
+        @else
         
         <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
         @csrf

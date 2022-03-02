@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Categoria;
 
 use App\Tamanho;
@@ -35,6 +37,9 @@ class VariantesController extends Controller
 
     public function storeVarianteTamanho(Request $request)
     {
+
+        $idadmin = Auth::user()->id;
+
         $marca = Marca::find($request->marca);
 
         $produto = new Produto;
@@ -50,6 +55,13 @@ class VariantesController extends Controller
         $produto->categorias_idcategorias = $request->categoria;
         $produto->foto = $request->fotoproduto;
         $produto->variante_tamanho = $request->variante_tamanho;
+
+        if($idadmin==1){
+            $produto->cidades_idcidades = $request->cidade;
+        }else{
+            $produto->cidades_idcidades = $idadmin;
+        }
+
         $produto->save();
 
         return redirect('produtos');
