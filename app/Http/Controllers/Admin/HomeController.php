@@ -29,10 +29,4 @@ class HomeController extends Controller
         return view('admin.home')->with(compact('count', 'idadmin'));
     }
 
-    public function consultaPedidoPagseguro(){
-
-		dd(date("Y-m-d H:i:s"));
-		
-	}
-
 }

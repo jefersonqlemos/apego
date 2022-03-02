@@ -30,6 +30,12 @@ Route::get('remover/{id}', 'CarrinhoController@remover');
 
 //Route::get('/produto', 'CarrinhoController@indexCarrinho');
 
+Route::get('adicionarcidade', 'CidadeController@adicionarCidade');
+Route::post('storecidade', 'CidadeController@storeCidade');
+
+Route::get('adicionarmarca', 'MarcaController@adicionarMarca');
+Route::post('storemarca', 'MarcaController@storeMarca');
+
 Route::get('listasuporte', 'SuporteController@listaSuporte');
 Route::get('mensagemsuporte/{id}', 'SuporteController@mensagemSuporte');
 Route::post('resposta/{id}', 'SuporteController@resposta');

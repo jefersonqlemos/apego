@@ -62,10 +62,17 @@
         <hr>
         <button class="btn" onclick="window.location.href='https://webmail1.hostinger.com.br/'"><i style="font-size:24px" class="fa fa-envelope"></i> Ir ao E-mail da Empresa</button>
         <hr>
+        <button class="btn" onclick="window.location.href='/adicionarcidade'"><i class="fa fa-user-edit"></i> Adicionar Cidade</button>
+        <hr>
+        <button class="btn" onclick="window.location.href='/adicionarmarca'"><i class="fa fa-user-edit"></i> Adicionar Marca</button>
+        <hr>
     @endif
 
     <button class="btn" onclick="window.open('/', '_blank')"><i class="fa fa-home"></i> Ir ao Site de Vendas</button>
         
+        <br>
+        <br>
+        <br>
 
 <body>
 
