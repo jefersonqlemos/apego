@@ -173,6 +173,7 @@
                     @endif
                 @endforeach
             </select>
+            <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
             <br>
             <br>
         @else
