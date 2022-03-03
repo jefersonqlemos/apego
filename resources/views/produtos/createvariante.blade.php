@@ -162,6 +162,7 @@
                 </select>
         <br><br>
 
+        <!--
         @if($cidade == 1)
             <label for="cidade">Escolha a cidade:</label>
             <select name="cidade" id="cidade" required>
@@ -171,7 +172,7 @@
             </select>
             <br>
             <br>
-        @else
+        @else-->
         
         <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
         @csrf
