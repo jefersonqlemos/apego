@@ -162,19 +162,22 @@
                 </select>
         <br><br>
 
-        <!--
         @if($cidade == 1)
             <label for="cidade">Escolha a cidade:</label>
             <select name="cidade" id="cidade" required>
                 @foreach($cidades as $cidade)
-                    <option value="{{$cidade->idcidades}}">{{$cidade->cidade}}</option>
+                    @if($cidade->idcidades==$produto)
+                        <option value="{{$cidade->idcidades}}" selected>{{$cidade->cidade}}</option>
+                    @else
+                        <option value="{{$cidade->idcidades}}">{{$cidade->cidade}}</option>
+                    @endif
                 @endforeach
             </select>
             <br>
             <br>
-        @else-->
-        
-        <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
+        @else
+            <input type="hidden" name="cidade" value="{{$cidade}}">
+            <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
         @csrf
     </form>
 

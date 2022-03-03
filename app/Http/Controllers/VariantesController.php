@@ -16,6 +16,8 @@ use App\Foto;
 
 use App\Marca;
 
+use App\Cidade;
+
 class VariantesController extends Controller
 {
     //
@@ -27,12 +29,27 @@ class VariantesController extends Controller
     public function cadastrarVarianteTamanho($variante)
     {
         //
+        $idadmin = Auth::user()->id;
+
         $produto = Produto::find($variante);
         $fotos = Foto::where('produtos_idprodutos', $variante)->get();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
         $marcas = Marca::all();
-        return view('produtos/createvariante')->with(compact('categorias', 'fotos', 'tamanhos', 'produto', 'marcas'));
+
+        if($idadmin == 1){
+
+            $cidades = Cidade::all();
+            $cidade = $idadmin;
+            return view('produtos/createvariante')->with(compact('categorias', 'fotos', 'tamanhos', 'produto', 'marcas', 'cidades', 'cidade'));
+
+        }else{
+            $cidade = $idadmin;
+            return view('produtos/create')->with(compact('categorias', 'tamanhos', 'marcas', 'cidade'));
+        }
+
+        
+        
     }
 
     public function storeVarianteTamanho(Request $request)
