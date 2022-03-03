@@ -28,7 +28,7 @@ class AppController extends Controller
     public function feminino()
     {
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::orderBy('idprodutos', 'desc')->where('generos_idgeneros', 2)->orWhere('generos_idgeneros', 3)->where('quantidade', '>', 0)->groupBy('variante_tamanho')->where("cidades_idcidades", "=", $idcidade)->paginate(9);
+        $produtos = Produto::orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->where('generos_idgeneros', 2)->orWhere('generos_idgeneros', 3)->groupBy('variante_tamanho')->where("cidades_idcidades", "=", $idcidade)->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -38,7 +38,7 @@ class AppController extends Controller
     public function masculino()
     {
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::orderBy('idprodutos', 'desc')->where('generos_idgeneros', 1)->orWhere('generos_idgeneros', 3)->where('quantidade', '>', 0)->groupBy('variante_tamanho')->where("cidades_idcidades", "=", $idcidade)->paginate(9);
+        $produtos = Produto::orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->where('generos_idgeneros', 1)->orWhere('generos_idgeneros', 3)->groupBy('variante_tamanho')->where("cidades_idcidades", "=", $idcidade)->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -48,7 +48,7 @@ class AppController extends Controller
     public function infantil()
     {
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->orderBy('idprodutos', 'desc')->where('generos_idgeneros', 4)->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->where('generos_idgeneros', 4)->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
