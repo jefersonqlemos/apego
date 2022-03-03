@@ -178,6 +178,9 @@
         @else
             <input type="hidden" name="cidade" value="{{$cidade}}">
             <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
+
+        @endif
+        
         @csrf
     </form>
 
