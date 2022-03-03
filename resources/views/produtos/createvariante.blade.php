@@ -166,7 +166,7 @@
             <label for="cidade">Escolha a cidade:</label>
             <select name="cidade" id="cidade" required>
                 @foreach($cidades as $cidade)
-                    @if($cidade->idcidades==$produto)
+                    @if($cidade->idcidades==$produto->cidades_idcidades)
                         <option value="{{$cidade->idcidades}}" selected>{{$cidade->cidade}}</option>
                     @else
                         <option value="{{$cidade->idcidades}}">{{$cidade->cidade}}</option>
@@ -180,7 +180,7 @@
             <input type="hidden" name="fotoproduto" value="{{$produto->foto}}">
 
         @endif
-        
+
         @csrf
     </form>
 
