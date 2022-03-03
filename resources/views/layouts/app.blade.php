@@ -208,7 +208,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-1.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-2.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
@@ -224,7 +224,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-3.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-4.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-5.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
@@ -248,7 +248,7 @@
                     <div class="instagram__item set-bg" data-setbg="{{ asset('img/instagram/insta-6.jpg') }}">
                         <div class="instagram__text">
                             <i class="fa fa-instagram"></i>
-                            <a href="{{$informacoeslayout->linkinstagram}}">@{{$informacoeslayout->linkfacebook}}</a>
+                            <a href="{{$informacoeslayout->linkinstagram}}">{{$informacoeslayout->perfilinstagram}}</a>
                         </div>
                     </div>
                 </div>
