@@ -319,7 +319,7 @@
                             </div>
                             <ul>
                                 @if($formasdepagamento->pagamentonaentrega > 0)
-                                    <li><a style="border-bottom: 2px groove red" id="pe" href="#"><b>Pagar e Retirar no Depósito </b></a></li>
+                                    <li><a style="border-bottom: 2px groove red" id="pe" href="#"><b>Pagar Pessoalmente </b></a></li>
                                 @endif
                                 @if($formasdepagamento->boleto > 0)
                                     <li><a style="border-bottom: 2px groove red" id="bo" href="#"><b>Boleto Bancário </b></a></li>
