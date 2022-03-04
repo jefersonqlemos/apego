@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" sizes="16x16" type="image/png" href="{{ asset('img/favicon16x16.png') }}">
+    <!--<link rel="icon" sizes="16x16" type="image/png" href="{{ asset('img/favicon16x16.png') }}">
 
     <link rel="icon" sizes="32x32" type="image/png" href="{{ asset('img/favicon32x32.png') }}">
 
-    <link rel="icon" sizes="64x64" type="image/png" href="{{ asset('img/favicon64x64.png') }}">
+    <link rel="icon" sizes="64x64" type="image/png" href="{{ asset('img/favicon64x64.png') }}">-->
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
