@@ -359,7 +359,7 @@
                             <br>
                             <h5><b>PAGAR PESSOALMENTE</b></h5>
                             <hr>
-                            <p><b>Veja o endereço do depósito da sua cidade clicando <a href="{{url('/depositos')}}" target="_blank">aqui</a>, retire-os e pague no ato da entrega, nessa opção as formas de pagamento pode ser no dinheiro, pix, cartão de debito ou crédito</b></p>
+                            <p><b>Entre em contato em nosso chat para realizar uma entrega, ou busque o endereço do depósito da sua cidade clicando <a href="{{url('/depositos')}}" target="_blank">aqui</a>, retire-os e pague no ato da entrega, nessa opção as formas de pagamento pode ser no dinheiro, pix, cartão de debito ou crédito</b></p>
                         </div>
                         <form action="{{url('pagamentonaentrega')}}" method="post">
                             @csrf
