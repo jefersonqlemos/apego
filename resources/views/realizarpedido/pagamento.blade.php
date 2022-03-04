@@ -512,7 +512,7 @@
                                 <br>
                                 <h5><b>PAGAR NO PIX</b></h5>
                                 <hr>
-                                <p><b>PIX em desenvolvimento no website, no momento é aceito somente escolhendo a opção "PAGAR E RETIRAR NO DEPÓSITO"</b></p>
+                                <p><b>O PIX está em desenvolvimento no website, no momento essa opção é aceita somente escolhendo a opção "PAGAR PESSOALMENTE"</b></p>
                             </div>
                             <!--<form action="{{url('efetuapagamentopix')}}" method="post">
                                 @csrf
