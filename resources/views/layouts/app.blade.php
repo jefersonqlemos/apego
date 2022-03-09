@@ -201,7 +201,7 @@
     </script>-->
 
     <!-- Instagram Begin -->
-    <!--<div class="instagram">
+    <div class="instagram">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-4 p-0">
@@ -254,48 +254,10 @@
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
-
-    <!-- Services Section Begin -->
-<section class="services spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="services__item">
-                    <i class="fa fa-car"></i>
-                    <h6>Frete Gratis</h6>
-                    <p>Para Todas as Compras</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="services__item">
-                    <i class="fa fa-money"></i>
-                    <h6>Pagamento</h6>
-                    <p>Pode Pagar na Entrega</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="services__item">
-                    <i class="fa fa-support"></i>
-                    <h6>Suporte Online 24/7</h6>
-                    <p>Suporte Dedicado</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="services__item">
-                    <i class="fa fa-headphones"></i>
-                    <h6>Segurança</h6>
-                    <p>Pagamento 100% Seguro</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Services Section End -->
-
     <footer class="footer">
         <div class="container">
             <div class="row">

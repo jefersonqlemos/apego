@@ -245,7 +245,7 @@
 </section>
 <!-- Trend Section End -->
 
-<!--<section class="ftco-section">
+<section class="ftco-section">
 			<div class="container">
 				<div class="row">
                     <div class="col-lg-4 col-md-4">
@@ -264,7 +264,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/2')}}">Gucci</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -277,7 +277,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/3')}}">Dochtos</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -290,7 +290,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/4')}}">Nike</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -303,7 +303,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/5')}}">Hering</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -316,7 +316,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/6')}}">Zara</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -329,7 +329,7 @@
 									</div>
 									<div class="text pt-3 w-100 text-center">
 										<h3><a href="{{ url('escolhermarca/7')}}">Puma</a></h3>
-										
+										<!--<span>Compre Agora</span>-->
 									</div>
 								</div>
 							</div>
@@ -337,7 +337,7 @@
 					</div>
 				</div>
 			</div>
-		</section>-->
+		</section>
 
 <!-- Discount Section Begin -->
 <section class="discount">
