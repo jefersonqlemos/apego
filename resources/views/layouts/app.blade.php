@@ -201,7 +201,7 @@
     </script>-->
 
     <!-- Instagram Begin -->
-    <div class="instagram">
+    <!--<div class="instagram">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-4 p-0">
@@ -254,7 +254,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- Instagram End -->
 
     <!-- Footer Section Begin -->
