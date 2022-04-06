@@ -99,7 +99,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="cart__btn">
-                        <a href="{{url('shopping')}}">Continuar Comprando</a>
+                        <a href="{{url('shop')}}">Continuar Comprando</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">

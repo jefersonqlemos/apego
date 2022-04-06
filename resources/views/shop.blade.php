@@ -22,7 +22,7 @@
         }else if(url=='/masculino'){
             document.getElementById("limasculino").className = "active";
         }else{
-            document.getElementById("lishopping").className = "active";
+            document.getElementById("lishop").className = "active";
         }
 
         /*if (window.matchMedia("(min-width: 768px)").matches) {

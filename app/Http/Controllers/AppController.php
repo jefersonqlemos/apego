@@ -55,7 +55,7 @@ class AppController extends Controller
         return view('shop')->with(compact('produtos', 'tamanhos', 'categorias', 'marcas'));
     }
 
-    public function shopping()
+    public function shop()
     {
         $idcidade = Cookie::get('cookieCidade');
         $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->orderBy('idprodutos', 'desc')->where('quantidade', '>', 0)->groupBy('variante_tamanho')->paginate(9);

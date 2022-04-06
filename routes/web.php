@@ -59,7 +59,7 @@ Route::post('updatesobre', 'SobreController@updateSobre');
 Route::get('feminino', 'AppController@feminino');
 Route::get('masculino', 'AppController@masculino');
 Route::get('infantil', 'AppController@infantil');
-Route::get('shopping', 'AppController@shopping');
+Route::get('shop', 'AppController@shop');
 Route::get('suporte', 'AppController@suporte');
 Route::get('politica', 'AppController@politica');
 Route::get('depositos', 'AppController@depositos');

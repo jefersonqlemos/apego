@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <a href="{{url('/shopping')}}">Shopping </a>
+                        <a href="{{url('/shop')}}">Shop </a>
                         <span>Produto</span>
                     </div>
                 </div>

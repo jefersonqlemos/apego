@@ -144,14 +144,14 @@
                         <div class="banner__text">
                             <span>Moda</span>
                             <h1>Outono Inverno</h1>
-                            <a href="{{ url('/shopping')}}">Shopping</a>
+                            <a href="{{ url('/shop')}}">Shop</a>
                         </div>
                     </div>
                     <div class="banner__item">
                         <div class="banner__text">
                             <span>Moda</span>
                             <h1>Primavera Verão</h1>
-                            <a href="{{ url('/shopping')}}">Shopping</a>
+                            <a href="{{ url('/shop')}}">Shop</a>
                         </div>
                     </div>
                 </div>
@@ -373,7 +373,7 @@
                             <p>Sec</p>
                         </div>
                     </div>
-                    <a href="{{ url('/shopping')}}">Shopping</a>
+                    <a href="{{ url('/shop')}}">Shop</a>
                 </div>
             </div>
         </div>

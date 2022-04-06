@@ -125,7 +125,7 @@
                             <li id="lihome"><a href="{{ url('/')}}">Home</a></li>
                             <li id="lifeminino"><a href="{{ url('/feminino')}}">Feminino</a></li>
                             <li id="limasculino"><a href="{{ url('/masculino')}}">Masculino</a></li>
-                            <li id="lishopping"><a href="{{ url('/shopping')}}">Shopping</a></li>
+                            <li id="lishop"><a href="{{ url('/shop')}}">Shop</a></li>
                             <li id="liconta"><a href="{{ url('/home')}}">Conta</a>
                                 <ul class="dropdown">
                                     <li><a href="{{ url('/home')}}">Minha Conta</a></li>
