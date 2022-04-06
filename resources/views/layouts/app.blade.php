@@ -133,11 +133,10 @@
                                     <li><a href="{{ url('/carrinho')}}">Meu Carrinho</a></li>
                                 </ul>
                             </li>
-                            <li id="lisobre"><a href="{{ url('/sobre')}}">Sobre</a>
+                            <li id="lisuporte"><a href="{{ url('/suporte')}}">Suporte</a>
                                 <ul class="dropdown">
-                                    <li><a href="{{ url('/sobre')}}">Sobre Nós</a></li>
-                                    <li><a href="{{ url('/sobre')}}">Contato</a></li>
-                                    <li><a href="{{ url('/sobre')}}">Suporte</a></li>
+                                    <li><a href="{{ url('/suporte')}}">Sobre Nós</a></li>
+                                    <li><a href="{{ url('/suporte')}}">Contato</a></li>
                                     <li><a href="{{ url('/politica')}}">Politicas</a></li>
                                     <li><a href="{{ url('/depositos')}}">Depósitos</a></li>
                                 </ul>
@@ -280,8 +279,8 @@
                     <div class="footer__widget">
                         <h6>Outros links</h6>
                         <ul>
-                            <li><a href="{{ url('/sobre') }}">Sobre/Suporte</a></li>
-                            <li><a href="{{ url('/sobre')}}">Contato</a></li>
+                            <li><a href="{{ url('/suporte')}}">Sobre Nós/Suporte</a></li>
+                            <li><a href="{{ url('/suporte')}}">Contato</a></li>
                             <li><a href="{{ url('/depositos')}}">Depósitos</a></li>
                             <li><a href="{{ url('/politica')}}">Politicas de Troca</a></li>
                             <li><a href="{{ url('/politica')}}">Privacidade e Cookies</a></li>

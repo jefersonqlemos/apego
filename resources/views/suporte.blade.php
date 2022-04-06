@@ -15,7 +15,7 @@
 
     <script type="text/javascript">
 
-        document.getElementById("lisobre").className = "active";
+        document.getElementById("lisuporte").className = "active";
 
     </script>
 </head>
@@ -39,7 +39,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="{{url('/')}}"><i class="fa fa-home"></i> Home</a>
-                        <span>Sobre</span>
+                        <span>Suporte</span>
                     </div>
                 </div>
             </div>

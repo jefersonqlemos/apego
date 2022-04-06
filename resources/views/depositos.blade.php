@@ -15,7 +15,7 @@
 
     <script type="text/javascript">
 
-        document.getElementById("lisobre").className = "active";
+        document.getElementById("lisuporte").className = "active";
 
     </script>
 </head>

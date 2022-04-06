@@ -70,12 +70,12 @@ class AppController extends Controller
         return view('home');
     }
 
-    public function sobre()
+    public function suporte()
     {
         
         $informacoesempresa = Informacoesempresa::find(1);
 
-        return view('sobre')->with('informacoesempresa', $informacoesempresa);
+        return view('suporte')->with('informacoesempresa', $informacoesempresa);
     }
 
     public function search(Request $request)
