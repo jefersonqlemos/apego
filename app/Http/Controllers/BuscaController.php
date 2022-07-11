@@ -21,7 +21,11 @@ class BuscaController extends Controller
     public function buscaPorTamanho($id)
     {
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('quantidade', '>', 0)->where('tamanhos_idtamanhos', $id)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)
+                    ->where('quantidade', '>', 0)
+                    ->where('tamanhos_idtamanhos', $id)
+                    ->orderBy('idprodutos', 'desc')
+                    ->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -34,7 +38,11 @@ class BuscaController extends Controller
         $vmaior = substr($vmaior, 1);
 
         $idcidade = Cookie::get('cookieCidade');
-        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) >  ?", $vmenor)->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) <  ?", $vmaior)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+        $produtos = Produto::where("cidades_idcidades", "=", $idcidade)
+                        ->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) >  ?", $vmenor)
+                        ->whereRaw("CAST(REPLACE(preco,',','.') AS DECIMAL(10,2)) <  ?", $vmaior)
+                        ->orderBy('idprodutos', 'desc')
+                        ->groupBy('variante_tamanho')->paginate(9);
         $marcas = Marca::all();
         $categorias = Categoria::all();
         $tamanhos = Tamanho::all();
@@ -45,9 +53,17 @@ class BuscaController extends Controller
     {
         $idcidade = Cookie::get('cookieCidade');
         if($request->checkbox!=null){
-            $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('quantidade', '>', 0)->whereIn('marcas_idmarcas', $request->checkbox)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+            $produtos = Produto::where("cidades_idcidades", "=", $idcidade)
+                        ->where('quantidade', '>', 0)
+                        ->whereIn('marcas_idmarcas', $request->checkbox)
+                        ->orderBy('idprodutos', 'desc')
+                        ->groupBy('variante_tamanho')->paginate(9);
         }else{
-            $produtos = Produto::where("cidades_idcidades", "=", $idcidade)->where('quantidade', '>', 0)->whereIn('marcas_idmarcas', [0])->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->paginate(9);
+            $produtos = Produto::where("cidades_idcidades", "=", $idcidade)
+                        ->where('quantidade', '>', 0)
+                        ->whereIn('marcas_idmarcas', [0])
+                        ->orderBy('idprodutos', 'desc')
+                        ->groupBy('variante_tamanho')->paginate(9);
         }
         $marcas = Marca::all();
         $categorias = Categoria::all();
