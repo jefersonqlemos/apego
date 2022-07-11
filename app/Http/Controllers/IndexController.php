@@ -47,7 +47,7 @@ class IndexController extends Controller
         //dd($comprados);
         //$ultimosvendidos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", 0)->orderBy('idprodutos', 'desc')->groupBy('variante_tamanho')->take(3)->get();
         $maisbaratos = Produto::where("cidades_idcidades", "=", $idcidade)->where("quantidade", ">", 0)->orderByRaw($query)->groupBy('variante_tamanho')->take(3)->get();
-        $numeroitemsmasculino = Produto::where("generos_idgeneros", 1)->orWhere('generos_idgeneros', 3)->where("cidades_idcidades", "=", $idcidade)->count();
+        $numeroitemsmasculino = Produto::whereIn("generos_idgeneros", [1, 3])->where("cidades_idcidades", "=", $idcidade)->where('quantidade', '>', 0)->groupBy('variante_tamanho')->count();
         $numeroitemscalcados = Produto::where("cidades_idcidades", "=", $idcidade)->where("categorias_idcategorias", 9)->count();
         $numeroitemsinfantil = Produto::where("cidades_idcidades", "=", $idcidade)->where("generos_idgeneros", 4)->count();
         $numeroitemsacessorios = Produto::where("cidades_idcidades", "=", $idcidade)->where("categorias_idcategorias", 19)->count();
