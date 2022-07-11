@@ -81,6 +81,9 @@
                                 <input type="text" name="nome" placeholder="Nome" required>
                                 <input type="text" name="email" placeholder="Email" required>
                                 <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+                                <div class="form-row mb-3">
+                                    {!! NoCaptcha::renderJs() !!}
+                                </div>
                                 <button type="submit" class="site-btn">Enviar Mensagem</button>
                             </form>
                         </div>
