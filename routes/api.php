@@ -35,3 +35,5 @@ Route::get('/listapedidos', 'Api\PedidoController@index');
 Route::get('/searchpedidos', 'Api\PedidoController@searchPedidos');
 
 Route::post('/notificacaopagseguro', 'NotificacaoPagSeguroController@notificacao');
+
+Route::get('/listaprodutos', 'Api\ProdutoController@shop');
